@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<title>Login and Registration Form in HTML </title>
@@ -29,10 +30,23 @@
 			<div class="form-inner">
 				<form action="#" class="login">
 					<div class="field">
-						<input type="text" placeholder="Username" required>
+						<input
+							type="text"
+							placeholder="Username"
+							minlength="3"
+							maxlength="50"
+							pattern="[_a-zA-Z][_ a-zA-Z0-9]+"
+							required
+						/>
 					</div>
 					<div class="field">
-						<input type="password" placeholder="Password" required>
+						<input
+							type="password"
+							placeholder="Password"
+							minlength="6"
+							maxlength="50"
+							required
+						/>
 					</div>
 					<div class="pass-link">
 						<a href="#">Forgot password?</a>
@@ -42,24 +56,45 @@
 						<input type="submit" value="Login">
 					</div>
 					<div class="signup-link">
-						Not a member? <a href="">Signup now</a>
+						Not a member? <a href="#">Signup now</a>
 					</div>
 				</form>
 				<form action="#" class="signup">
 					<div class="field">
-						<input type="text" placeholder="Username" required>
+						<input type="text"
+							placeholder="Username"
+							minlength="3"
+							maxlength="50"
+							pattern="[_\w][_ \w\d]+"
+							required
+						/>
 					</div>
 
 					<div class="field">
-						<input type="password" placeholder="Password" required>
+						<input type="password"
+							placeholder="Password"
+							minlength="6"
+							maxlength="50"
+							required
+						/>
 					</div>
 
 					<div class="field">
-						<input type="password" placeholder="Confirm password" required>
+						<input type="password"
+							placeholder="Confirm password"
+							minlength="6"
+							maxlength="50"
+							required
+						/>
 					</div>
 
 					<div class="field">
-						<input type="text" placeholder="Email Address" required>
+						<input type="email"
+							placeholder="Email Address"
+							minlength="6"
+							maxlength="50"
+							required
+						/>
 					</div>
 
 					<div class="field btn">
@@ -73,4 +108,5 @@
 	<script src="../scripts/script.js"></script>
 	<script src="../scripts/authentication.js"></script>
 </body>
+
 </html>
