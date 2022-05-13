@@ -3,10 +3,11 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Login and Registration Form in HTML </title>
 	<link rel="stylesheet" href="../styles/style.css" />
 	<link rel="stylesheet" href="../styles/authentication.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -28,25 +29,15 @@
 				<div class="slider-tab"></div>
 			</div>
 			<div class="form-inner">
-				<form action="#" class="login">
+				<form action="#" class="login" autocomplete="off">
 					<div class="field">
-						<input
-							type="text"
-							placeholder="Username"
-							minlength="3"
-							maxlength="50"
-							pattern="[_a-zA-Z][_ a-zA-Z0-9]+"
-							required
-						/>
+						<input id="login-username" class="login-username" type="text" placeholder="Username" minlength="3" maxlength="50" pattern="[_a-zA-Z][_ a-zA-Z0-9]+" required />
+						<label for="login-username">Username</label>
 					</div>
 					<div class="field">
-						<input
-							type="password"
-							placeholder="Password"
-							minlength="6"
-							maxlength="50"
-							required
-						/>
+						<i class="password-visiblity-icon material-icons">visibility_off</i>
+						<input id="login-password" class="login-password" type="password" placeholder="Password" minlength="6" maxlength="50" required />
+						<label for="login-password">Password</label>
 					</div>
 					<div class="pass-link">
 						<a href="#">Forgot password?</a>
@@ -59,42 +50,27 @@
 						Not a member? <a href="#">Signup now</a>
 					</div>
 				</form>
-				<form action="#" class="signup">
+				<form action="#" class="signup" autocomplete="off">
 					<div class="field">
-						<input type="text"
-							placeholder="Username"
-							minlength="3"
-							maxlength="50"
-							pattern="[_\w][_ \w\d]+"
-							required
-						/>
+						<input id="signup-username" class="signup-username" type="text" placeholder="Username" minlength="3" maxlength="50" pattern="[_a-zA-Z][_ a-zA-Z0-9]+" required />
+						<label for="signup-username">Username</label>
 					</div>
 
 					<div class="field">
-						<input type="password"
-							placeholder="Password"
-							minlength="6"
-							maxlength="50"
-							required
-						/>
+						<i class="password-visiblity-icon material-icons">visibility_off</i>
+						<input id="signup-password" class="signup-password" type="password" placeholder="Password" minlength="6" maxlength="50" required />
+						<label for="signup-password">Password</label>
 					</div>
 
 					<div class="field">
-						<input type="password"
-							placeholder="Confirm password"
-							minlength="6"
-							maxlength="50"
-							required
-						/>
+						<i class="password-visiblity-icon material-icons">visibility_off</i>
+						<input id="signup-confirm-password" class="signup-confirm-password" type="password" placeholder="Confirm password" minlength="6" maxlength="50" required />
+						<label for="signup-confirm-password">Confirm password</label>
 					</div>
 
 					<div class="field">
-						<input type="email"
-							placeholder="Email Address"
-							minlength="6"
-							maxlength="50"
-							required
-						/>
+						<input id="signup-email" class="signup-email" type="email" placeholder="Email Address" required />
+						<label for="signup-email">Email Address</label>
 					</div>
 
 					<div class="field btn">
