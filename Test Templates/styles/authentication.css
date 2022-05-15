@@ -138,6 +138,7 @@ input[type="radio"] {
 	position: absolute;
 	top: 25%;
 	left: 5%;
+	user-select: none;
 	transition: font-size 400ms ease, top 400ms ease, left 400ms ease;
 }
 
