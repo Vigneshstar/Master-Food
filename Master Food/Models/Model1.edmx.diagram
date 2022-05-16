@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66ede39ac5ae4ca980fcbee92390fe7d" Name="Diagram1" ZoomLevel="69">
+        <EntityTypeShape EntityType="MasterFoodModel.Customer" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFoodModel.FavouriteFoodItem" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFoodModel.FavouriteRestaurant" Width="1.5" PointX="4.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFoodModel.Feedback" Width="1.5" PointX="3.125" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFoodModel.FoodItem" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFoodModel.Menu" Width="1.5" PointX="6.875" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFoodModel.Order" Width="1.5" PointX="6.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterFoodModel.Restaurant" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MasterFoodModel.FK__Favourite__Custo__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Favourite__Custo__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Feedbacks__Custo__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Orders__Customer__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Favourite__FoodI__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Favourite__Resta__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Orders__Feedback__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Menu__FoodItemId__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Orders__FoodItem__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Menu__Restaurant__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterFoodModel.FK__Orders__Restaura__398D8EEE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

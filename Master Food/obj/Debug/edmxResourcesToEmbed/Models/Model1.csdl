@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MasterFoodModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FavouriteFoodItems" Relationship="Self.FK__Favourite__Custo__300424B4" FromRole="Customers" ToRole="FavouriteFoodItems" />
+    <NavigationProperty Name="FavouriteRestaurants" Relationship="Self.FK__Favourite__Custo__33D4B598" FromRole="Customers" ToRole="FavouriteRestaurants" />
+    <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedbacks__Custo__276EDEB3" FromRole="Customers" ToRole="Feedbacks" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__37A5467C" FromRole="Customers" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="FavouriteFoodItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FoodItemId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="TotalOrders" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Favourite__Custo__300424B4" FromRole="FavouriteFoodItems" ToRole="Customers" />
+    <NavigationProperty Name="FoodItem" Relationship="Self.FK__Favourite__FoodI__2F10007B" FromRole="FavouriteFoodItems" ToRole="FoodItems" />
+  </EntityType>
+  <EntityType Name="FavouriteRestaurant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="TotalOrders" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Favourite__Custo__33D4B598" FromRole="FavouriteRestaurants" ToRole="Customers" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.FK__Favourite__Resta__46E78A0C" FromRole="FavouriteRestaurants" ToRole="Restaurants" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UploadDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Feedbacks__Custo__276EDEB3" FromRole="Feedbacks" ToRole="Customers" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Feedback__3B75D760" FromRole="Feedbacks" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="FoodItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rating" Type="Byte" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="FavouriteFoodItems" Relationship="Self.FK__Favourite__FoodI__2F10007B" FromRole="FoodItems" ToRole="FavouriteFoodItems" />
+    <NavigationProperty Name="Menus" Relationship="Self.FK__Menu__FoodItemId__4BAC3F29" FromRole="FoodItems" ToRole="Menu" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__FoodItem__38996AB5" FromRole="FoodItems" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+    <Property Name="FoodItemId" Type="Int32" Nullable="false" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FoodItem" Relationship="Self.FK__Menu__FoodItemId__4BAC3F29" FromRole="Menu" ToRole="FoodItems" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.FK__Menu__Restaurant__4AB81AF0" FromRole="Menu" ToRole="Restaurants" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="FoodItemId" Type="Int32" Nullable="false" />
+    <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FeedbackId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Orders__Customer__37A5467C" FromRole="Orders" ToRole="Customers" />
+    <NavigationProperty Name="Feedback" Relationship="Self.FK__Orders__Feedback__3B75D760" FromRole="Orders" ToRole="Feedbacks" />
+    <NavigationProperty Name="FoodItem" Relationship="Self.FK__Orders__FoodItem__38996AB5" FromRole="Orders" ToRole="FoodItems" />
+    <NavigationProperty Name="Restaurant" Relationship="Self.FK__Orders__Restaura__398D8EEE" FromRole="Orders" ToRole="Restaurants" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsOpen" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FavouriteRestaurants" Relationship="Self.FK__Favourite__Resta__46E78A0C" FromRole="Restaurants" ToRole="FavouriteRestaurants" />
+    <NavigationProperty Name="Menus" Relationship="Self.FK__Menu__Restaurant__4AB81AF0" FromRole="Restaurants" ToRole="Menu" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Restaura__398D8EEE" FromRole="Restaurants" ToRole="Orders" />
+  </EntityType>
+  <Association Name="FK__Favourite__Custo__300424B4">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+    <End Role="FavouriteFoodItems" Type="Self.FavouriteFoodItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FavouriteFoodItems">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Favourite__Custo__33D4B598">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+    <End Role="FavouriteRestaurants" Type="Self.FavouriteRestaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FavouriteRestaurants">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedbacks__Custo__276EDEB3">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Feedbacks" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Feedbacks">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__Customer__37A5467C">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Favourite__FoodI__2F10007B">
+    <End Role="FoodItems" Type="Self.FoodItem" Multiplicity="1" />
+    <End Role="FavouriteFoodItems" Type="Self.FavouriteFoodItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FoodItems">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FavouriteFoodItems">
+        <PropertyRef Name="FoodItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Favourite__Resta__46E78A0C">
+    <End Role="Restaurants" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="FavouriteRestaurants" Type="Self.FavouriteRestaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FavouriteRestaurants">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__Feedback__3B75D760">
+    <End Role="Feedbacks" Type="Self.Feedback" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Feedbacks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="FeedbackId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__FoodItemId__4BAC3F29">
+    <End Role="FoodItems" Type="Self.FoodItem" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FoodItems">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="FoodItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__FoodItem__38996AB5">
+    <End Role="FoodItems" Type="Self.FoodItem" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FoodItems">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="FoodItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__Restaurant__4AB81AF0">
+    <End Role="Restaurants" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__Restaura__398D8EEE">
+    <End Role="Restaurants" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="RestaurantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MasterFoodEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="FavouriteFoodItems" EntityType="Self.FavouriteFoodItem" />
+    <EntitySet Name="FavouriteRestaurants" EntityType="Self.FavouriteRestaurant" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+    <EntitySet Name="FoodItems" EntityType="Self.FoodItem" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+    <AssociationSet Name="FK__Favourite__Custo__300424B4" Association="Self.FK__Favourite__Custo__300424B4">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="FavouriteFoodItems" EntitySet="FavouriteFoodItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Favourite__Custo__33D4B598" Association="Self.FK__Favourite__Custo__33D4B598">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="FavouriteRestaurants" EntitySet="FavouriteRestaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedbacks__Custo__276EDEB3" Association="Self.FK__Feedbacks__Custo__276EDEB3">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Feedbacks" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__Customer__37A5467C" Association="Self.FK__Orders__Customer__37A5467C">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Favourite__FoodI__2F10007B" Association="Self.FK__Favourite__FoodI__2F10007B">
+      <End Role="FoodItems" EntitySet="FoodItems" />
+      <End Role="FavouriteFoodItems" EntitySet="FavouriteFoodItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Favourite__Resta__46E78A0C" Association="Self.FK__Favourite__Resta__46E78A0C">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="FavouriteRestaurants" EntitySet="FavouriteRestaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__Feedback__3B75D760" Association="Self.FK__Orders__Feedback__3B75D760">
+      <End Role="Feedbacks" EntitySet="Feedbacks" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__FoodItemId__4BAC3F29" Association="Self.FK__Menu__FoodItemId__4BAC3F29">
+      <End Role="FoodItems" EntitySet="FoodItems" />
+      <End Role="Menu" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__FoodItem__38996AB5" Association="Self.FK__Orders__FoodItem__38996AB5">
+      <End Role="FoodItems" EntitySet="FoodItems" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__Restaurant__4AB81AF0" Association="Self.FK__Menu__Restaurant__4AB81AF0">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="Menu" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__Restaura__398D8EEE" Association="Self.FK__Orders__Restaura__398D8EEE">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

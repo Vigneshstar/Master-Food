@@ -168,3 +168,7 @@ C:\Users\HCLTSS\Documents\CRT TEAM PROJECT\Master-Food\Master Food\bin\Microsoft
 C:\Users\HCLTSS\Documents\CRT TEAM PROJECT\Master-Food\Master Food\obj\Debug\Master Food.csproj.AssemblyReference.cache
 C:\Users\HCLTSS\Documents\CRT TEAM PROJECT\Master-Food\Master Food\obj\Debug\Master Food.csproj.CoreCompileInputs.cache
 C:\Users\HCLTSS\Documents\CRT TEAM PROJECT\Master-Food\Master Food\obj\Debug\Master Food.csproj.CopyComplete
+C:\Users\HCLTSS\Documents\CRT TEAM PROJECT\Master-Food\Master Food\bin\EntityFramework.dll
+C:\Users\HCLTSS\Documents\CRT TEAM PROJECT\Master-Food\Master Food\bin\EntityFramework.SqlServer.dll
+C:\Users\HCLTSS\Documents\CRT TEAM PROJECT\Master-Food\Master Food\bin\EntityFramework.xml
+C:\Users\HCLTSS\Documents\CRT TEAM PROJECT\Master-Food\Master Food\bin\EntityFramework.SqlServer.xml
