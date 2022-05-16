@@ -122,6 +122,7 @@ input[type="radio"] {
 
 .form-container .form-inner form {
 	width: 50%;
+	overflow-y: hidden;
 	transform: var(--auth-shift-transform);
 	transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -133,7 +134,7 @@ input[type="radio"] {
 	position: relative;
 }
 
-.form-inner form .field > label {
+.form-inner form .field>label {
 	color: transparent;
 	position: absolute;
 	top: 25%;
@@ -154,7 +155,7 @@ input[type="radio"] {
 	transition: all 0.3s ease;
 }
 
-.form-inner form .field > input:focus + label {
+.form-inner form .field>input:focus+label {
 	color: var(--theme-color2);
 	top: -18%;
 	left: 5%;
@@ -174,7 +175,7 @@ form .field input:focus::placeholder {
 	color: transparent;
 }
 
-form .field input:not(:placeholder-shown) + label {
+form .field input:not(:placeholder-shown)+label {
 	color: #999;
 	top: -18%;
 	left: 5%;
@@ -190,6 +191,29 @@ i.password-visiblity-icon {
 	cursor: pointer;
 	top: 30%;
 	right: 3%;
+}
+
+div.error-message-wrapper {
+	width: 98%;
+	display: none;
+	position: absolute;
+	z-index: 3;
+	top: 100%;
+	left: 2%;
+	box-sizing: border-box;
+	padding-right: 5px;
+	filter: drop-shadow(5px 4px 3px hsla(0, 0%, 0%, 0.15));
+}
+
+span.error-message {
+	color: var(--theme-text-color1);
+	text-align: justify;
+	font-size: 0.75rem;
+	display: block;
+	clip-path: polygon(0% 0%, 2% 5%, 100% 5%, 100% 100%, 0.5% 100%, 0.5% 10%, 0% 0%);
+	background-color: #fc5b33bb;
+	box-sizing: border-box;
+	padding: 1rem;
 }
 
 .form-inner form .pass-link {
@@ -218,6 +242,11 @@ form .btn {
 	border-radius: 5px;
 	position: relative;
 	overflow: hidden;
+	transition: transform 200ms ease;
+}
+
+form .btn:active {
+	transform: scale(0.98);
 }
 
 form .btn .btn-layer {
