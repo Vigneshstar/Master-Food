@@ -1,13 +1,104 @@
-import { el, els, isEmpty } from "./script.js"
+import { el, els, isEmpty, store } from "./script.js"
+
 
 const passwordToggleIcons = els`i.password-visiblity-icon`
+const loginForm = el`form.login`
+const loginUsernameInput = el`input.login-username`
+const loginPasswordInput = el`input.login-password`
 
-function LoginValidation() {
+const signupForm = el`form.signup`
+const signupUsernameInput = el`input.signup-username`
+const signupPasswordInput = el`input.signup-password`
+const signupConfirmPasswordInput = el`input.signup-confirm-password`
+const signupEmailInput = el`input.signup-email`
 
+const inputFields = [
+	loginUsernameInput, loginPasswordInput,
+	signupUsernameInput, signupPasswordInput,
+	signupConfirmPasswordInput, signupEmailInput
+]
+
+const usernameFields = [loginUsernameInput, signupUsernameInput]
+const passwordFields = [loginPasswordInput, signupPasswordInput, signupConfirmPasswordInput]
+
+/**@params {EventObject} evt*/
+function loginValidation(evt) {
+
+	evt.preventDefault()
+
+	validateUsernameField(loginUsernameInput)
+	validatePasswordField(loginPasswordInput)
+
+	if (!loginForm.checkValidity()) return
+
+	disablePasswordVisibility(passwordToggleIcons[0], 0)
+
+	const Username = loginUsernameInput.value.trim()
+	const Password = loginPasswordInput.value.trim()
+
+	fetch("/Auth/Login", {
+		method: "POST",
+		headers: {
+			"Accept": "application/json",
+			"Content-type": "application/json"
+		},
+		body: JSON.stringify({ data: {Username, Password} })
+	})
+	.then(res => res.json())
+	.then(function (data) {
+		if(data.isValidCustomer) {
+			loginForm.reset()
+			store.set("customer", {...data})
+			window.location.href = "/"
+		}
+		else {
+			alert("Looks like you haven't created an account yet!")
+			el`label.signup`.click()
+		}
+	})
+	.catch(error => alert("An error occured while logging you in; Please try to login again. If the problem persists, please contact the admin."))
 }
 
-function SignUpValidation() {
+/**@params {EventObject} evt*/
+function signupValidation(evt) {
+	evt.preventDefault()
 
+	validateUsernameField(signupUsernameInput)
+	validatePasswordField(signupPasswordInput)
+	validatePasswordField(signupConfirmPasswordInput)
+	validateEmailField(signupEmailInput)
+
+	const doesPasswordsMatch = signupPasswordInput.value.trim() === signupConfirmPasswordInput.value.trim()
+
+	if (!signupForm.checkValidity() || !doesPasswordsMatch) return
+
+	disablePasswordVisibility(passwordToggleIcons[1], 1)
+	disablePasswordVisibility(passwordToggleIcons[2], 2)
+
+	const Username = signupUsernameInput.value.trim()
+	const Password = signupPasswordInput.value.trim()
+	const ConfirmPassword = signupConfirmPasswordInput.value.trim()
+	const Email = signupEmailInput.value.trim()
+
+	fetch("/Auth/Signup", {
+		method: "POST",
+		headers: {
+			"Accept": "application/json",
+			"Content-type": "application/json"
+		},
+		body: JSON.stringify({ data: { Username, Password, Email } })
+	})
+	.then(res => res.json())
+	.then(function (data) {
+		if (data.isValidCustomer) {
+			signupForm.reset()
+			store.set("customer", {...data})
+			window.location.href = "/"
+		}
+		else
+			alert("A customer by the same name already exist")
+	})
+	.catch(error => alert("An error occured while creating your account; Please try to signup again. If the problem persists, please contact the admin."))
 }
 
 /**
@@ -23,6 +114,7 @@ function on(element, event, handler) {
 
 function validateUsernameField(field) {
 	const validity = field.validity
+
 	if (validity.valid)
 		return
 
@@ -45,12 +137,18 @@ function validateUsernameField(field) {
 function validatePasswordField(field) {
 	const validity = field.validity
 
-	if (validity.valid)
+	const isConfirmPasswordField = field.id == "signup-confirm-password"
+
+	if (validity.valid && !isConfirmPasswordField)
 		return
+	
+	const doesPasswordsMatch = isConfirmPasswordField ?
+		el`#signup-password`.value.trim() === field.value.trim() : false
 
 	const errorMessageElmWrapper = field.parentElement.querySelector("div.error-message-wrapper")
 	const errorMessageElm = errorMessageElmWrapper.firstElementChild
-	errorMessageElmWrapper.style.display = "block"
+	if(!doesPasswordsMatch || !validity.valid)
+		errorMessageElmWrapper.style.display = "block"
 
 	if (validity.valueMissing)
 		errorMessageElm.textContent = "The password must not be empty"
@@ -60,6 +158,8 @@ function validatePasswordField(field) {
 		errorMessageElm.textContent = "The password must be atleast 3 characters long"
 	else if (validity.tooLong)
 		errorMessageElm.textContent = "The password must be less than 50 characters"
+	else if (!doesPasswordsMatch)
+		errorMessageElm.textContent = "The password and confirm-password fields don't match"
 }
 
 function validateEmailField(field) {
@@ -82,26 +182,7 @@ function hideValidationErrorMessages() {
 	els`div.error-message-wrapper`.forEach(elm => elm.style.display = "none")
 }
 
-void function handleFormSubmissions() {
-
-	const loginForm = el`form.login`
-	const loginUsernameInput = el`input.login-username`
-	const loginPasswordInput = el`input.login-password`
-
-	const signupForm = el`form.signup`
-	const signupUsernameInput = el`input.signup-username`
-	const signupPasswordInput = el`input.signup-password`
-	const signupConfirmPasswordInput = el`input.signup-confirm-password`
-	const signupEmailInput = el`input.signup-email`
-
-	const inputFields = [
-		loginUsernameInput, loginPasswordInput,
-		signupUsernameInput, signupPasswordInput,
-		signupConfirmPasswordInput, signupEmailInput
-	]
-
-	const usernameFields = [loginUsernameInput, signupUsernameInput]
-	const passwordFields = [loginPasswordInput, signupPasswordInput, signupConfirmPasswordInput]
+void function handleFormValidation() {
 
 	loginForm.setAttribute("novalidate", true)
 	signupForm.setAttribute("novalidate", true);
@@ -129,32 +210,8 @@ void function handleFormSubmissions() {
 		})
 	)
 
-	on(loginForm, "submit", evt => {
-		evt.preventDefault()
-
-		validateUsernameField(loginUsernameInput)
-		validatePasswordField(loginPasswordInput)
-
-		if (!loginForm.checkValidity()) return
-
-		loginForm.reset()
-		disablePasswordVisibility(passwordToggleIcons[0], 0)
-	})
-
-	on(signupForm, "submit", evt => {
-		evt.preventDefault()
-
-		validateUsernameField(signupUsernameInput)
-		validatePasswordField(signupPasswordInput)
-		validatePasswordField(signupConfirmPasswordInput)
-		validateEmailField(signupEmailInput)
-
-		if (!signupForm.checkValidity()) return
-
-		signupForm.reset()
-		disablePasswordVisibility(passwordToggleIcons[1], 1)
-		disablePasswordVisibility(passwordToggleIcons[2], 2)
-	})
+	on(loginForm, "submit", loginValidation)
+	on(signupForm, "submit", signupValidation)
 }()
 
 void function handleAuthTypeToggle() {
@@ -175,8 +232,8 @@ void function handleAuthTypeToggle() {
 /**
  * @type {boolean[]}
  */
-
 const passwordVisibilities = Array.from({ length: passwordToggleIcons.length }).fill(false)
+
 /**
  * @param {HTMLElement} passwordTogglerElm
  * @param {number} idx 

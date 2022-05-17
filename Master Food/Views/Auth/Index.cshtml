@@ -1,0 +1,109 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Authentication </title>
+    @Styles.Render("~/Styles/style.css")
+    @Styles.Render("~/Styles/authentication.css")
+    @Styles.Render("https://fonts.googleapis.com/icon?family=Material+Icons")
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">
+                Login Form
+            </div>
+            <div class="title signup">
+                Signup Form
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="slide-controls">
+                <input type="radio" name="slide" id="login" checked>
+                <input type="radio" name="slide" id="signup">
+                <label for="login" class="slide login">Login</label>
+                <label for="signup" class="slide signup">Signup</label>
+                <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+                <form action="#" class="login" autocomplete="off">
+                    <div class="field">
+                        <input id="login-username" class="login-username" type="text" placeholder="Username" minlength="3" maxlength="50" pattern="[_a-zA-Z][_ a-zA-Z0-9]+" required />
+                        <label for="login-username">Username</label>
+                        <div class="error-message-wrapper">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <i class="password-visiblity-icon material-icons">visibility_off</i>
+                        <input id="login-password" class="login-password" type="password" placeholder="Password" minlength="6" maxlength="50" required />
+                        <label for="login-password">Password</label>
+                        <div class="error-message-wrapper">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                    <div class="pass-link">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Login">
+                    </div>
+                    <div class="signup-link">
+                        Not a member? <a href="#">Signup now</a>
+                    </div>
+                </form>
+                <form action="#" class="signup" autocomplete="off">
+                    <div class="field">
+                        <input id="signup-username" class="signup-username" type="text" placeholder="Username" minlength="3" maxlength="50" pattern="[_a-zA-Z][_ a-zA-Z0-9]+" required />
+                        <label for="signup-username">Username</label>
+                        <div class="error-message-wrapper">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <i class="password-visiblity-icon material-icons">visibility_off</i>
+                        <input id="signup-password" class="signup-password" type="password" placeholder="Password" minlength="6" maxlength="50" required />
+                        <label for="signup-password">Password</label>
+                        <div class="error-message-wrapper">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <i class="password-visiblity-icon material-icons">visibility_off</i>
+                        <input id="signup-confirm-password" class="signup-confirm-password" type="password" placeholder="Confirm password" minlength="6" maxlength="50" required />
+                        <label for="signup-confirm-password">Confirm password</label>
+                        <div class="error-message-wrapper">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <input id="signup-email" class="signup-email" type="email" placeholder="Email Address" required />
+                        <label for="signup-email">Email Address</label>
+                        <div class="error-message-wrapper">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Signup">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/authentication.js" type="module"></script>
+</body>
+
+</html>

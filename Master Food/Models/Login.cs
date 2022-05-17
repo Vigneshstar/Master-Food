@@ -5,16 +5,9 @@ using System.Web;
 
 namespace Master_Food.Models
 {
-	public class Auth
+	public class Login
 	{
-		public class Signup
-		{
-			
-		}
-
-		public class Login
-		{
-
-		}
+		public string Username { get; set; }
+		public string Password { get; set; }
 	}
 }

@@ -24,6 +24,7 @@
         <AssociationConnector Association="MasterFoodModel.FK__Orders__FoodItem__38996AB5" ManuallyRouted="false" />
         <AssociationConnector Association="MasterFoodModel.FK__Menu__Restaurant__4AB81AF0" ManuallyRouted="false" />
         <AssociationConnector Association="MasterFoodModel.FK__Orders__Restaura__398D8EEE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MasterFoodModel.sysdiagram" Width="1.5" PointX="9.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
