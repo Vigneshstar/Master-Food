@@ -1,0 +1,365 @@
+body {
+	background: linear-gradient(123.49deg, #D9E4E7 -0.36%,
+			#E2E0E2 -0.35%, rgba(245, 249, 250, 0) 50.27%);
+}
+
+nav.page-navigation {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 0 20px;
+}
+
+h1.page-heading {
+	font-size: 1.25rem;
+	font-weight: 900;
+}
+
+a.home-link {
+	display: flex;
+	align-items: center;
+}
+
+a.home-link>img {
+	margin-right: 8px;
+}
+
+ul.nav-menu {
+	display: flex;
+	margin-left: auto;
+}
+
+ul.nav-menu>li {
+	font-weight: 600;
+	font-size: 0.9rem;
+	margin-right: 35px;
+	font-variant: small-caps;
+}
+
+button.auth-btn {
+	color: white;
+	border-radius: 0.5em;
+	font-weight: 600;
+	font-size: 0.75rem;
+	font-variant: small-caps;
+	background-color: var(--theme-accent-color);
+}
+
+.landing-banner {
+	height: 90vh;
+	padding-top: 80px;
+	box-sizing: border-box;
+	background-image: url('../images/food-image3.png');
+	background-clip: content-box;
+	background-repeat: no-repeat;
+	background-position: 85% 45%;
+	background-size: 52%;
+}
+
+h2.landing-banner-caption {
+	display: inline-block;
+	font-size: 3rem;
+	width: 40%;
+	margin: 6% 0 0 10%;
+}
+
+.search-restaurents {
+	display: flex;
+	width: 200px;
+	margin: 2rem 0 0 10%;
+	align-items: center;
+}
+
+input.search-restaurents-field {
+	width: 175px;
+	border: 1.5px solid var(--theme-accent-color);
+	border-radius: 3px;
+	background-color: transparent;
+}
+
+input.search-restaurents-field::placeholder {
+	font-size: 0.75rem;
+}
+
+button.search-restaurents-btn {
+	background-color: var(--theme-accent-color);
+	border-radius: 4px;
+	padding: 0.5em 0.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 5px;
+}
+
+.social-media-links {
+	margin: 15px 0 0 10%;
+	font-size: 0.75rem;
+	font-weight: 600;
+	display: flex;
+	align-items: flex-end;
+	font-variant: small-caps;
+}
+
+.social-media-links>a {
+	margin-right: 10px;
+}
+
+section.about-us {
+	height: auto;
+	margin-top: 4rem;
+	background-image: url('../images/food-image4.jpg');
+	background-clip: content-box;
+	background-repeat: no-repeat;
+	background-size: 37% 110%;
+	box-sizing: border-box;
+	padding: 0 0 2rem 2rem;
+}
+
+section.about-us>* {
+	width: 34%;
+	margin-left: 45%;
+}
+
+h2.about-us-heading {
+	display: inline-block;
+	color: var(--theme-accent-color);
+	font-size: 0.85rem;
+}
+
+h3.about-us-subheading {
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-size: 2rem;
+}
+
+p.about-us-description {
+	width: 30%;
+	text-align: justify;
+	line-height: 1.5rem;
+}
+
+button.discover-menu-btn {
+	color: white;
+	background-color: var(--theme-accent-color);
+	border-radius: 5px;
+	width: initial;
+}
+
+section.todays-top-cusines {
+	margin-top: 4rem;
+}
+
+.categories-header h2 {
+	text-align: center;
+	color: var(--theme-accent-color);
+	font-size: 0.85rem;
+}
+
+.categories-header h3 {
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-size: 2rem;
+}
+
+nav.category-tabs {
+	width: 100%;
+	display: flex;
+	margin-top: 80px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.category-tabs-listing {
+	width: 50%;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	border-bottom: 1.5px solid hsl(0, 0%, 75%);
+	box-sizing: border-box;
+	padding-bottom: 15px;
+	position: relative;
+}
+
+.category-tabs-listing>span {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: bold;
+	color: hsl(0, 0%, 40%);
+	margin-right: 7vw;
+}
+
+.category-tabs-listing>span:first-of-type {
+	padding-left: 1.25vw;
+}
+
+span.category-tabs-listing-item-selected {
+	color: var(--theme-accent-color) !important;
+}
+
+.category-tabs-listing>span:last-of-type {
+	margin-right: 0;
+	padding-right: 1.25vw;
+}
+
+hr.category-tab-selector-line {
+	width: 7vw;
+	position: absolute;
+	bottom: -1.75px;
+	border-radius: 1.5px;
+	border: 1.5px solid var(--theme-accent-color);
+}
+
+.cusines-list-wrapper {
+	overflow-x: auto;
+	height: fit-content;
+}
+
+.cusines-slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+ul.cusines-list {
+	width: 75%;
+	display: grid;
+	margin-top: 3rem;
+	justify-items: center;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	row-gap: 3rem;
+}
+
+img.cusine-image {
+	object-fit: cover;
+}
+
+.cusine-name {
+	margin-top: 10px;
+	color: var(--theme-accent-color);
+	font-size: 0.75rem;
+	font-weight: bold;
+}
+
+.carousel-circles {
+	display: flex;
+	align-items: center;
+	margin-top: 40px;
+	justify-content: center;
+}
+
+.carousel-circle {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	margin-right: 8px;
+	background-color: hsl(353, 89%, 80%);
+}
+
+.carousel-circle-selected {
+	width: 10px;
+	height: 10px;
+	background-color: var(--theme-accent-color);
+}
+
+section.testimonials {
+	margin-top: 7rem;
+}
+
+section.testimonials h2 {
+	text-align: center;
+	color: var(--theme-accent-color);
+	font-size: 0.85rem;
+	margin-bottom: 0;
+}
+
+section.testimonials h3 {
+	text-align: center;
+	margin-top: 0;
+	font-size: 2rem;
+}
+
+.testimonials-carousel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.testimonials-carousel-slide {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+img.customer-image {
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+b.customer-name {
+	font-size: 0.8rem;
+	margin: 10px 0 0px 0;
+}
+
+p.feedback-text {
+	width: 75%;
+	text-align: center;
+}
+
+section.ask-us {
+	height: 90vh;
+	margin-top: 7rem;
+	background-image: url('../images/food-image11.png');
+	background-repeat: no-repeat;
+	background-size: 50%;
+	background-position: center 180%;
+}
+
+section.ask-us h2 {
+	text-align: center;
+	color: var(--theme-accent-color);
+	font-size: 0.85rem;
+	margin-bottom: 0;
+}
+
+section.ask-us h3 {
+	text-align: center;
+	margin-top: 0;
+	font-size: 2rem;
+}
+
+.contact-details {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+b.call-now {
+	font-size: 0.7rem;
+	font-weight: 600;
+	margin: 10px 0 20px 0;
+}
+
+b.contact-number {
+	font-weight: 600;
+}
+
+.contact-email {
+	display: flex;
+	font-weight: bold;
+	font-size: 0.8rem;
+	margin-top: 15px;
+}
+
+img.envelop-icon {
+	margin-right: 5px;
+}
+
+footer.page-footer {
+	height: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

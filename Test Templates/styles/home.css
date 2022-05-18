@@ -16,6 +16,15 @@ h1.page-heading {
 	font-weight: 900;
 }
 
+a.home-link {
+	display: flex;
+	align-items: center;
+}
+
+a.home-link > img {
+	margin-right: 8px;
+}
+
 ul.nav-menu {
 	display: flex;
 	margin-left: auto;
@@ -24,7 +33,7 @@ ul.nav-menu {
 ul.nav-menu>li {
 	font-weight: 600;
 	font-size: 0.9rem;
-	margin-right: 20px;
+	margin-right: 35px;
 	font-variant: small-caps;
 }
 
@@ -102,7 +111,7 @@ section.about-us {
 	background-image: url('../images/food-image4.jpg');
 	background-clip: content-box;
 	background-repeat: no-repeat;
-	background-size: 40% 120%;
+	background-size: 37% 110%;
 	box-sizing: border-box;
 	padding: 0 0 2rem 2rem;
 }
@@ -126,6 +135,8 @@ h3.about-us-subheading {
 }
 
 p.about-us-description {
+	width: 30%;
+	text-align: justify;
 	line-height: 1.5rem;
 }
 

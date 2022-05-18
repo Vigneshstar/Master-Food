@@ -8,12 +8,220 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Styles/style.css")
+	@Styles.Render("~/Styles/home.css")
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     @Styles.Render("https://fonts.googleapis.com/icon?family=Material+Icons")
 </head>
 <body>
-    <h1>Hello World</h1>
-	<script src="~/Scripts/main.js" type="module"></script>
+    <header class="page-header">
+		<nav class="page-navigation">
+			<h1 class="page-heading">
+				<a href="/" class="home-link">
+					<img src="~/Images/site-logo.svg" alt="" width="22" height="22"/>
+					Master Food
+				</a>
+			</h1>
+			<ul class="nav-menu">
+				<li><a href="#" class="nav-link">dashboard</a></li>
+				<li><a href="#" class="nav-link">services</a></li>
+				<li><a href="#" class="nav-link">find food</a></li>
+				<li><a href="#" class="nav-link">feedback</a></li>
+				<li><a href="#about-us" class="nav-link">about us</a></li>
+			</ul>
+			<button class="auth-btn"> login/signup </button>
+		</nav>
+	</header>
+
+	<main class="page-main">
+		<section class="landing-banner">
+			<h2 class="landing-banner-caption">You Don't Need A Silver Fork To Eat Good Food.</h2>
+			<div class="search-restaurents">
+				<input class="search-restaurents-field" type="search" placeholder="Find a restaurent">
+				<button class="search-restaurents-btn">
+					<img src="~/Images/search-icon.svg" alt="search" class="search-icon" width="17" height="17" />
+				</button>
+			</div>
+			<div class="social-media-links">
+				<a href="#" class="facebook-icon-link">
+					<img class="facebook-icon" src="~/Images/facebook-icon.svg" width="10" height="10" />
+					<span>10k</span>
+				</a>
+				<a href="#" class="twitter-icon-link">
+					<img class="twitter-icon" src="~/Images/twitter-icon.svg" width="10" height="10" />
+					<span>15k</span>
+				</a>
+				<a href="#" class="instagram-icon-link">
+					<img class="instagram-icon" src="~/Images/instagram-icon.svg" width="10" height="10" />
+					<span>12k</span>
+				</a>
+			</div>
+		</section>
+
+		<section id="about-us" class="about-us">
+			<h2 class="about-us-heading">About us</h2>
+			<h3 class="about-us-subheading">Delight your taste buds with our exqusite cusines</h3>
+			<p class="about-us-description">
+				The fabric of Master Food was born out of love and respect for these humble deli
+				creations, met with a desire to bring quality
+				ingredients to the table. Simply put,we're
+				here to bring you a sandwich experience you
+				can feel good about.<br /><br />We emphasize appearance, flavour, texture and method of cooking from
+				restaurants near
+				you.
+			</p>
+			<button class="discover-menu-btn">Discover Menu</button>
+		</section>
+
+		<section class="todays-top-cusines">
+			<div class="categories-header">
+				<h2>Order Online Now</h2>
+				<h3>Today Top's cusines</h3>
+				<!-- <h4 class="categories-heading">Categories</h4>
+				<div class="categories-settings">
+						<div class="sort-setting">
+							<span>sort</span> <img class="sort-icon" src="sort-icon.svg" alt="" />
+						</div>
+						<div class="filter-setting">
+							<span>filter</span> <img class="filter-icon" src="filter-icon.svg" alt="" />
+						</div>
+					</div> -->
+				<nav class="category-tabs">
+					<div class="category-tabs-listing">
+						<span class="category-tab-listing-item-selected">Brakefast</span>
+						<span>Lunch</span>
+						<span>Dinner</span>
+						<span>Dessert</span>
+						<span>Shake</span>
+						<hr class="category-tab-selector-line" />
+					</div>
+				</nav>
+			</div>
+			<div class="cusines-list-wrapper">
+				<div class="cusines-slide">
+					<ul class="cusines-list">
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name1" class="cusine-image" src="~/Images/food-image2.jpg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name1" class="cusine-name">Strawberry Cake</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name2" class="cusine-image" src="~/Images/food-image10.jpg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name2" class="cusine-name">Enriched Suschi</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name3" class="cusine-image" src="~/Images/food-image1.png"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name3" class="cusine-name">Fruit Brunch</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name4" class="cusine-image" src="~/Images/food-image5.jpeg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name4" class="cusine-name">Brocolly Pasta</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name5" class="cusine-image" src="~/Images/food-image9.jpg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name5" class="cusine-name">Ramen Noodels</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name6" class="cusine-image" src="~/Images/food-image8.jpg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name6" class="cusine-name">Grilled Oyser</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name7" class="cusine-image" src="~/Images/food-image7.jpg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name7" class="cusine-name">Redforest Cupcake</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name8" class="cusine-image" src="~/Images/food-image6.jpeg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name8" class="cusine-name">Paneer Pasta</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name1" class="cusine-image" src="~/Images/food-image2.jpg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name1" class="cusine-name">Strawberry Cake</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name2" class="cusine-image" src="~/Images/food-image10.jpg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name2" class="cusine-name">Enriched Suschi</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name3" class="cusine-image" src="~/Images/food-image1.png"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name3" class="cusine-name">Fruit Brunch</div>
+						</li>
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name4" class="cusine-image" src="~/Images/food-image5.jpeg"
+								width="130px" height="160px" alt="" />
+							<div id="cusine-name4" class="cusine-name">Brocolly Pasta</div>
+						</li>
+					</ul>
+				</div>
+				<div class="carousel-circles">
+					<span class="carousel-circle"></span>
+					<span class="carousel-circle"></span>
+					<span class="carousel-circle carousel-circle-selected"></span>
+					<span class="carousel-circle"></span>
+				</div>
+			</div>
+		</section>
+
+		<section class="testimonials">
+			<h2>Testimonials</h2>
+			<h3>Customers Say</h3>
+			<div class="testimonials-carousel">
+				<div class="testimonials-carousel-slide">
+					<img class="customer-image" src="~/Images/customer-image.jpg" width="50" height="50" alt="" />
+					<b class="customer-name">Mr.John Doe</b>
+					<div class="rating">
+						<img src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+					</div>
+					<p class="feedback-text">
+						Absolutely fantastic platform for online food ordering & delivery within estimate time. have a
+						great deal with
+						everytime to give better & best satisfaction..
+					</p>
+				</div>
+				<div class="carousel-circles">
+					<span class="carousel-circle"></span>
+					<span class="carousel-circle"></span>
+					<span class="carousel-circle carousel-circle-selected"></span>
+					<span class="carousel-circle"></span>
+				</div>
+			</div>
+		</section>
+
+		<section class="ask-us">
+			<h2>Ask Us</h2>
+			<h3>Queries and Doubts</h3>
+			<div class="contact-details">
+				<img class="phone-icon" src="~/Images/call-icon.svg" width="30" height="30" alt="" />
+				<b class="call-now"> Call Now </b>
+				<b class="contact-number">+91 883 388 8974</b>
+				<div class="contact-email">
+					<img class="envelop-icon" src="~/Images/email-icon.svg" width="12" height="12" alt="" />
+					<small>admin@masterfood.com</small>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="page-footer">
+		<small>Made with ❤ by our dedicated team.</small>
+	</footer>
+	<script src="~/Scripts/home.js" type="module"></script>
 </body>
 </html>
