@@ -38,18 +38,21 @@ button.auth-btn {
 }
 
 .landing-banner {
-	height: 100vh;
+	height: 90vh;
+	padding-top: 80px;
+	box-sizing: border-box;
 	background-image: url('../images/food-image3.png');
+	background-clip: content-box;
 	background-repeat: no-repeat;
-	background-position: 85% 70%;
-	background-size: 45%;
+	background-position: 85% 45%;
+	background-size: 52%;
 }
 
 h2.landing-banner-caption {
 	display: inline-block;
 	font-size: 3rem;
 	width: 40%;
-	margin: 10% 0 0 10%;
+	margin: 6% 0 0 10%;
 }
 
 .search-restaurents {
@@ -99,13 +102,13 @@ section.about-us {
 	background-image: url('../images/food-image4.jpg');
 	background-clip: content-box;
 	background-repeat: no-repeat;
-	background-size: 40% 130%;
+	background-size: 40% 120%;
 	box-sizing: border-box;
 	padding: 0 0 2rem 2rem;
 }
 
 section.about-us>* {
-	width: 40%;
+	width: 34%;
 	margin-left: 45%;
 }
 
