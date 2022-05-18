@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Master Food</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+      body {
+      background: linear-gradient(123.49deg, #D9E4E7 -0.37%, #E2E0E2 -0.36%);
+      
+      }
+      :root{
+         --theme-color:#F21732;
+      }
+      * {
+      margin: 0;
+      padding: 0;
+      transition: 0.5s;
+      font-family: 'Montserrat', sans-serif;
+      }
+      .container-fluid {
+      width: 100%;
+      height: 100vh;
+      }
+      .header {
+      width: 1200px;
+      height: 70px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      }
+      header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 2rem 9%;
+      box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+      }
+      .logo {
+      font-size: 30px;
+      cursor: pointer;
+      }
+      .header nav ul {
+      display: flex;
+      justify-self: center;
+      align-items: center;
+      list-style: none;
+      }
+      .header nav ul li {
+      margin-right: 40px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+      }
+      .header nav ul li:hover {
+      color: blue;
+      }
+      .btn {
+      width: 150px;
+      height: 45px;
+      font-weight: bold;
+      font-size: 15px;
+      border: none;
+      background-color: rgba(255, 21, 0, 0.911);
+      color: aliceblue;
+      border-radius: 30px;
+      cursor: pointer;
+      }
+      .container {
+      width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 70px;
+      }
+      .container {
+      font-size: 60px;
+      color: black;
+      margin-top: 20px;
+      }
+      container.btn {
+      margin-top: 20px;
+      width: 200px;
+      height: 50px;
+      font-size: 17px;
+      background-color: cadetblue;
+      }
+      .image img {
+      width: 600px;
+      aspect-ratio: 1/1;
+      }
+      h4 {
+      margin-left: 30px;
+      align-content: right;
+      }
+      .fa {
+      padding: 15px;
+      font-size: 25px;
+      width: 30px;
+      text-align: top;
+      text-decoration: none;
+      margin-left: 10px;
+      }
+      .fa:hover {
+      opacity: 0.7;
+      }
+      .fa-facebook {
+      color: red;
+      }
+      .fa-instagram {
+      color: red;
+      }
+      .fa-twitter {
+      color: red;
+      }
+     
+      img {
+        width: 600px;
+        height: 500px;
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        margin-right: 55px;
+        height: 650px;
+        aspect-ratio: 1/1;
+    }
+   #query{
+      
+      padding: 10px 15px;
+      margin-left: 30px;
+      border:1.5px solid var(--theme-color) ;
+      border-radius: 4px;
+   }
+   .search-btn{
+      padding: 10px 15px;
+      border:1.5px solid var(--theme-color) ;
+      border-radius: 4px;
+   }
+   
+   </style>
+   <body>
+      <div class=" container-fluid ">
+      <div class="header ">
+         <h2 class="logo ">Master Food</h2>
+         <nav>
+            <ul>
+               <li>DASHBOARD</li>
+               <li>SERVICES</li>
+               <li>FIND FOOD</li>
+               <li>FEEDBACK</li>
+               <li>ABOUT US</li>
+            </ul>
+         </nav>
+         <button class="btn ">LOGIN/SIGNUP</button>
+      </div>
+      <div class="container">
+         <div class="content">
+            <h4>You Don’t Need <br> A Silver Fork <br>To Eat Good Food.</h4>
+            <div class="search">
+               <form id="form"> 
+                  <input type="search" id="query" name="q" placeholder="Find a restaurent" >
+                  
+                  <button class="search-btn">Search</button>
+               </form>
+            </div>
+            <div>
+               <a href="#" class="fa fa-facebook">
+                  <h6>10k</h6>
+               </a>
+               <a href="#" class="fa fa-twitter">
+                  <h6>15k</h6>
+               </a>
+               <a href="#" class="fa fa-instagram">
+                  <h6>12k</h6>
+               </a>
+            </div>
+         </div>
+         <div class=" image ">
+            <img src="brenda-godinez-nkHBFwVBzkg-unsplash-removebg.png">
+         </div>
+      </div>
+   </body>
+</html>
