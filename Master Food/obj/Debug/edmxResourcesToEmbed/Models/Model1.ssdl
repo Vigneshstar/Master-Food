@@ -8,7 +8,10 @@
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="BankAccNo" Type="nvarchar(max)" />
+    <Property Name="Image" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="FavouriteFoodItems">
     <Key>
@@ -46,6 +49,7 @@
     <Property Name="Rating" Type="tinyint" Nullable="false" />
     <Property Name="Price" Type="money" Nullable="false" />
     <Property Name="Discount" Type="money" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>

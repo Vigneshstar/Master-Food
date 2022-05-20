@@ -13,7 +13,10 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="BankAccNo" Type="nvarchar(max)" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="FavouriteFoodItems">
           <Key>
@@ -51,6 +54,7 @@
           <Property Name="Rating" Type="tinyint" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
           <Property Name="Discount" Type="money" />
+          <Property Name="Image" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -290,11 +294,14 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="FavouriteFoodItems" Relationship="Self.FK__Favourite__Custo__300424B4" FromRole="Customers" ToRole="FavouriteFoodItems" />
           <NavigationProperty Name="FavouriteRestaurants" Relationship="Self.FK__Favourite__Custo__33D4B598" FromRole="Customers" ToRole="FavouriteRestaurants" />
           <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedbacks__Custo__276EDEB3" FromRole="Customers" ToRole="Feedbacks" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__37A5467C" FromRole="Customers" ToRole="Orders" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" DefaultValue="regular" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BankAccNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="FavouriteFoodItem">
           <Key>
@@ -341,6 +348,7 @@
           <NavigationProperty Name="FavouriteFoodItems" Relationship="Self.FK__Favourite__FoodI__2F10007B" FromRole="FoodItems" ToRole="FavouriteFoodItems" />
           <NavigationProperty Name="Menus" Relationship="Self.FK__Menu__FoodItemId__4BAC3F29" FromRole="FoodItems" ToRole="Menu" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__FoodItem__38996AB5" FromRole="FoodItems" ToRole="Orders" />
+          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -586,11 +594,14 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="MasterFoodModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="BankAccNo" ColumnName="BankAccNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -627,6 +638,7 @@
           <EntitySetMapping Name="FoodItems">
             <EntityTypeMapping TypeName="MasterFoodModel.FoodItem">
               <MappingFragment StoreEntitySet="FoodItems">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />

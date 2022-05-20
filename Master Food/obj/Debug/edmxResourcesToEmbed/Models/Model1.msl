@@ -4,11 +4,14 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="MasterFoodModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="BankAccNo" ColumnName="BankAccNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -45,6 +48,7 @@
     <EntitySetMapping Name="FoodItems">
       <EntityTypeMapping TypeName="MasterFoodModel.FoodItem">
         <MappingFragment StoreEntitySet="FoodItems">
+          <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Rating" ColumnName="Rating" />

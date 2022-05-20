@@ -1,4 +1,4 @@
-import { el, els, isEmpty } from "./script.js"
+import { el, els, on, isEmpty } from "./script.js"
 
 const passwordToggleIcons = els`i.password-visiblity-icon`
 
@@ -8,17 +8,6 @@ function LoginValidation() {
 
 function SignUpValidation() {
 
-}
-
-/**
- * @param {HTMLElement} element
- * @param {string} event
- * @param {function(Event): void} handler
- * @returns {void}
- * @description attaches an event to an element
- */
-function on(element, event, handler) {
-	element.addEventListener(event, handler)
 }
 
 function validateUsernameField(field) {

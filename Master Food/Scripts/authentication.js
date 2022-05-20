@@ -1,4 +1,4 @@
-import { el, els, isEmpty, store } from "./script.js"
+import { el, els, on, isEmpty, store } from "./script.js"
 
 
 const passwordToggleIcons = els`i.password-visiblity-icon`
@@ -99,17 +99,6 @@ function signupValidation(evt) {
 			alert("A customer by the same name already exist")
 	})
 	.catch(error => alert("An error occured while creating your account; Please try to signup again. If the problem persists, please contact the admin."))
-}
-
-/**
- * @param {HTMLElement} element
- * @param {string} event
- * @param {function(Event): void} handler
- * @returns {void}
- * @description attaches an event to an element
- */
-function on(element, event, handler) {
-	element.addEventListener(event, handler)
 }
 
 function validateUsernameField(field) {

@@ -11,7 +11,18 @@ const els = query => Array.from(document.querySelectorAll(query) || [])
 /**
  * @type {function(string): boolean} - checks to see if a string is empty or not
  */
-const isEmpty = str => Boolean(str.trim())
+const isEmpty = str => !Boolean(str.trim())
+
+/**
+ * @param {HTMLElement} element
+ * @param {string} event
+ * @param {function(Event): void} handler
+ * @returns {void}
+ * @description attaches an event to an element
+ */
+function on(element, event, handler) {
+	element.addEventListener(event, handler)
+}
 
 /**
  * @param {string} str 
@@ -47,6 +58,16 @@ function unsanitize(str) {
 	return str.replace(reg, match => map[match]);
 }
 
+/**
+ * @param {string} str
+ * @returns {RegExp}
+ */
+
+function escapeRegExp(str, flags="") {
+	return new RegExp(
+		str.replace(/\+|\*|\{|\}|\[|\]|\||\\|\^|\$|\.|\-|\?|\(|\)|\>|\</, x => "\\" + x), flags)
+}
+
 const store = {
 	clear: () => localStorage.clear(),
 	remove: key => localStorage.removeItem(key),
@@ -64,4 +85,4 @@ const store = {
 	}
 }
 
-export { el, els, isEmpty, sanitize, unsanitize, store }
+export { el, els, on, isEmpty, sanitize, unsanitize, escapeRegExp, store }

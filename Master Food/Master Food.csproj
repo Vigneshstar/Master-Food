@@ -173,6 +173,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Auth.cs" />
+    <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Signup.cs" />
     <Compile Include="Models\Customer.cs">
@@ -221,12 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
@@ -247,6 +244,154 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Images\berry-and-beet-smoothie.bmp" />
+    <Content Include="Images\humming-bird-cake-shake.bmp" />
+    <Content Include="Images\turmeric-mango-smoothie.bmp" />
+    <Content Include="Images\cucumber-smoothie.bmp" />
+    <Content Include="Images\peanut-butter-pie-milk-shake.bmp" />
+    <Content Include="Images\ultimate-green-smoothie.bmp" />
+    <Content Include="Images\rich-pistachio-shake.bmp" />
+    <Content Include="Images\key-lime-coconut-smoothie.bmp" />
+    <Content Include="Images\butterscotch-sea-salt-shake.bmp" />
+    <Content Include="Images\mango-lassi-smoothie.bmp" />
+    <Content Include="Images\espresso-soy-milk-shake.bmp" />
+    <Content Include="Images\elvis-milk-shake.bmp" />
+    <Content Include="Images\berry-banana-smoothie.bmp" />
+    <Content Include="Images\ginger-berries-oat-smoothie.bmp" />
+    <Content Include="Images\creamy-mango-avocado-lime-smoothie.bmp" />
+    <Content Include="Images\date-milk-shake.bmp" />
+    <Content Include="Images\berry-mango-almond-shake.bmp" />
+    <Content Include="Images\layered-fruit-smoothie.bmp" />
+    <Content Include="Images\pomberry-shake.bmp" />
+    <Content Include="Images\citrus-sunrise-smoothie.bmp" />
+    <Content Include="Images\thai-lemonade.bmp" />
+    <Content Include="Images\triple-melon-smoothie.bmp" />
+    <Content Include="Images\caramel-espresso-smoothie.bmp" />
+    <Content Include="Images\yogurt-fruit-smoothie.bmp" />
+    <Content Include="Images\mint-chocolate-chip-shake.bmp" />
+    <Content Include="Images\mocha-frappe.bmp" />
+    <Content Include="Images\mixed-berry-shake.bmp" />
+    <Content Include="Images\caramel-frappuccino.bmp" />
+    <Content Include="Images\strawberry-milkshake.bmp" />
+    <Content Include="Images\orange-dreamsicle-smoothie.bmp" />
+    <Content Include="Images\energy-smoothie.bmp" />
+    <Content Include="Images\strawberry-shortcake-shake.bmp" />
+    <Content Include="Images\rhubarb-custard-meringue-tart.bmp" />
+    <Content Include="Images\dark-chocolate-cherry-bar.bmp" />
+    <Content Include="Images\apple-crumble-sundae.bmp" />
+    <Content Include="Images\tiramisu.bmp" />
+    <Content Include="Images\plum-and-apple-cobbler.bmp" />
+    <Content Include="Images\melt-in-the-middle-mug-cake.bmp" />
+    <Content Include="Images\raspberry-brulee.bmp" />
+    <Content Include="Images\butterscotch-banana-pie.bmp" />
+    <Content Include="Images\vanilla-panna-cotta.bmp" />
+    <Content Include="Images\self-saucing-butterscotch-pudding.bmp" />
+    <Content Include="Images\smores-frappuccino.bmp" />
+    <Content Include="Images\white-chocolate-cheese-cake.bmp" />
+    <Content Include="Images\floating-islands.bmp" />
+    <Content Include="Images\cornflake-tart.bmp" />
+    <Content Include="Images\cherry-almond-frangipane-galette.bmp" />
+    <Content Include="Images\lemon-sponge-cake.bmp" />
+    <Content Include="Images\chocolate-tiffin.bmp" />
+    <Content Include="Images\treacle-tart.bmp" />
+    <Content Include="Images\frito-pie.bmp" />
+    <Content Include="Images\molten-chocolate-cakes.bmp" />
+    <Content Include="Images\porcini-mac-and-cheese.bmp" />
+    <Content Include="Images\au-gratin-peas-and-potatoes.bmp" />
+    <Content Include="Images\chicken-parmesan-spaghetti.bmp" />
+    <Content Include="Images\fish-sticks.bmp" />
+    <Content Include="Images\hay-and-straw.bmp" />
+    <Content Include="Images\daddys-favourite-stuffies.bmp" />
+    <Content Include="Images\clam-stew.bmp" />
+    <Content Include="Images\lasagna.bmp" />
+    <Content Include="Images\italian-pasta-blake.bmp" />
+    <Content Include="Images\rigatoni-with-sausage-and-peas.bmp" />
+    <Content Include="Images\potato-soup.bmp" />
+    <Content Include="Images\tender-salsa-beef.bmp" />
+    <Content Include="Images\italian-spiral-meat-loaf.bmp" />
+    <Content Include="Images\creamed-garden-potatoes-and-peas.bmp" />
+    <Content Include="Images\tuna-casserole.bmp" />
+    <Content Include="Images\swedish-meatballs.bmp" />
+    <Content Include="Images\hamburger-stroganoff.bmp" />
+    <Content Include="Images\turkish-vegitable-soup.bmp" />
+    <Content Include="Images\chicken-and-gravy.bmp" />
+    <Content Include="Images\chicken-pot-pie.bmp" />
+    <Content Include="Images\butter-chicken.bmp" />
+    <Content Include="Images\french-bread-pizza.bmp" />
+    <Content Include="Images\cream-spaghetti.bmp" />
+    <Content Include="Images\celery-soup.bmp" />
+    <Content Include="Images\turkish-shepherds-pie.bmp" />
+    <Content Include="Images\taco-lettuce-wraps.bmp" />
+    <Content Include="Images\sesame-garlic-noodles.bmp" />
+    <Content Include="Images\avocado-and-egg-sandwitch.bmp" />
+    <Content Include="Images\honey-sriracha-glazed-meatballs.bmp" />
+    <Content Include="Images\ham-sandwitch.bmp" />
+    <Content Include="Images\avocado-toast.bmp" />
+    <Content Include="Images\croissants.bmp" />
+    <Content Include="Images\hot-oatmeal.bmp" />
+    <Content Include="Images\quinoa-salad.bmp" />
+    <Content Include="Images\turkey-taco.bmp" />
+    <Content Include="Images\quiche.bmp" />
+    <Content Include="Images\scrambled-eggs.bmp" />
+    <Content Include="Images\stuffed-omelet.bmp" />
+    <Content Include="Images\sausage-and-sandwitch.bmp" />
+    <Content Include="Images\griddle-cakes.bmp" />
+    <Content Include="Images\breakfast-parfait.bmp" />
+    <Content Include="Images\bacon-and-eggs.bmp" />
+    <Content Include="Images\call-icon.svg" />
+    <Content Include="Images\biscuit-and-gravy.bmp" />
+    <Content Include="Images\bagel-and-cheese.bmp" />
+    <Content Include="Images\breakfast-burrito.bmp" />
+    <Content Include="Images\french-toast.bmp" />
+    <Content Include="Images\pancakes-and-maple-syrup.bmp" />
+    <Content Include="Images\customer-image.jpg" />
+    <Content Include="Images\email-icon.svg" />
+    <Content Include="Images\facebook-icon.svg" />
+    <Content Include="Images\filter-icon.svg" />
+    <Content Include="Images\food-image1.png" />
+    <Content Include="Images\food-image10.jpg" />
+    <Content Include="Images\food-image11.png" />
+    <Content Include="Images\food-image2.jpg" />
+    <Content Include="Images\food-image3.png" />
+    <Content Include="Images\food-image4.jpg" />
+    <Content Include="Images\food-image5.jpeg" />
+    <Content Include="Images\food-image6.jpeg" />
+    <Content Include="Images\food-image7.jpg" />
+    <Content Include="Images\food-image8.jpg" />
+    <Content Include="Images\food-image9.jpg" />
+    <Content Include="Images\info-icon.svg" />
+    <Content Include="Images\instagram-icon.svg" />
+    <Content Include="Images\page-logo.jpeg" />
+    <Content Include="Images\cinnamon-rolls.bmp" />
+    <Content Include="Images\roasted-english-muffin.jpg" />
+    <Content Include="Images\search-icon.svg" />
+    <Content Include="Images\site-logo.svg" />
+    <Content Include="Images\sort-icon.svg" />
+    <Content Include="Images\star-icon.svg" />
+    <Content Include="Images\twitter-icon.svg" />
+    <Content Include="Images\heart-icon.svg" />
+    <Content Include="Images\egg-benedict.bmp" />
+    <Content Include="Images\belgian-style-waffles.bmp" />
+    <Content Include="Images\fruit-smoothie.bmp" />
+    <Content Include="Images\plain-toast-buttor-or-jam.bmp" />
+    <Content Include="Images\hash-browns.bmp" />
+    <Content Include="Images\sweet-crepes.bmp" />
+    <Content Include="Images\blueberry-muffins.bmp" />
+    <Content Include="Images\huevos-rancheros.bmp" />
+    <Content Include="Images\asian-ramen-salad.bmp" />
+    <Content Include="Images\chicken-veggie-stir-fry.bmp" />
+    <Content Include="Images\shrimp-quesadilla.bmp" />
+    <Content Include="Images\steak-and-shrimp-kabobs.bmp" />
+    <Content Include="Images\slow-cooked-pork-loin.bmp" />
+    <Content Include="Images\arborio-rice-and-white-bean-soup.bmp" />
+    <Content Include="Images\chicken-rice-skillet.bmp" />
+    <Content Include="Images\puffy-pastry-pot-pie.bmp" />
+    <Content Include="Images\chocolate-and-hazelnut-brownies.bmp" />
+    <Content Include="Images\peach-melba-pie.bmp" />
+    <Content Include="Images\blackberry-lemon-fool.bmp" />
+    <Content Include="Images\nanaimo-bars.bmp" />
+    <Content Include="Images\smoothie-pops.bmp" />
+    <Content Include="Images\caribbean-bushwacker.bmp" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -258,8 +403,10 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\authentication.js" />
+    <Content Include="Scripts\home.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Styles\authentication.css" />
+    <Content Include="Styles\home.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -269,7 +416,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\Site.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -283,30 +429,6 @@
     <Folder Include="Views\Feedback\" />
     <Folder Include="Views\FindFood\" />
     <Folder Include="Views\Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\bootstrap.min.css.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\bootstrap.css.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css.map" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\Model1.edmx">

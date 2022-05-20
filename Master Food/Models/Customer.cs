@@ -17,6 +17,7 @@ namespace Master_Food.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
+            this.Type = "regular";
             this.FavouriteFoodItems = new HashSet<FavouriteFoodItem>();
             this.FavouriteRestaurants = new HashSet<FavouriteRestaurant>();
             this.Feedbacks = new HashSet<Feedback>();
@@ -27,7 +28,10 @@ namespace Master_Food.Models
         public string Name { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public bool IsAdmin { get; set; }
+        public string Type { get; set; }
+        public string Address { get; set; }
+        public string BankAccNo { get; set; }
+        public byte[] Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavouriteFoodItem> FavouriteFoodItems { get; set; }

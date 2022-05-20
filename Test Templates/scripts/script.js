@@ -14,6 +14,17 @@ const els = query => Array.from(document.querySelectorAll(query) || [])
 const isEmpty = str => Boolean(str.trim())
 
 /**
+ * @param {HTMLElement} element
+ * @param {string} event
+ * @param {function(Event): void} handler
+ * @returns {void}
+ * @description attaches an event to an element
+ */
+function on(element, event, handler) {
+	element.addEventListener(event, handler)
+}
+
+/**
  * @param {string} str 
  * @returns {string}
  */
@@ -64,4 +75,4 @@ const store = {
 	}
 }
 
-export { el, els, isEmpty, sanitize, unsanitize, store }
+export { el, els, on, isEmpty, sanitize, unsanitize, store }

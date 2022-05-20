@@ -6,6 +6,11 @@
 	--auth-shift-transform: translateX(0%);
 }
 
+button,
+input {
+	padding: 0;
+}
+
 body {
 	color: var(--theme-text-contrast-color);
 	display: grid;
@@ -122,7 +127,7 @@ input[type="radio"] {
 
 .form-container .form-inner form {
 	width: 50%;
-	overflow-y: hidden;
+	overflow: hidden;
 	transform: var(--auth-shift-transform);
 	transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }

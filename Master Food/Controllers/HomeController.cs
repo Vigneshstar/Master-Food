@@ -12,7 +12,7 @@ namespace Master_Food.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(new HomePage());
         }
     }
 }

@@ -1,4 +1,4 @@
-import { el, els, on, store } from "script.js"
+import { el, els, on, store } from "./script.js"
 
 const authBtn = el`.auth-btn`
 
