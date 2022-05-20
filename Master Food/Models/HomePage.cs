@@ -13,5 +13,10 @@ namespace Master_Food.Models
 		{
 			get => db.Restaurants.ToList() ?? default(List<Restaurant>);
 		}
+
+		public List<TodaysTopCusine> TodaysTopCusines
+		{
+			get => db.TodaysTopCusines.ToList() ?? default(List<TodaysTopCusine>);
+		}
 	}
 }

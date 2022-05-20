@@ -50,7 +50,7 @@ button.auth-btn {
 	height: 90vh;
 	padding-top: 80px;
 	box-sizing: border-box;
-	background-image: url('../images/food-image3.png');
+	background-image: url('../Images/strawberries-flowers-and-milkshake.png');
 	background-clip: content-box;
 	background-repeat: no-repeat;
 	background-position: 85% 45%;
@@ -159,7 +159,7 @@ button.search-restaurents-btn {
 section.about-us {
 	height: auto;
 	margin-top: 4rem;
-	background-image: url('../images/food-image4.jpg');
+	background-image: url('../Images/strawberry-cutlet-and-sauce.jpg');
 	background-clip: content-box;
 	background-repeat: no-repeat;
 	background-size: 37% 110%;
@@ -290,6 +290,7 @@ ul.cusines-list {
 }
 
 li.cusines-list-item {
+	width: 130px;
 	position: relative;
 }
 
@@ -298,7 +299,7 @@ img.cusine-image {
 }
 
 .cusine-name {
-	margin-top: 10px;
+	margin-top: 15px;
 	color: var(--theme-accent-color);
 	font-size: 0.75rem;
 	font-weight: bold;
@@ -310,7 +311,7 @@ img.cusine-image {
 	color: white;
 	overflow: hidden;
 	position: absolute;
-	bottom: 15%;
+	bottom: 20%;
 	left: 0;
 	display: flex;
 	flex-direction: column;
@@ -423,7 +424,7 @@ p.feedback-text {
 section.ask-us {
 	height: 90vh;
 	margin-top: 7rem;
-	background-image: url('../images/food-image11.png');
+	background-image: url('../Images/fruits-and-berries.png');
 	background-repeat: no-repeat;
 	background-size: 50%;
 	background-position: center 180%;

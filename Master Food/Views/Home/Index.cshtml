@@ -3,39 +3,8 @@
 @{
     Layout = null;
     ViewBag.Title = "Home";
-    var cusineImages = new List<string>
-    {
-        "~/Images/food-image2.jpg",
-        "~/Images/food-image10.jpg",
-        "~/Images/food-image1.png",
-        "~/Images/food-image5.jpeg",
-        "~/Images/food-image9.jpg",
-        "~/Images/food-image8.jpg",
-        "~/Images/food-image7.jpg",
-        "~/Images/food-image6.jpeg",
-        "~/Images/food-image2.jpg",
-        "~/Images/food-image10.jpg",
-        "~/Images/food-image1.png",
-        "~/Images/food-image5.jpeg"
-    };
 
-    var cusineNames = new List<string>
-    {
-        "Strawberry Cake",
-        "Enriched Suschi",
-        "Fruit Brunch",
-        "Brocolly Pasta",
-        "Ramen Noodles",
-        "Grilled Oyster",
-        "Redforest Cupcake",
-        "Paneer Pasta",
-        "Strawberry Cake",
-        "Enriched Suschi",
-        "Fruit Brunch",
-        "Brocolly Pasta"
-    };
-
-	var rand = new Random();
+    Func<string, string> toTitleCase = str => str[0].ToString().ToUpper() + str.Substring(1);
 }
 
 <!DOCTYPE html>
@@ -57,7 +26,7 @@
 		<nav class="page-navigation">
 			<h1 class="page-heading">
 				<a href="/" class="home-link">
-					<img src="~/Images/site-logo.svg" alt="" width="22" height="22"/>
+					<img src="~/Images/Icons/site-logo.svg" alt="" width="22" height="22"/>
 					Master Food
 				</a>
 			</h1>
@@ -79,7 +48,7 @@
 				<input class="search-restaurents-field" type="search" placeholder="Find a restaurent" />
 				<ul class="restaurents-list">
 					@foreach (var restaurant in Model.Restaurants)
-					{
+                    {
                     <li class="restaurents-list-item">
                         <a class="restaurents-list-item-link" href="#">
                             <span class="restaurant-name">
@@ -93,20 +62,20 @@
                     }
 				</ul>
 				<button class="search-restaurents-btn">
-					<img loading="lazy" src="~/Images/search-icon.svg" alt="search" class="search-icon" width="17" height="17" />
+					<img loading="lazy" src="~/Images/Icons/search-icon.svg" alt="search" class="search-icon" width="17" height="17" />
 				</button>
 			</div>
 			<div class="social-media-links">
 				<a href="https://facebook.com" class="facebook-icon-link">
-					<img loading="lazy" class="facebook-icon" src="~/Images/facebook-icon.svg" width="10" height="10" />
+					<img loading="lazy" class="facebook-icon" src="~/Images/Icons/facebook-icon.svg" width="10" height="10" />
 					<span>10k</span>
 				</a>
 				<a href="https://twitter.com" class="twitter-icon-link">
-					<img loading="lazy" class="twitter-icon" src="~/Images/twitter-icon.svg" width="10" height="10" />
+					<img loading="lazy" class="twitter-icon" src="~/Images/Icons/twitter-icon.svg" width="10" height="10" />
 					<span>15k</span>
 				</a>
 				<a href="https://instagram.com" class="instagram-icon-link">
-					<img loading="lazy" class="instagram-icon" src="~/Images/instagram-icon.svg" width="10" height="10" />
+					<img loading="lazy" class="instagram-icon" src="~/Images/Icons/instagram-icon.svg" width="10" height="10" />
 					<span>12k</span>
 				</a>
 			</div>
@@ -146,33 +115,40 @@
 			</div>
 			<div class="cusines-list-wrapper">
 				<div class="cusines-slide">
-					<ul class="cusines-list">
-						@for(int i = 0, j = 1; i < cusineImages.Count; i++, j++)
+                    <ul class="cusines-list">
+                        @{ int i = 0; }
+                        @foreach(var cusine in Model.TodaysTopCusines)
                         {
-						<li class="cusines-list-item">
-							<img loading="lazy" aria-describedby="cusine-name-@j" class="cusine-image" src="@Url.Content(cusineImages[i])"
-								width="130" height="160" alt="" />
-							<div id="cusine-name-@j" class="cusine-name"> @cusineNames[i] </div>
-							<div class="cusines-list-info">
-								<div class="info-icon-wrapper">
-									<img class="info-icon" src="~/Images/info-icon.svg" width="15" height="15" alt="info icon"/>
-								</div>
-								<b class="cusine-price">$@rand.Next(5, 101)</b>
-								<div class="rating">
-									<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-									<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-									<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-									<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-									<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-								</div>
-								<div class="heart-icon-wrapper">
-									<img src="~/Images/heart-icon.svg" width="20" height="20" alt="like cusine"/>
-								</div>
-								<button class="order-cusine-btn">Order</button>
-							</div>
-						</li>
-						}
-					</ul>
+                            i++;
+                            var imagePath = Url.Content("~/Images/" + toTitleCase(cusine.Type) + "/" + cusine.Image);
+							var price = Convert.ToInt32(cusine.Price);
+
+                            <li class="cusines-list-item">
+                                
+                                <img loading="lazy" aria-describedby="cusine-name-@i" class="cusine-image" src="@imagePath"
+                                     width="130" height="160" alt="" />
+                                <div id="cusine-name-@i" class="cusine-name">
+                                    @cusine.Name
+                                </div>
+                                <div class="cusines-list-info">
+                                    <div class="info-icon-wrapper">
+                                        <img class="info-icon" src="~/Images/Icons/info-icon.svg" width="15" height="15" alt="info icon" />
+                                    </div>
+                                    <b class="cusine-price">$@price</b>
+                                    <div class="rating">
+                                        @for (int j = 0; j < cusine.Rating; j++)
+                                        {
+                                            <img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+                                        }
+                                    </div>
+                                    <div class="heart-icon-wrapper">
+                                        <img src="~/Images/Icons/heart-icon.svg" width="20" height="20" alt="like cusine" />
+                                    </div>
+                                    <button class="order-cusine-btn">Order</button>
+                                </div>
+                            </li>
+                        }
+                    </ul>
 				</div>
 				<div class="carousel-circles">
 					<span class="carousel-circle"></span>
@@ -191,11 +167,11 @@
 					<img loading="lazy" class="customer-image" src="~/Images/customer-image.jpg" width="50" height="50" alt="" />
 					<b class="customer-name">Mr.John Doe</b>
 					<div class="rating">
-						<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-						<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-						<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-						<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-						<img loading="lazy" src="~/Images/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
 					</div>
 					<p class="feedback-text">
 						Absolutely fantastic platform for online food ordering & delivery within estimate time. have a
@@ -216,11 +192,11 @@
 			<h2>Ask Us</h2>
 			<h3>Queries and Doubts</h3>
 			<div class="contact-details">
-				<img loading="lazy" class="phone-icon" src="~/Images/call-icon.svg" width="30" height="30" alt="" />
+				<img loading="lazy" class="phone-icon" src="~/Images/Icons/call-icon.svg" width="30" height="30" alt="" />
 				<b class="call-now"> Call Now </b>
 				<b class="contact-number">+91 883 388 8974</b>
 				<div class="contact-email">
-					<img loading="lazy" class="envelop-icon" src="~/Images/email-icon.svg" width="12" height="12" alt="" />
+					<img loading="lazy" class="envelop-icon" src="~/Images/Icons/email-icon.svg" width="12" height="12" alt="" />
 					<small>admin@masterfood.com</small>
 				</div>
 			</div>

@@ -34,5 +34,6 @@ namespace Master_Food.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Restaurant> Restaurants { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TodaysTopCusine> TodaysTopCusines { get; set; }
     }
 }

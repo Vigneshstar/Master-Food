@@ -11,7 +11,7 @@
     <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="BankAccNo" Type="nvarchar(max)" />
-    <Property Name="Image" Type="varbinary(max)" />
+    <Property Name="Image" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="FavouriteFoodItems">
     <Key>
@@ -49,7 +49,8 @@
     <Property Name="Rating" Type="tinyint" Nullable="false" />
     <Property Name="Price" Type="money" Nullable="false" />
     <Property Name="Discount" Type="money" />
-    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Image" Type="varchar(max)" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
@@ -90,19 +91,26 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK__Favourite__Custo__300424B4">
-    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
-    <End Role="FavouriteFoodItems" Type="Self.FavouriteFoodItems" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="FavouriteFoodItems">
-        <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Favourite__Custo__33D4B598">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TodaysTopCusines">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Rating" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="Image" />
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rating" Type="tinyint" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Discount" Type="money" />
+    <Property Name="Image" Type="varchar(max)" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Favourite__Custo__76969D2E">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
     <End Role="FavouriteRestaurants" Type="Self.FavouriteRestaurants" Multiplicity="*" />
     <ReferentialConstraint>
@@ -114,7 +122,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Favourite__FoodI__2F10007B">
+  <Association Name="FK__Favourite__Custo__778AC167">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="FavouriteFoodItems" Type="Self.FavouriteFoodItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FavouriteFoodItems">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Favourite__FoodI__6FE99F9F">
     <End Role="FoodItems" Type="Self.FoodItems" Multiplicity="1" />
     <End Role="FavouriteFoodItems" Type="Self.FavouriteFoodItems" Multiplicity="*" />
     <ReferentialConstraint>
@@ -138,7 +158,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Feedbacks__Custo__276EDEB3">
+  <Association Name="FK__Feedbacks__Custo__75A278F5">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
     <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
     <ReferentialConstraint>
@@ -150,7 +170,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Menu__FoodItemId__4BAC3F29">
+  <Association Name="FK__Menu__FoodItemId__71D1E811">
     <End Role="FoodItems" Type="Self.FoodItems" Multiplicity="1" />
     <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
     <ReferentialConstraint>
@@ -174,7 +194,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__Customer__37A5467C">
+  <Association Name="FK__Orders__Customer__787EE5A0">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -198,7 +218,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__FoodItem__38996AB5">
+  <Association Name="FK__Orders__FoodItem__70DDC3D8">
     <End Role="FoodItems" Type="Self.FoodItems" Multiplicity="1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -232,15 +252,26 @@
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Favourite__Custo__300424B4" Association="Self.FK__Favourite__Custo__300424B4">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="FavouriteFoodItems" EntitySet="FavouriteFoodItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Favourite__Custo__33D4B598" Association="Self.FK__Favourite__Custo__33D4B598">
+    <EntitySet Name="TodaysTopCusines" EntityType="Self.TodaysTopCusines" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TodaysTopCusines].[Id] AS [Id], 
+    [TodaysTopCusines].[Name] AS [Name], 
+    [TodaysTopCusines].[Rating] AS [Rating], 
+    [TodaysTopCusines].[Price] AS [Price], 
+    [TodaysTopCusines].[Discount] AS [Discount], 
+    [TodaysTopCusines].[Image] AS [Image], 
+    [TodaysTopCusines].[Type] AS [Type]
+    FROM [dbo].[TodaysTopCusines] AS [TodaysTopCusines]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Favourite__Custo__76969D2E" Association="Self.FK__Favourite__Custo__76969D2E">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="FavouriteRestaurants" EntitySet="FavouriteRestaurants" />
     </AssociationSet>
-    <AssociationSet Name="FK__Favourite__FoodI__2F10007B" Association="Self.FK__Favourite__FoodI__2F10007B">
+    <AssociationSet Name="FK__Favourite__Custo__778AC167" Association="Self.FK__Favourite__Custo__778AC167">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="FavouriteFoodItems" EntitySet="FavouriteFoodItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Favourite__FoodI__6FE99F9F" Association="Self.FK__Favourite__FoodI__6FE99F9F">
       <End Role="FoodItems" EntitySet="FoodItems" />
       <End Role="FavouriteFoodItems" EntitySet="FavouriteFoodItems" />
     </AssociationSet>
@@ -248,11 +279,11 @@
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="FavouriteRestaurants" EntitySet="FavouriteRestaurants" />
     </AssociationSet>
-    <AssociationSet Name="FK__Feedbacks__Custo__276EDEB3" Association="Self.FK__Feedbacks__Custo__276EDEB3">
+    <AssociationSet Name="FK__Feedbacks__Custo__75A278F5" Association="Self.FK__Feedbacks__Custo__75A278F5">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Feedbacks" EntitySet="Feedbacks" />
     </AssociationSet>
-    <AssociationSet Name="FK__Menu__FoodItemId__4BAC3F29" Association="Self.FK__Menu__FoodItemId__4BAC3F29">
+    <AssociationSet Name="FK__Menu__FoodItemId__71D1E811" Association="Self.FK__Menu__FoodItemId__71D1E811">
       <End Role="FoodItems" EntitySet="FoodItems" />
       <End Role="Menu" EntitySet="Menu" />
     </AssociationSet>
@@ -260,7 +291,7 @@
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="Menu" EntitySet="Menu" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__Customer__37A5467C" Association="Self.FK__Orders__Customer__37A5467C">
+    <AssociationSet Name="FK__Orders__Customer__787EE5A0" Association="Self.FK__Orders__Customer__787EE5A0">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
@@ -268,7 +299,7 @@
       <End Role="Feedbacks" EntitySet="Feedbacks" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__FoodItem__38996AB5" Association="Self.FK__Orders__FoodItem__38996AB5">
+    <AssociationSet Name="FK__Orders__FoodItem__70DDC3D8" Association="Self.FK__Orders__FoodItem__70DDC3D8">
       <End Role="FoodItems" EntitySet="FoodItems" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>

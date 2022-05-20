@@ -27,7 +27,8 @@ namespace Master_Food.Models
         public byte Rating { get; set; }
         public decimal Price { get; set; }
         public Nullable<decimal> Discount { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
+        public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavouriteFoodItem> FavouriteFoodItems { get; set; }

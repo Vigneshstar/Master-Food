@@ -48,6 +48,7 @@
     <EntitySetMapping Name="FoodItems">
       <EntityTypeMapping TypeName="MasterFoodModel.FoodItem">
         <MappingFragment StoreEntitySet="FoodItems">
+          <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -97,6 +98,19 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
           <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TodaysTopCusines">
+      <EntityTypeMapping TypeName="MasterFoodModel.TodaysTopCusine">
+        <MappingFragment StoreEntitySet="TodaysTopCusines">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

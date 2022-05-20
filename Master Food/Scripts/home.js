@@ -87,7 +87,7 @@ for (let cusineListItem of cusineListItems) {
 	const cusineInfoOverlay = cusineListItem.querySelector(".cusines-list-info")
 
 	on(cusineListItem, "mouseover", function (evt) {
-		cusineInfoOverlay.style.height = "85%"
+		cusineInfoOverlay.style.height = "80%"
 	})
 
 	on(cusineListItem, "mouseout", function (evt) {

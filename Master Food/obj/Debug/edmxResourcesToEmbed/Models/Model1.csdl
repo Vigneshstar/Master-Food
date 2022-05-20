@@ -15,7 +15,7 @@
     <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" DefaultValue="regular" />
     <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="BankAccNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
   </EntityType>
   <EntityType Name="FavouriteFoodItem">
     <Key>
@@ -62,7 +62,8 @@
     <NavigationProperty Name="FavouriteFoodItems" Relationship="Self.FK__Favourite__FoodI__2F10007B" FromRole="FoodItems" ToRole="FavouriteFoodItems" />
     <NavigationProperty Name="Menus" Relationship="Self.FK__Menu__FoodItemId__4BAC3F29" FromRole="FoodItems" ToRole="Menu" />
     <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__FoodItem__38996AB5" FromRole="FoodItems" ToRole="Orders" />
-    <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
@@ -288,6 +289,7 @@
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <EntitySet Name="sysdiagrams" EntityType="MasterFoodModel.sysdiagram" />
+    <EntitySet Name="TodaysTopCusines" EntityType="MasterFoodModel.TodaysTopCusine" />
   </EntityContainer>
   <EntityType Name="sysdiagram">
     <Key>
@@ -298,5 +300,22 @@
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TodaysTopCusine">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Rating" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="Image" />
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rating" Type="Byte" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>
