@@ -318,7 +318,7 @@
     <Content Include="Images\chicken-pot-pie.bmp" />
     <Content Include="Images\butter-chicken.bmp" />
     <Content Include="Images\french-bread-pizza.bmp" />
-    <Content Include="Images\cream-spaghetti.bmp" />
+    <Content Include="Images\creamy-spaghetti.bmp" />
     <Content Include="Images\celery-soup.bmp" />
     <Content Include="Images\turkish-shepherds-pie.bmp" />
     <Content Include="Images\taco-lettuce-wraps.bmp" />
@@ -363,7 +363,7 @@
     <Content Include="Images\instagram-icon.svg" />
     <Content Include="Images\page-logo.jpeg" />
     <Content Include="Images\cinnamon-rolls.bmp" />
-    <Content Include="Images\roasted-english-muffin.jpg" />
+    <Content Include="Images\toasted-english-muffin.jpg" />
     <Content Include="Images\search-icon.svg" />
     <Content Include="Images\site-logo.svg" />
     <Content Include="Images\sort-icon.svg" />
@@ -424,6 +424,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Breakfast\" />
+    <Folder Include="Images\Dessert\" />
+    <Folder Include="Images\Dinner\" />
+    <Folder Include="Images\Lunch\" />
+    <Folder Include="Images\Shake\" />
     <Folder Include="Views\AboutUs\" />
     <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\Feedback\" />
