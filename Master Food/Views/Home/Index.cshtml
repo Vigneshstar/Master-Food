@@ -4,7 +4,17 @@
     Layout = null;
     ViewBag.Title = "Home";
 
-    Func<string, string> toTitleCase = str => str[0].ToString().ToUpper() + str.Substring(1);
+    Func<string, string> toTitleCase = str =>
+        str[0].ToString().ToUpper() + str.Substring(1);
+
+    var cusinesData = Model.TodaysTopCusines;
+    var cusines = new Dictionary<string, List<Master_Food.Models.TodaysTopCusine>>();
+    foreach (var cusineData in cusinesData.GroupBy(x => x.Type))
+    {
+        cusines.Add(cusineData.Key, cusineData.Select(x => x).ToList());
+    }
+    var feedbacks = Model.Feedbacks;
+
 }
 
 <!DOCTYPE html>
@@ -96,12 +106,12 @@
 			<button class="discover-menu-btn">Discover Menu</button>
 		</section>
 
-		<section class="todays-top-cusines">
-			<div class="categories-header">
-				<h2>Order Online Now</h2>
-				<h3>Today Top's cusines</h3>
-				<nav class="category-tabs">
-					<div class="category-tabs-listing">
+        <section class="todays-top-cusines">
+            <div class="categories-header">
+                <h2>Order Online Now</h2>
+                <h3>Today Top's cusines</h3>
+                <nav class="category-tabs">
+                    <div class="category-tabs-listing">
                         <div class="category-headings-wrapper">
                             <span class="category-tab-listing-item category-tab-listing-item-selected">Brakefast</span>
                             <span class="category-tab-listing-item">Lunch</span>
@@ -109,84 +119,103 @@
                             <span class="category-tab-listing-item">Dessert</span>
                             <span class="category-tab-listing-item">Shake</span>
                         </div>
-						<hr class="category-tab-selector-line" />
-					</div>
-				</nav>
-			</div>
-			<div class="cusines-list-wrapper">
-				<div class="cusines-slide">
-                    <ul class="cusines-list">
-                        @{ int i = 0; }
-                        @foreach(var cusine in Model.TodaysTopCusines)
-                        {
-                            i++;
-                            var imagePath = Url.Content("~/Images/" + toTitleCase(cusine.Type) + "/" + cusine.Image);
-							var price = Convert.ToInt32(cusine.Price);
+                        <hr class="category-tab-selector-line" />
+                    </div>
+                </nav>
+            </div>
+            <div class="cusines-list-wrapper">
+                @foreach (var cusineCategory in cusines)
+                {
+                    <div class="cusines-slide">
+                        <ul class="cusines-list">
+                            @{int i = 0;}
+                            @foreach (var cusine in cusineCategory.Value)
+                            {
+                                i++;
+                                var imagePath = Url.Content(
+                                    "~/Images/" + toTitleCase(cusine.Type) + "/" + cusine.Image);
+                                var price = Convert.ToInt32(cusine.Price);
 
-                            <li class="cusines-list-item">
-                                
-                                <img loading="lazy" aria-describedby="cusine-name-@i" class="cusine-image" src="@imagePath"
-                                     width="130" height="160" alt="" />
-                                <div id="cusine-name-@i" class="cusine-name">
-                                    @cusine.Name
-                                </div>
-                                <div class="cusines-list-info">
-                                    <div class="info-icon-wrapper">
-                                        <img class="info-icon" src="~/Images/Icons/info-icon.svg" width="15" height="15" alt="info icon" />
-                                    </div>
-                                    <b class="cusine-price">$@price</b>
-                                    <div class="rating">
-                                        @for (int j = 0; j < cusine.Rating; j++)
-                                        {
-                                            <img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-                                        }
-                                    </div>
-                                    <div class="heart-icon-wrapper">
-                                        <img src="~/Images/Icons/heart-icon.svg" width="20" height="20" alt="like cusine" />
-                                    </div>
-                                    <button class="order-cusine-btn">Order</button>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-				</div>
-				<div class="carousel-circles">
-					<span class="carousel-circle"></span>
-					<span class="carousel-circle"></span>
-					<span class="carousel-circle carousel-circle-selected"></span>
-					<span class="carousel-circle"></span>
-				</div>
-			</div>
-		</section>
+                                <li class="cusines-list-item">
 
-		<section class="testimonials">
-			<h2>Testimonials</h2>
-			<h3>Customers Say</h3>
-			<div class="testimonials-carousel">
-				<div class="testimonials-carousel-slide">
-					<img loading="lazy" class="customer-image" src="~/Images/customer-image.jpg" width="50" height="50" alt="" />
-					<b class="customer-name">Mr.John Doe</b>
-					<div class="rating">
-						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-						<img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
-					</div>
-					<p class="feedback-text">
-						Absolutely fantastic platform for online food ordering & delivery within estimate time. have a
-						great deal with
-						everytime to give better & best satisfaction..
-					</p>
-				</div>
-				<div class="carousel-circles">
-					<span class="carousel-circle"></span>
-					<span class="carousel-circle"></span>
-					<span class="carousel-circle carousel-circle-selected"></span>
-					<span class="carousel-circle"></span>
-				</div>
-			</div>
-		</section>
+                                    <img loading="lazy" aria-describedby="@cusineCategory.Key-cusine-name-@i" class="cusine-image" src="@imagePath"
+                                         width="130" height="160" alt="" />
+                                    <div id="@cusineCategory.Key-cusine-name-@i" class="cusine-name">
+                                        @cusine.Name
+                                    </div>
+                                    <div class="cusines-list-info">
+                                        <div class="info-icon-wrapper">
+                                            <img class="info-icon" src="~/Images/Icons/info-icon.svg" width="15" height="15" alt="info icon" />
+                                        </div>
+                                        <b class="cusine-price">$@price</b>
+                                        <div class="rating">
+                                            @for (int j = 0; j < cusine.Rating; j++)
+                                            {
+                                                <img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+                                            }
+                                        </div>
+                                        <div class="heart-icon-wrapper">
+                                            <img src="~/Images/Icons/heart-icon.svg" width="20" height="20" alt="like cusine" />
+                                        </div>
+                                        <button class="order-cusine-btn">Order</button>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+            
+            <div class="carousel-circles cusines-carousel-circles">
+                @for (int i = 0; i < cusines.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <span class="carousel-circle carousel-circle-selected"></span>
+                    }
+                    else
+                    {
+                        <span class="carousel-circle"></span>
+                    }
+                }
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>Testimonials</h2>
+            <h3>Customers Say</h3>
+            <div class="testimonials-carousel">
+                @foreach (var feedback in feedbacks)
+                {
+                    var imagePath = Url.Content(
+                                    "~/Images/Customers/" + feedback.Customer.Image);
+                    <div class="testimonials-carousel-slide">
+                        <img loading="lazy" class="customer-image" src="@imagePath" width="50" height="50" alt="" />
+                        <b class="customer-name">@feedback.Customer.Name</b>
+                        <div class="rating">
+                            <b class="rating-count">@feedback.Rating</b>
+                            <img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+                        </div>
+                        <p class="feedback-text">
+                            @feedback.Comment
+                        </p>
+                    </div>
+                }
+            </div>
+            <div class="carousel-circles testimonials-carousel-circles">
+                @for (int i = 0; i < feedbacks.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <span class="carousel-circle carousel-circle-selected"></span>
+                    }
+                    else
+                    {
+                        <span class="carousel-circle"></span>
+                    }
+                }
+            </div>
+        </section>
 
 		<section class="ask-us">
 			<h2>Ask Us</h2>

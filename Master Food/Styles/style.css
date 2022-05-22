@@ -49,6 +49,10 @@ button:active {
 	opacity: 0.9;
 }
 
+input, textarea {
+	user-select: text;
+}
+
 nav {
 	user-select: none;
 }

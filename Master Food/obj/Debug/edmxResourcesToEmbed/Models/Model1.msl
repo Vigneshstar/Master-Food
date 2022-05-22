@@ -38,6 +38,7 @@
     <EntitySetMapping Name="Feedbacks">
       <EntityTypeMapping TypeName="MasterFoodModel.Feedback">
         <MappingFragment StoreEntitySet="Feedbacks">
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="Comment" ColumnName="Comment" />

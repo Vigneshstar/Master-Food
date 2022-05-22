@@ -31,6 +31,7 @@ body {
 	background: var(--theme-text-color1);
 	padding: 30px;
 	border-radius: 5px;
+	box-sizing: border-box;
 	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,6 +58,7 @@ body {
 	margin: 30px 0 10px 0;
 	justify-content: space-between;
 	border: 1px solid lightgrey;
+	box-sizing: border-box;
 	border-radius: 5px;
 }
 
@@ -154,6 +156,7 @@ input[type="radio"] {
 	outline: none;
 	padding-left: 15px;
 	border-radius: 5px;
+	box-sizing: border-box;
 	border: 1px solid lightgrey;
 	border-bottom-width: 2px;
 	font-size: 17px;

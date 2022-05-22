@@ -35,10 +35,11 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
     <Property Name="Comment" Type="text" />
     <Property Name="UploadDateTime" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="FoodItems">
     <Key>
@@ -158,7 +159,7 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Feedbacks__Custo__75A278F5">
+  <Association Name="FK__Feedbacks__Custo__2BFE89A6">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
     <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
     <ReferentialConstraint>
@@ -206,7 +207,7 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__Feedback__3B75D760">
+  <Association Name="FK__Orders__Feedback__2B0A656D">
     <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -279,7 +280,7 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="FavouriteRestaurants" EntitySet="FavouriteRestaurants" />
     </AssociationSet>
-    <AssociationSet Name="FK__Feedbacks__Custo__75A278F5" Association="Self.FK__Feedbacks__Custo__75A278F5">
+    <AssociationSet Name="FK__Feedbacks__Custo__2BFE89A6" Association="Self.FK__Feedbacks__Custo__2BFE89A6">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Feedbacks" EntitySet="Feedbacks" />
     </AssociationSet>
@@ -295,7 +296,7 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__Feedback__3B75D760" Association="Self.FK__Orders__Feedback__3B75D760">
+    <AssociationSet Name="FK__Orders__Feedback__2B0A656D" Association="Self.FK__Orders__Feedback__2B0A656D">
       <End Role="Feedbacks" EntitySet="Feedbacks" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>

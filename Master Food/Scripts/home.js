@@ -8,7 +8,11 @@ const discoverMenuBtn = el`button.discover-menu-btn`
 const categoryListHeadings = els`span.category-tab-listing-item`
 const categoryTabSelectorLine = el`hr.category-tab-selector-line`
 const cusineListItems = els`li.cusines-list-item`
+const cusinesSlides = els`.cusines-slide`
+const testimonialsCarouselSlide = els`.testimonials-carousel-slide`
 const carouselCircles = els`span.carousel-circle`
+const cusinesCarouselCircles = els`.cusines-carousel-circles > .carousel-circle`
+const testimonialsCarouselCircles = els`.testimonials-carousel-circles > .carousel-circle`
 
 const isCustomerLoggedIn = store.includes("customer")
 if (isCustomerLoggedIn)
@@ -75,12 +79,17 @@ on(discoverMenuBtn, "click", function (evt) {
 })
 
 
-for (let categoryListHeading of categoryListHeadings)
+for (let [i, categoryListHeading] of categoryListHeadings.entries())
 	on(categoryListHeading, "click", function (evt) {
 		const headingXPos = categoryListHeading.offsetLeft
 		categoryTabSelectorLine.style.left = `calc(${headingXPos}px - 0.625vw)`
 		categoryListHeadings.forEach(elm => elm.classList.remove("category-tab-listing-item-selected"))
 		categoryListHeading.classList.add("category-tab-listing-item-selected")
+
+		cusinesSlides[i].parentElement.scrollLeft = cusinesSlides[i].offsetLeft
+		const carouselCircles = els`.cusines-carousel-circles > span.carousel-circle`
+		carouselCircles.forEach(elm => elm.classList.remove("carousel-circle-selected"))
+		carouselCircles[i].classList.add("carousel-circle-selected")
 	})
 
 for (let cusineListItem of cusineListItems) {
@@ -95,10 +104,54 @@ for (let cusineListItem of cusineListItems) {
 	})
 }
 
-for (let carouselCircle of carouselCircles)
+for (let [i, carouselCircle] of carouselCircles.entries())
 	on(carouselCircle, "click", function (evt) {
-		const carouselCircles = Array.from(carouselCircle.parentElement.children || [])
-		carouselCircles.forEach(elm => elm.classList.remove("carousel-circle-selected"))
-		carouselCircle.classList.add("carousel-circle-selected")
-    })
+
+		if (carouselCircle.parentElement.matches(".cusines-carousel-circles")) {
+			categoryListHeadings[i].click()
+		}
+		else {
+			const idx = i - carouselCircle.parentElement.children.length - 1
+			const carouselCircles = Array.from(carouselCircle.parentElement.children || [])
+			carouselCircles.forEach(elm => elm.classList.remove("carousel-circle-selected"))
+			carouselCircle.classList.add("carousel-circle-selected")
+			testimonialsCarouselSlide[idx].parentElement.scrollLeft = testimonialsCarouselSlide[idx].offsetLeft
+        }
+	})
+
+const observer1 = new IntersectionObserver(function (entries, observer) {
+	for (let [i, entry] of entries.entries()) {
+		const cusinesSlide = entry.target
+		const isIntersecting = entry.isIntersecting
+
+		if (isIntersecting) {
+			const idx = Array.prototype
+				.indexOf.call(cusinesSlide.parentElement.children, cusinesSlide)
+			categoryListHeadings[idx].click()
+		}
+	}
+}, { root: el`.cusines-list-wrapper`, threshold: 0.5 })
+
+for (let cusinesSlide of cusinesSlides)
+	observer1.observe(cusinesSlide)
+
+const observer2 = new IntersectionObserver(function (entries, observer) {
+	for (let [i, entry] of entries.entries()) {
+		const testimonialSlide = entry.target
+		const isIntersecting = entry.isIntersecting
+		const entryRatio = entry.intersectionRatio
+
+		if (isIntersecting) {
+			const idx = Array.prototype
+				.indexOf.call(testimonialSlide.parentElement.children, testimonialSlide)
+			testimonialsCarouselCircles
+				.forEach(elm => elm.classList.remove("carousel-circle-selected"))
+			testimonialsCarouselCircles[idx]
+				.classList.add("carousel-circle-selected")
+		}
+	}
+}, { root: el`.testimonials-carousel`, threshold: 0.5 })
+
+for (let testimonialSlide of testimonialsCarouselSlide)
+	observer2.observe(testimonialSlide)
 

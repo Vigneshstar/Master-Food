@@ -24,6 +24,7 @@ namespace Master_Food.Models
         public int CustomerId { get; set; }
         public string Comment { get; set; }
         public System.DateTime UploadDateTime { get; set; }
+        public byte Rating { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

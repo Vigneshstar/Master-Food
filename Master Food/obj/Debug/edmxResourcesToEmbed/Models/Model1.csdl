@@ -49,6 +49,7 @@
     <Property Name="UploadDateTime" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Customer" Relationship="Self.FK__Feedbacks__Custo__276EDEB3" FromRole="Feedbacks" ToRole="Customers" />
     <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Feedback__3B75D760" FromRole="Feedbacks" ToRole="Orders" />
+    <Property Name="Rating" Type="Byte" Nullable="false" />
   </EntityType>
   <EntityType Name="FoodItem">
     <Key>

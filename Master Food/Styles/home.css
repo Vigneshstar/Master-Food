@@ -271,17 +271,27 @@ hr.category-tab-selector-line {
 
 .cusines-list-wrapper {
 	overflow-x: auto;
+	display: flex;
+	scrollbar-width: none;
 	height: fit-content;
+	scroll-behavior: smooth;
+	scroll-snap-type: x mandatory;
+}
+
+.cusines-list-wrapper::-webkit-scrollbar {
+	width: 0px;
 }
 
 .cusines-slide {
+	min-width: 100vw;
 	display: flex;
 	align-items: center;
+	scroll-snap-align: none center;
 	justify-content: center;
 }
 
 ul.cusines-list {
-	width: 75%;
+	width: 75vw;
 	display: grid;
 	margin-top: 3rem;
 	justify-items: center;
@@ -292,10 +302,12 @@ ul.cusines-list {
 li.cusines-list-item {
 	width: 130px;
 	position: relative;
+	border-radius: 3px;
 }
 
 img.cusine-image {
 	object-fit: cover;
+	border-radius: 3px;
 }
 
 .cusine-name {
@@ -314,6 +326,7 @@ img.cusine-image {
 	bottom: 20%;
 	left: 0;
 	display: flex;
+	border-radius: 3px;
 	flex-direction: column;
 	align-items: center;
 	background-color: #f32840a3;
@@ -394,16 +407,26 @@ section.testimonials h3 {
 }
 
 .testimonials-carousel {
+	width: 100%;
 	display: flex;
-	flex-direction: column;
+	overflow-x: auto;
+	scrollbar-width: none;
 	align-items: center;
+	scroll-behavior: smooth;
+	scroll-snap-type: x mandatory;
+}
+
+.testimonials-carousel::-webkit-scrollbar {
+	width: 0px;
 }
 
 .testimonials-carousel-slide {
-	width: 50%;
+	min-width: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+	scroll-snap-align: none center;
 }
 
 img.customer-image {
@@ -416,8 +439,13 @@ b.customer-name {
 	margin: 10px 0 0px 0;
 }
 
+b.rating-count {
+	font-size: 0.8rem;
+}
+
 p.feedback-text {
-	width: 75%;
+	width: 40%;
+	line-height: 1.3rem;
 	text-align: center;
 }
 
