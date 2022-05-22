@@ -1,0 +1,117 @@
+body {
+	background: linear-gradient(123.49deg, #D9E4E7 -0.36%,
+			#E2E0E2 -0.35%, rgba(245, 249, 250, 0) 50.27%);
+}
+
+nav.page-navigation {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 0 20px;
+}
+
+h1.page-heading {
+	font-size: 1.25rem;
+	font-weight: 900;
+}
+
+a.home-link {
+	display: flex;
+	align-items: center;
+}
+
+a.home-link>img {
+	margin-right: 8px;
+}
+
+ul.nav-menu {
+	display: flex;
+	margin-left: auto;
+}
+
+ul.nav-menu>li {
+	font-weight: 600;
+	font-size: 0.9rem;
+	margin-right: 35px;
+	font-variant: small-caps;
+}
+
+button.auth-btn {
+	color: white;
+	border-radius: 0.5em;
+	font-weight: 600;
+	font-size: 0.75rem;
+	font-variant: small-caps;
+	background-color: var(--theme-accent-color);
+}
+
+section.landing-banner {
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: 40%;
+	background-position: 5rem 35%;
+	background-image: url('../images/feedback-lading-image.svg');
+}
+
+h2.landing-banner-heading {
+	width: 35%;
+	font-size: 2rem;
+	display: inline-block;
+	position: relative;
+	left: 55%;
+	top: 20%;
+}
+
+p.landing-banner-description {
+	width: 32.5%;
+	line-height: 1.4rem;
+	position: relative;
+	left: 55%;
+	top: 15%;
+}
+
+p.landing-banner-description> :last-of-type {
+	display: inline-block;
+	margin-top: 1.4rem;
+}
+
+section.collect-customer-feedback {
+	height: 80vh;
+	background-repeat: no-repeat;
+	background-size: 40%;
+	background-position: right 0;
+	background-clip: content-box;
+	box-sizing: border-box;
+	padding: 0 5rem 0 5rem;
+	background-image: url('../images/feedback-banner-image.svg');
+}
+
+input.satisfaction-scale {
+	width: 40%;
+	accent-color: var(--theme-accent-color);
+}
+
+input.satisfaction-scale:hover {
+	accent-color: #e0152d;
+}
+
+datalist.numberline {
+	display: flex;
+	justify-content: space-between;
+	width: 43%;
+}
+
+textarea.feedback-input-box {
+	width: 40%;
+	resize: none;
+	padding: 1rem;
+	border: none;
+	margin-top: 4rem;
+	border: none;
+	outline: none;
+	font-size: 0.8rem;
+	font-family: inherit;
+	caret-color: var(--theme-accent-color);
+	background-color: hsla(193, 23%, 88%, 49%);
+}

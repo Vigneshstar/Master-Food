@@ -2,14 +2,6 @@ import { el, els, on, isEmpty } from "./script.js"
 
 const passwordToggleIcons = els`i.password-visiblity-icon`
 
-function LoginValidation() {
-
-}
-
-function SignUpValidation() {
-
-}
-
 function validateUsernameField(field) {
 	const validity = field.validity
 	if (validity.valid)
