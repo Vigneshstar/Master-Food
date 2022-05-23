@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Home</title>
+	<link rel="stylesheet" href="~/Styles/style.css" />
+	<link rel="stylesheet" href="~/Styles/services.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<header class="page-header">
+		<nav class="page-navigation">
+			<h1 class="page-heading">
+				<a href="/" class="home-link">
+					<img src="~/Images/Icons/site-logo.svg" alt="" width="22" height="22" />
+					Master Food
+				</a>
+			</h1>
+			<ul class="nav-menu">
+				<li><a href="/Home" class="nav-link">home</a></li>
+				<li><a href="/Dashboard" class="nav-link">dashboard</a></li>
+				<li><a href="/FindFood" class="nav-link">find food</a></li>
+				<li><a href="/Feedback" class="nav-link">feedback</a></li>
+				<li><a href="#about-us" class="nav-link">about us</a></li>
+			</ul>
+			<button class="auth-btn"> login/signup </button>
+		</nav>
+	</header>
+	<main class="page-main">
+		<section class="landing-banner">
+			<h2 class="landing-banner-caption">Put Your Restaurant Online</h2>
+			<p class="landing-banner-description">
+				Reach out to customers all over the word<br/>
+				Get your food delivered over the internet.<br/>
+				We can help you with putting your business online. Join now!
+			</p>
+			<button class="learn-more-btn">
+				Learn More
+			</button>
+		</section>
+
+		<section class="service-options">
+			<div class="service-option">
+				<h3 class="service-option-heading">Vendor</h3>
+				<p class="service-option-details">
+					Are you a self employed vendor who sells local cusines? We're delighted to put your efforts online. Create a vendor account and reach out to millions of customers all around the world!
+				</p>
+				<form action="#" class="service-form vendor-service-form" novalidate>
+					<div class="service-field-wrapper">
+						<label class="service-form-label vendor-name-label" for="vendor-name-input">
+							vendor name <br/><span class="error-message">hey yo! you suck!..</span>
+						</label>
+						<input type="text" id="vendor-name-input" class="service-form-input vendor-name-input" minlength="3" maxlength="50" pattern="[_a-zA-Z][_ a-zA-Z0-9]+" required/>
+					</div>
+					<div class="service-field-wrapper">
+						<label class="service-form-label vendor-password-label" for="vendor-password-input">
+							vendor password <br /><span class="error-message"></span>
+						</label>
+						<input type="password" id="vendor-password-input" class="service-form-input vendor-password-input" minlength="6" maxlength="50" required/>
+					</div>
+					<div class="service-field-wrapper">
+						<label class="service-form-label vendor-email-label" for="vendor-email-input">
+							vendor email <br /><span class="error-message"></span>
+						</label>
+						<input type="email" id="vendor-email-input" class="service-form-input vendor-email-input" minlength="6" maxlength="50" required/>
+					</div>
+					<div class="service-field-wrapper">
+						<label class="service-form-label vendor-address-label" for="vendor-address-input">
+							vendor address <br /><span class="error-message"></span>
+						</label>
+						<input type="text" id="vendor-address-input" class="service-form-input vendor-address-input" minlength="6" pattern="[_a-zA-Z][_ a-zA-Z0-9,\-]+" required/>
+					</div>
+					<div class="service-field-wrapper">
+						<label class="service-form-label vendor-bank-acc-no-label" for="vendor-bank-acc-no-input">
+							vendor bank acc.no <br /><span class="error-message"></span>
+						</label>
+						<input type="text" id="vendor-bank-acc-no-input" class="service-form-input vendor-bank-acc-no-input" minlength="6" maxlength="50" pattern="[_a-zA-Z][_ a-zA-Z0-9,\-]+" required />
+					</div>
+					<button class="service-form-submit-btn vendor-submit-btn" type="submit">Register</button>
+				</form>
+				<span class="already-registered">
+					Already have a vendor account?
+					<a href="/Auth" class="login-link vendor-login-link">login</a>
+				</span>
+			</div>
+			<div class="service-option">
+				<h3 class="service-option-heading">Restaurant</h3>
+				<p class="service-option-details">
+					Are you a runnng a restaurant and thinking of putting your business online? Well think no more. Create a restaurant account and reach out to millions of customers all around the world!
+				</p>
+				<form action="#" class="service-form restaurant-service-form" novalidate>
+					<div class="service-field-wrapper">
+						<label class="service-form-label restaurant-name-label" for="restaurant-name-input">
+							restaurant name <br /><span class="error-message"></span>
+						</label>
+						<input type="text" id="restaurant-name-input" class="service-form-input restaurant-name-input" minlength="3" maxlength="50" required />
+					</div>
+					<div class="service-field-wrapper">
+						<label class="service-form-label restaurant-service-form-password-label" for="restaurant-password-input">
+							restaurant password <br /><span class="error-message"></span>
+						</label>
+						<input type="password" id="restaurant-password-input" class="service-form-input restaurant-password-input" minlength="6" maxlength="50" required />
+					</div>
+					<div class="service-field-wrapper">
+						<label class="service-form-label restaurant-email-label" for="restaurant-email-input">
+							restaurant email <br /><span class="error-message"></span>
+						</label>
+						<input type="email" id="restaurant-email-input" class="service-form-input restaurant-email-input" minlength="6" maxlength="50" required />
+					</div>
+					<div class="service-field-wrapper">
+						<label class="service-form-label restaurant-service-label" for="restaurant-address-input">
+							restaurant address <br /><span class="error-message"></span>
+						</label>
+						<input type="text" id="restaurant-address-input" class="service-form-input restaurant-address-input" minlength="6" required />
+					</div>
+					<div class="service-field-wrapper">
+						<label class="service-form-label restaurant-bank-acc-no-label" for="restaurant-bank-acc-no-input">
+							restaurant bank acc.no <br /><span class="error-message"></span>
+						</label>
+						<input type="text" id="restaurant-bank-acc-no-input" class="service-form-input restaurant-bank-acc-no-input" minlength="6" maxlength="50" required />
+					</div>
+					<button class="service-form-submit-btn restaurant-submit-btn" type="submit">Register</button>
+				</form>
+				<span class="already-registered">
+					Already have a restaurant account?
+					<a href="/Auth" class="login-link restaurant-login-link">login</a>
+				</span>
+			</div>
+		</section>
+	</main>
+	<script type="module" src="~/Scripts/services.js"></script>
+</body>
+</html>

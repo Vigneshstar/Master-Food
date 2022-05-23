@@ -51,7 +51,7 @@ section.landing-banner {
 	background-repeat: no-repeat;
 	background-size: 40%;
 	background-position: 5rem 35%;
-	background-image: url('../images/feedback-lading-image.svg');
+	background-image: url('../Images/feedback-lading-image.svg');
 }
 
 h2.landing-banner-heading {
@@ -84,7 +84,7 @@ section.collect-customer-feedback {
 	background-clip: content-box;
 	box-sizing: border-box;
 	padding: 0 5rem 0 5rem;
-	background-image: url('../images/feedback-banner-image.svg');
+	background-image: url('../Images/feedback-banner-image.svg');
 }
 
 input.satisfaction-scale {

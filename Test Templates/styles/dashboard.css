@@ -1,0 +1,36 @@
+body {
+	background: linear-gradient(123.49deg, #D9E4E7 -0.36%,
+			#E2E0E2 -0.35%, rgba(245, 249, 250, 0) 50.27%);
+}
+
+nav.page-navigation {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 0 20px;
+}
+
+h1.page-heading {
+	font-size: 1.25rem;
+	font-weight: 900;
+}
+
+span.toadys-date {
+	display: inline-flex;
+	margin: 0 5rem 0 auto;
+	font-size: 0.75rem;
+	align-items: center;
+	gap: 15px;
+}
+
+h2.page-main-heading {
+	margin: 3rem 0 0 3rem;
+}
+
+section.dashboard-stats-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	box-sizing: border-box;
+	padding: 0 3rem;
+}

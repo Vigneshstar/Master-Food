@@ -1,0 +1,156 @@
+body {
+	background: linear-gradient(123.49deg, #D9E4E7 -0.36%,
+			#E2E0E2 -0.35%, rgba(245, 249, 250, 0) 50.27%);
+}
+
+nav.page-navigation {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 0 20px;
+}
+
+h1.page-heading {
+	font-size: 1.25rem;
+	font-weight: 900;
+}
+
+a.home-link {
+	display: flex;
+	align-items: center;
+}
+
+a.home-link>img {
+	margin-right: 8px;
+}
+
+ul.nav-menu {
+	display: flex;
+	margin-left: auto;
+}
+
+ul.nav-menu>li {
+	font-weight: 600;
+	font-size: 0.9rem;
+	margin-right: 35px;
+	font-variant: small-caps;
+}
+
+button.auth-btn {
+	color: white;
+	border-radius: 0.5em;
+	font-weight: 600;
+	font-size: 0.75rem;
+	font-variant: small-caps;
+	background-color: var(--theme-accent-color);
+}
+
+section.landing-banner {
+	height: 100vh;
+	background-image: url('../Images/services-image.svg');
+	background-repeat: no-repeat;
+	background-position: right 50px;
+	background-size: 50%;
+}
+
+h2.landing-banner-caption {
+	width: 40%;
+	font-size: 2.5rem;
+	display: inline-block;
+	margin: 8rem 0 0 7rem;
+}
+
+p.landing-banner-description {
+	width: 30%;
+	text-align: justify;
+	line-height: 1.3rem;
+	margin: 1rem 0 0 7rem;
+}
+
+button.learn-more-btn {
+	color: white;
+	border-radius: 5px;
+	font-size: 0.7rem;
+	padding: 10px 40px;
+	margin: 4rem 0 0 7rem;
+	font-weight: bold;
+	background-color: var(--theme-accent-color);
+}
+
+section.service-options {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	gap: 3rem;
+	margin-bottom: 5rem;
+}
+
+.service-option {
+	width: 25%;
+	border-radius: 7px;
+	background-color: #E8ECF7;
+	padding: 1.5rem 2rem;
+	box-shadow: 3px 6px 10px 1px rgba(0, 0, 0, 0.126);
+}
+
+p.service-option-details {
+	min-height: 80px;
+	font-size: 0.85rem;
+}
+
+form.service-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: baseline;
+	margin-top: 3rem;
+}
+
+.service-field-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+label.service-form-label {
+	font-size: 0.85rem;
+	font-weight: 600;
+	font-variant: small-caps;
+}
+
+span.error-message {
+	display: none;
+	color: var(--theme-accent-color);
+	font-size: x-small;
+	margin-top: 1rem;
+	font-variant: normal;
+}
+
+input.service-form-input {
+	user-select: text;
+	border: 1.5px solid hsl(0, 0%, 85%);
+	margin: 5px 0 2rem 0;
+	border-radius: 3px;
+	padding-left: 0.5rem;
+	background-color: hsl(0, 0%, 97%);
+}
+
+button.service-form-submit-btn {
+	color: white;
+	border-radius: 5px;
+	background-color: var(--theme-accent-color);
+	width: fit-content;
+}
+
+span.already-registered {
+	display: inline-block;
+	margin-top: 1rem;
+	font-size: 0.7rem;
+}
+
+a.login-link {
+	font-weight: 600;
+	color: var(--theme-accent-color);
+	font-variant: small-caps;
+	text-decoration: underline;
+}

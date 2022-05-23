@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Home</title>
+	<link rel="stylesheet" href="../styles/style.css" />
+	<link href="../styles/dashboard.css" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<header class="page-header">
+		<nav class="page-navigation">
+			<h1 class="page-heading">
+				<a href="/" class="home-link">
+					<img src="../images/site-logo.svg" alt="" width="22" height="22" />
+					Master Food
+				</a>
+			</h1>
+			<span class="toadys-date">
+				<img src="../images/calender-icon.svg" alt="" class="date-icon" width="18" height="18"/>
+				May 17, 2022
+			</span>
+			<img src="../images/question-icon.svg" alt="" class="find-help" width="18" height="18"/>
+		</nav>
+	</header>
+
+	<main class="page-main">
+		<h2 class="page-main-heading">Dashboard</h2>
+		<section class="dashboard-stats-grid">
+			<div class="profile-info">
+				<h3 class="profile-stats-heading">Profile</h3>
+				<div class="profile-image-wrapper">
+					<img src="#" alt="" class="profile-image" />
+				</div>
+				<div class="customer-details">
+					<span class="customer-name"></span>
+					<span class="customer-email"></span>
+				</div>
+				<hr/>
+				<div class="profile-btn-group">
+					<button class="profile-edit-btn">Edit</button>
+					<button class="profile-logout-btn">Logout</button>
+				</div>
+			</div>
+			<div class="geographics-stats">
+				<h3 class="geographics-stats">Geographics</h3>
+				<div class="geographics-detail">
+					<div class="geographics-detail-icon-wrapper">
+						<img src="" alt="" class="geographics-detail-icon" width="50" height="50"/>
+					</div>
+					<b class="geographics-detail-contact-number-heading">Contact Number</b>
+					<small class="geographics-detail-contact-number"></small>
+				</div>
+				<div class="geographics-detail">
+					<div class="geographics-detail-icon-wrapper">
+						<img src="" alt="" class="geographics-detail-icon" width="50" height="50"/>
+					</div>
+					<b class="geographics-detail-contact-number-heading">Address</b>
+					<small class="geographics-detail-contact-number"></small>
+				</div>
+				<div class="geographics-detail">
+					<div class="geographics-detail-icon-wrapper">
+						<img src="" alt="" class="geographics-detail-icon" width="50" height="50"/>
+					</div>
+					<b class="geographics-detail-contact-number-heading">Last Order</b>
+					<small class="geographics-detail-contact-number"></small>
+				</div>
+			</div>
+			<div class="orders-stats">
+				<h3 class="orders-heading">Orders</h3>
+				<img src="" alt="" class="orders-details-icon" width="10" height="10"/>
+				<div class="total-orders-wrapper">
+					<span class="total-order-count"></span>
+					<span class="total-order-label">(Total)</span>
+				</div>
+				<div class="total-money-spent-wrapper">
+					<span class="total-money-spent"></span>
+					<span class="total-money-spent-label"></span>
+				</div>
+			</div>
+
+			<div class="order-listing">
+				<nav class="order-listing-header">
+					<span class="order-category-heading all-orders-heading"></span>
+					<span class="order-category-heading pending-orders-heading"></span>
+					<span class="order-category-heading delivered-orders-heading"></span>
+					<span class="order-category-heading booked-orders-heading"></span>
+					<span class="order-category-heading cancelled-orders"></span>
+					<hr/>
+				</nav>
+				<div class="order-history">
+					<nav class="order-listing-type-headings">
+						<span class="order-listing-type-heading">
+							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+						</span>
+						<span class="order-listing-type-heading">
+							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+						</span>
+						<span class="order-listing-type-heading">
+							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+						</span>
+						<span class="order-listing-type-heading">
+							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+						</span>
+						<span class="order-listing-type-heading">
+							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+						</span>
+					</nav>
+					<ul class="order-list">
+						<li class="order-list-item"></li>
+						<li class="order-list-item"></li>
+						<li class="order-list-item"></li>
+						<li class="order-list-item"></li>
+						<li class="order-list-item"></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</main>
+	<script type="module" src="../scripts/dashboard.js"></script>
+</body>
+
+</html>

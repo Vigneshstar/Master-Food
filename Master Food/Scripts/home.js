@@ -127,7 +127,16 @@ const observer1 = new IntersectionObserver(function (entries, observer) {
 		if (isIntersecting) {
 			const idx = Array.prototype
 				.indexOf.call(cusinesSlide.parentElement.children, cusinesSlide)
-			categoryListHeadings[idx].click()
+
+			const headingXPos = categoryListHeadings[idx].offsetLeft
+			categoryTabSelectorLine.style.left = `calc(${headingXPos}px - 0.625vw)`
+			categoryListHeadings.forEach(elm => elm.classList.remove("category-tab-listing-item-selected"))
+			categoryListHeadings[idx].classList.add("category-tab-listing-item-selected")
+
+			cusinesCarouselCircles
+				.forEach(elm => elm.classList.remove("carousel-circle-selected"))
+			cusinesCarouselCircles[idx]
+				.classList.add("carousel-circle-selected")
 		}
 	}
 }, { root: el`.cusines-list-wrapper`, threshold: 0.5 })
