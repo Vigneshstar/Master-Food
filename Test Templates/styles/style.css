@@ -3,6 +3,7 @@
 	color: #333333;
 	font-family: Montserrat, Arial, Helvetica, sans-serif;
 	font-size: 16px;
+	accent-color: var(--theme-accent-color);
 }
 
 body {
@@ -34,6 +35,7 @@ a:hover {
 
 button,
 input {
+	caret-color: var(--theme-accent-color);
 	outline: none;
 	user-select: none;
 	padding: 0.5em 1em;

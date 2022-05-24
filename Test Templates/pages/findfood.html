@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Home</title>
+	<link rel="stylesheet" href="../styles/style.css" />
+	<link rel="stylesheet" href="../styles/findfood.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+	<header class="page-header">
+		<nav class="page-navigation">
+			<h1 class="page-heading">
+				<a href="/" class="home-link">
+					<img src="../images/site-logo.svg" alt="" width="22" height="22" />
+					Master Food
+				</a>
+			</h1>
+			<div class="location-input-warpper">
+				<img src="../images/location-icon.svg" alt="" class="location-icon" width="15" height="15" />
+				<input type="search" class="location-input" placeholder="Location..." />
+			</div>
+			<div class="search-restaurents">
+				<input class="search-restaurents-field" type="search" placeholder="Find a restaurent">
+				<button class="search-restaurents-btn">
+					<img src="../images/search-icon.svg" alt="search" class="search-icon" width="17" height="17" />
+				</button>
+			</div>
+			<img src="../images/notification-icon.svg" alt="" class="notification-icon" width="18" height="18" />
+			<img src="../images/customer-image.jpg" alt="" class="customer-image" width="30" height="30" />
+		</nav>
+	</header>
+	<main class="page-main">
+		<section class="discount-items">
+			<div class="discount-item-slides">
+				<div class="discount-item-slide">
+					<div class="discount-item-slide-inner-wrapper">
+						<b class="discount-amount">50% Off</b><br />
+						<h2 class="discount-amount-heading">All Week... All Waffles...</h2>
+						<p class="discount-amount-supporting-text">
+							Don't miss out this week's offer. <br/> Hurry!..
+						</p>
+						<button class="order-now-btn">Order Now</button>
+					</div>
+					<img src="../images/food-discount-image.svg" alt="" class="discount-item-image" width="35%"/>
+				</div>
+			</div>
+			<div class="carousel-circles">
+				<span class="carousel-circle"></span>
+				<span class="carousel-circle"></span>
+				<span class="carousel-circle carousel-circle-selected"></span>
+				<span class="carousel-circle"></span>
+			</div>
+		</section>
+		<section class="item-categories">
+			<div class="item-category-header">
+				<h3 class="item-category-heading">Category</h3>
+				<div class="sort-items">
+					<span class="sort-label">Sort</span>
+					<img src="../images/sort-icon.svg" alt="" class="sort-icon" width="17" height="17" />
+				</div>
+				<div class="filter-items">
+					<span class="filter-label">Filter</span>
+					<img src="../images/filter-icon.svg" alt="" class="filter-icon" width="17" height="17" />
+				</div>
+			</div>
+			<nav class="category-tabs">
+				<div class="category-tabs-listing">
+					<span class="category-tab-listing-item-selected">Brakefast</span>
+					<span>Lunch</span>
+					<span>Dinner</span>
+					<span>Dessert</span>
+					<span>Shake</span>
+					<hr class="category-tab-selector-line" />
+				</div>
+			</nav>
+			<div class="cusines-list-wrapper">
+				<div class="cusines-slide">
+					<ul class="cusines-list">
+						<li class="cusines-list-item">
+							<img aria-describedby="cusine-name1" class="cusine-image" src="../images/food-image2.jpg" width="130px"
+								height="160px" alt="" />
+							<div id="cusine-name1" class="cusine-name">Strawberry Cake</div>
+						</li>
+					</ul>
+				</div>
+				<div class="carousel-circles">
+					<span class="carousel-circle"></span>
+					<span class="carousel-circle"></span>
+					<span class="carousel-circle carousel-circle-selected"></span>
+					<span class="carousel-circle"></span>
+				</div>
+			</div>
+		</section>
+		<section class="selected-food-items">
+			<h3 class="selected-food-items-heading">My Orders</h3>
+			<div class="selected-food-items-wrapper">
+				<div class="selected-food-item">
+					<img src="../images/food-image1.png" alt="" class="selected-food-item-image" width="80" height="75" />
+					<div class="selected-food-item-name-quantity-wrapper">
+						<b class="selected-food-item-name">Food Item</b><br />
+						<div class="selected-food-item-quantity">
+							<button class="selected-food-item-quantity-decr">-</button>
+							<span class="selected-food-item-quantity-label">1</span>
+							<button class="selected-fod-item-quantity-inc">+</button>
+						</div>
+					</div>
+					<span class="selected-food-item-price">20</span>
+				</div>
+				<!--  -->
+			</div>
+			<div class="total-price-wrapper">
+				<div class="selected-items-prices-wrapper">
+					<img src="../images/expand-icon.svg" alt="" class="total-price-details-icon" width="12"
+						height="12" />
+					<ul class="selected-items-prices">
+						<!--  -->
+					</ul>
+					<div class="total-price">
+						<span class="total-price-label">Total</span>
+						<span class="total-price-amount">20</span>
+					</div>
+				</div>
+				<button class="checkout-btn">
+					<span class="checkout-btn-text">Checkout</span>
+					<img src="../images/right-pointing-arrow-icon.svg" alt="" class="checkout-btn-icon" width="20" height="15" />
+				</button>
+			</div>
+		</section>
+	</main>
+	<script type="module" src="../scripts/findfood.js"></script>
+</body>
+
+</html>
