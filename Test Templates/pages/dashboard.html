@@ -23,11 +23,11 @@
 					Master Food
 				</a>
 			</h1>
-			<span class="toadys-date">
-				<img src="../images/calender-icon.svg" alt="" class="date-icon" width="18" height="18"/>
+			<span class="toadays-date">
+				<img src="../images/calender-icon.svg" alt="" class="date-icon" width="18" height="18" />
 				May 17, 2022
 			</span>
-			<img src="../images/question-icon.svg" alt="" class="find-help" width="18" height="18"/>
+			<img src="../images/question-icon.svg" alt="" class="find-help" width="18" height="18" />
 		</nav>
 	</header>
 
@@ -36,89 +36,111 @@
 		<section class="dashboard-stats-grid">
 			<div class="profile-info">
 				<h3 class="profile-stats-heading">Profile</h3>
-				<div class="profile-image-wrapper">
-					<img src="#" alt="" class="profile-image" />
-				</div>
-				<div class="customer-details">
-					<span class="customer-name"></span>
-					<span class="customer-email"></span>
-				</div>
-				<hr/>
-				<div class="profile-btn-group">
-					<button class="profile-edit-btn">Edit</button>
-					<button class="profile-logout-btn">Logout</button>
+				<div class="profile-detail-wrapper">
+					<div class="profile-image-wrapper">
+						<img src="#" alt="" class="profile-image" />
+					</div>
+					<div class="profile-detail-inner-wrapper">
+						<div class="customer-details">
+							<span class="customer-name">John Doe</span><br />
+							<span class="customer-email">johndoe@email.com</span>
+						</div>
+						<hr />
+						<div class="profile-btn-group">
+							<button class="profile-edit-btn">Edit</button>
+							<button class="profile-logout-btn">Logout</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="geographics-stats">
-				<h3 class="geographics-stats">Geographics</h3>
+				<h3 class="geographics-stats-heading">Geographics</h3>
 				<div class="geographics-detail">
-					<div class="geographics-detail-icon-wrapper">
-						<img src="" alt="" class="geographics-detail-icon" width="50" height="50"/>
+					<img src="../images/contact-number-icon.svg" alt="" class="geographics-detail-icon" width="70"
+						height="70" />
+					<div class="geographic-detail-wrapper">
+						<b class="geographics-detail-contact-number-heading">Contact Number</b><br/>
+						<small class="geographics-detail-contact-number">+91 789 789 8929</small>
 					</div>
-					<b class="geographics-detail-contact-number-heading">Contact Number</b>
-					<small class="geographics-detail-contact-number"></small>
 				</div>
 				<div class="geographics-detail">
-					<div class="geographics-detail-icon-wrapper">
-						<img src="" alt="" class="geographics-detail-icon" width="50" height="50"/>
+					<img src="../images/address-icon.svg" alt="" class="geographics-detail-icon" width="70" height="70" />
+					<div class="geographic-detail-wrapper">
+						<b class="geographics-detail-contact-number-heading">Address</b><br/>
+						<small class="geographics-detail-contact-number">123 Street, Antartica</small>
 					</div>
-					<b class="geographics-detail-contact-number-heading">Address</b>
-					<small class="geographics-detail-contact-number"></small>
 				</div>
 				<div class="geographics-detail">
-					<div class="geographics-detail-icon-wrapper">
-						<img src="" alt="" class="geographics-detail-icon" width="50" height="50"/>
+					<img src="../images/last-order-icon.svg" alt="" class="geographics-detail-icon" width="70" height="70" />
+					<div class="geographic-detail-wrapper">
+						<b class="geographics-detail-contact-number-heading">Last Order</b><br/>
+						<small class="geographics-detail-contact-number">1 April, 2022</small>
 					</div>
-					<b class="geographics-detail-contact-number-heading">Last Order</b>
-					<small class="geographics-detail-contact-number"></small>
 				</div>
 			</div>
 			<div class="orders-stats">
 				<h3 class="orders-heading">Orders</h3>
-				<img src="" alt="" class="orders-details-icon" width="10" height="10"/>
-				<div class="total-orders-wrapper">
-					<span class="total-order-count"></span>
-					<span class="total-order-label">(Total)</span>
-				</div>
-				<div class="total-money-spent-wrapper">
-					<span class="total-money-spent"></span>
-					<span class="total-money-spent-label"></span>
+				<img src="../images/info-icon.svg" alt="" class="orders-details-icon" width="17" height="17" />
+				<div class="order-stats-details">
+					<div class="total-orders-wrapper">
+						<span class="total-order-count">50</span>
+						<span class="total-order-label">(Total)</span>
+					</div>
+					<div class="total-money-spent-wrapper">
+						<span class="total-money-spent">5000</span>
+						<span class="total-money-spent-label">(Money Spent)</span>
+					</div>
 				</div>
 			</div>
 
 			<div class="order-listing">
 				<nav class="order-listing-header">
-					<span class="order-category-heading all-orders-heading"></span>
-					<span class="order-category-heading pending-orders-heading"></span>
-					<span class="order-category-heading delivered-orders-heading"></span>
-					<span class="order-category-heading booked-orders-heading"></span>
-					<span class="order-category-heading cancelled-orders"></span>
-					<hr/>
+					<span class="order-category-heading all-orders-heading selected-order">
+						All Orders
+					</span>
+					<span class="order-category-heading pending-orders-heading">
+						Pending Orders
+					</span>
+					<span class="order-category-heading delivered-orders-heading">
+						Delivered Orders
+					</span>
+					<span class="order-category-heading booked-orders-heading">
+						Booked Orders
+					</span>
+					<span class="order-category-heading cancelled-orders">
+						Cancelled Orders
+					</span>
 				</nav>
+				<hr />
 				<div class="order-history">
 					<nav class="order-listing-type-headings">
 						<span class="order-listing-type-heading">
-							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+							<img src="../images/order-id-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+							Order Id
 						</span>
 						<span class="order-listing-type-heading">
-							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+							<img src="../images/ordered-date-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+							Ordered Date
 						</span>
 						<span class="order-listing-type-heading">
-							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+							<img src="../images/product-name-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+							Product Name
 						</span>
 						<span class="order-listing-type-heading">
-							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+							<img src="../images/price-tag-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+							Product Price
 						</span>
 						<span class="order-listing-type-heading">
-							<img src="#" alt="" class="order-listing-type-icon" width="20" height="20" />
+							<img src="../images/status-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+							Status
 						</span>
 					</nav>
 					<ul class="order-list">
-						<li class="order-list-item"></li>
-						<li class="order-list-item"></li>
-						<li class="order-list-item"></li>
-						<li class="order-list-item"></li>
-						<li class="order-list-item"></li>
+						<li class="order-list-item">#123456</li>
+						<li class="order-list-item">12/10/2022</li>
+						<li class="order-list-item">Cheese Burger</li>
+						<li class="order-list-item">$15</li>
+						<li class="order-list-item">Delivered</li>
 					</ul>
 				</div>
 			</div>

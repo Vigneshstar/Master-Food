@@ -16,12 +16,16 @@ h1.page-heading {
 	font-weight: 900;
 }
 
-span.toadys-date {
+span.toadays-date {
 	display: inline-flex;
 	margin: 0 5rem 0 auto;
 	font-size: 0.75rem;
 	align-items: center;
 	gap: 15px;
+}
+
+img.find-help {
+	cursor: pointer;
 }
 
 h2.page-main-heading {
@@ -30,7 +34,225 @@ h2.page-main-heading {
 
 section.dashboard-stats-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	justify-items: start;
+	justify-content: center;
+	grid-template-columns: repeat(auto-fit, 37%);
 	box-sizing: border-box;
 	padding: 0 3rem;
+	column-gap: 75px;
+}
+
+div:is(.profile-info, .geographics-stats, .orders-stats, .order-history),
+nav.order-listing-header {
+	box-shadow: 4px 4px 8px 1px hsl(0, 0%, 95%);
+}
+
+.profile-info {
+	width: fit-content;
+	height: fit-content;
+	box-sizing: border-box;
+	padding: 0.5rem 2rem;
+	margin-top: 60px;
+	border-radius: 9px;
+	background-image: linear-gradient(to top right, white, #D5DDEF);
+}
+
+h3:is(.profile-stats-heading, .geographics-stats-heading, .orders-heading) {
+	font-size: 1rem;
+}
+
+.profile-detail-wrapper {
+	display: flex;
+	margin-top: 25px;
+	align-items: center;
+}
+
+div.profile-image-wrapper {
+	border: 1px solid hsl(0, 0%, 70%);
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	margin-left: 1rem;
+}
+
+div.profile-detail-inner-wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-left: 40px;
+	text-align: center;
+	gap: 10px;
+}
+
+div.profile-detail-inner-wrapper>hr {
+	width: 105%;
+	margin-top: 15px;
+	border-color: hsl(0, 0%, 97%);
+}
+
+span.customer-name {
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+span.customer-email {
+	font-size: 0.8rem;
+}
+
+.profile-btn-group {
+	margin: 20px 0 25px 0;
+	display: flex;
+	gap: 20px;
+}
+
+.profile-btn-group>button {
+	color: white;
+	font-weight: 600;
+	font-size: 0.75rem;
+	padding: 0.45rem 2rem;
+	border-radius: 5px;
+	background-color: var(--theme-accent-color);
+}
+
+.geographics-stats {
+	width: fit-content;
+	height: fit-content;
+	box-sizing: border-box;
+	padding: 2rem 2rem 4rem 2rem;
+	margin-top: 60px;
+	grid-row: auto / span 2;
+	background: linear-gradient(123.98deg, #F9BAC2 -61.2%, rgba(255, 255, 255, 0) 70.36%);
+	filter: drop-shadow(2px 4px 20px rgba(0, 0, 0, 0.05));
+	border-radius: 9px;
+}
+
+h3.geographics-stats-heading {
+	margin-top: 0;
+}
+
+.geographics-detail {
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	font-size: 0.8rem;
+	font-weight: 600;
+	gap: 50px;
+}
+
+.geographics-detail-icon {
+	display: inline-block;
+}
+
+.orders-stats {
+	width: 100%;
+	height: 215px;
+	box-sizing: border-box;
+	padding: 10px 2rem 2rem 2rem;
+	margin-top: 25px;
+	border-radius: 9px;
+	position: relative;
+	background-color: white;
+}
+
+img.orders-details-icon {
+	cursor: pointer;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.order-stats-details {
+	display: flex;
+	gap: 40px;
+	margin-top: 75px;
+}
+
+span.total-order-count {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+span:is(.total-order-label, .total-money-spent-label) {
+	vertical-align: sub;
+	font-size: small;
+}
+
+span.total-money-spent {
+	font-size: 1.9rem;
+	font-weight: bold;
+}
+
+span.total-money-spent::before {
+	content: "₹";
+	color: var(--theme-accent-color);
+}
+
+.order-listing {
+	grid-column: 1/3;
+	width: 100%;
+	margin-top: 50px;
+}
+
+nav.order-listing-header {
+	display: flex;
+	font-size: 0.75rem;
+	font-weight: bold;
+	border-radius: 5px;
+	justify-content: space-around;
+	background-color: white;
+	border-bottom: 2px solid hsl(0, 0%, 90%);
+}
+
+span.order-category-heading {
+	cursor: pointer;
+	color: hsl(0, 0%, 60%);
+	padding: 1.25rem 2rem;
+}
+
+span.selected-order {
+	color: var(--theme-accent-color);
+}
+
+.order-listing>hr {
+	width: 17%;
+	border: 1.75px solid var(--theme-accent-color);
+	border-radius: 5px;
+	background-color: transparent;
+	margin-top: -2.5px;
+}
+
+.order-history {
+	width: 100%;
+	min-height: 100vh;
+	margin-top: 35px;
+	padding: 2rem 0;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.order-listing-type-headings {
+	width: 100%;
+	display: flex;
+	font-size: 0.75rem;
+	font-weight: 600;
+	cursor: pointer;
+	justify-content: space-evenly;
+}
+
+span.order-listing-type-heading {
+	display: flex;
+	align-items: center;
+}
+
+img.order-listing-type-icon {
+	margin-right: 10px;
+	display: inline-block;
+}
+
+ul.order-list {
+	list-style-type: none;
+	display: flex;
+	margin-top: 35px;
+	justify-content: space-around;
+	font-size: small;
 }
