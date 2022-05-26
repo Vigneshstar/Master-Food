@@ -174,6 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Auth.cs" />
+    <Compile Include="Models\EditProfile.cs" />
     <Compile Include="Models\HomePage.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Signup.cs" />
@@ -273,6 +274,9 @@
     <Content Include="Images\Breakfast\stuffed-omelet.bmp" />
     <Content Include="Images\Breakfast\sweet-crepes.bmp" />
     <Content Include="Images\Breakfast\toasted-english-muffin.jpg" />
+    <Content Include="Images\food-discount-image.svg" />
+    <Content Include="Images\Icons\address-icon.svg" />
+    <Content Include="Images\Icons\calender-icon.svg" />
     <Content Include="Images\Customers\bruce-banner.jpg" />
     <Content Include="Images\Customers\clint-barton.jpeg" />
     <Content Include="Images\Customers\eddy-murphy.jpg" />
@@ -344,17 +348,31 @@
     <Content Include="Images\feedback-lading-image.svg" />
     <Content Include="Images\fruits-and-berries.png" />
     <Content Include="Images\Icons\call-icon.svg" />
+    <Content Include="Images\Icons\contact-number-icon.svg" />
     <Content Include="Images\Icons\email-icon.svg" />
+    <Content Include="Images\Icons\expand-icon.svg" />
     <Content Include="Images\Icons\facebook-icon.svg" />
     <Content Include="Images\Icons\filter-icon.svg" />
     <Content Include="Images\Icons\heart-icon.svg" />
     <Content Include="Images\Icons\info-icon.svg" />
     <Content Include="Images\Icons\instagram-icon.svg" />
+    <Content Include="Images\Icons\last-order-icon.svg" />
+    <Content Include="Images\Icons\location-icon.svg" />
+    <Content Include="Images\Icons\notification-icon.svg" />
+    <Content Include="Images\Icons\order-id-icon.svg" />
+    <Content Include="Images\Icons\ordered-date-icon.svg" />
+    <Content Include="Images\Icons\camera-icon.svg" />
+    <Content Include="Images\Icons\price-tag-icon.svg" />
+    <Content Include="Images\Icons\product-name-icon.svg" />
+    <Content Include="Images\Icons\question-icon.svg" />
+    <Content Include="Images\Icons\right-pointing-arrow-icon.svg" />
     <Content Include="Images\Icons\search-icon.svg" />
     <Content Include="Images\Icons\site-logo.svg" />
     <Content Include="Images\Icons\sort-icon.svg" />
     <Content Include="Images\Icons\star-icon.svg" />
+    <Content Include="Images\Icons\status-icon.svg" />
     <Content Include="Images\Icons\twitter-icon.svg" />
+    <Content Include="Images\Icons\info-icon-themed.svg" />
     <Content Include="Images\Lunch\asian-ramen-salad.bmp" />
     <Content Include="Images\Lunch\avocado-and-egg-sandwitch.bmp" />
     <Content Include="Images\Lunch\btl-bean-sandwitch.jpeg" />
@@ -425,6 +443,7 @@
     <Content Include="Images\strawberries-flowers-and-milkshake.png" />
     <Content Include="Images\strawberry-cutlet-and-sauce.jpg" />
     <Content Include="Images\page-logo.jpeg" />
+    <Content Include="Images\Icons\profile-icon.svg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -436,12 +455,16 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\authentication.js" />
+    <Content Include="Scripts\dashboard.js" />
     <Content Include="Scripts\feedback.js" />
+    <Content Include="Scripts\findfood.js" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\services.js" />
     <Content Include="Styles\authentication.css" />
+    <Content Include="Styles\dashboard.css" />
     <Content Include="Styles\feedback.css" />
+    <Content Include="Styles\findfood.css" />
     <Content Include="Styles\home.css" />
     <Content Include="Styles\services.css" />
     <Content Include="Styles\style.css" />
@@ -462,8 +485,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AboutUs\" />
-    <Folder Include="Views\Dashboard\" />
-    <Folder Include="Views\FindFood\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\Model1.edmx">
@@ -477,6 +498,8 @@
     <Content Include="Views\Auth\Index.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\FindFood\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -18,15 +18,17 @@ namespace Master_Food.Models
 			string username = data.Username;
             var password = data.Password;
             string email = data.Email;
+            string type = "regular";
 
-            if(!db.Customers.Any(_customer =>
+            if (!db.Customers.Any(_customer =>
                 _customer.Name == username))
             {
                 db.Customers.Add(new Customer()
                 {
                     Name = username,
                     Password = Crypto.HashPassword(password),
-                    Email = email
+                    Email = email,
+                    Type = type
                 });
 
                 db.SaveChanges();
@@ -44,7 +46,9 @@ namespace Master_Food.Models
                             isValidCustomer = true,
                             id = customer.Id,
                             name = customer.Name,
-                            email = customer.Email
+                            email = customer.Email,
+                            type = customer.Type,
+                            image = customer.Image
                         }
                     };
             }
@@ -72,7 +76,9 @@ namespace Master_Food.Models
                         isValidCustomer = true,
                         id = customer.Id,
                         name = customer.Name,
-                        email = customer.Email
+                        email = customer.Email,
+                        type = customer.Type,
+                        image = customer.Image
                     }
                 };
             

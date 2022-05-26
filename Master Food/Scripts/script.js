@@ -85,4 +85,123 @@ const store = {
 	}
 }
 
-export { el, els, on, isEmpty, sanitize, unsanitize, escapeRegExp, store }
+
+/**
+ * @param {HTMLElement} elm
+ * @param {string} evtName
+ * @param {object?} data
+ */
+function emitEvent(elm, evtName, data = null) {
+	elm.dispatchEvent(new CustomEvent(evtName, { detail: data }))
+}
+
+/**
+ * @param {HTMLElement} elm
+ * @param {object} cssObj
+ */
+
+function style(elm, cssObj) {
+	Object.assign(elm.style, cssObj)
+}
+
+/**
+ * @param {string} str
+ * @returns {string}
+*/
+
+function titleCaseToCababCase(str) {
+	let strs = str.split(/\s/)
+	strs = strs.map(str => str.toLowerCase())
+	return strs.join("-")
+}
+
+/**
+ * @param {ValidityState} validity
+ * @returns {string} - if invalid returns error message, else valid returns empty string
+ */
+function validateUsername(validity) {
+	if (validity.valueMissing)
+		return "The username must not be empty"
+	else if (validity.typeMismatch)
+		return "The entry must be a valid username"
+	else if (validity.tooShort)
+		return "The username must be atleast 3 characters long"
+	else if (validity.tooLong)
+		return "The username must be less than 50 characters"
+	else if (validity.patternMismatch)
+		return "The username must begin with a letter or underscore followed by letters, numbers, spaces or underscores"
+	return ""
+}
+
+/**
+ * @param {ValidityState} validity
+ * @returns {string} - if invalid returns error message, else valid returns empty string
+ */
+function validatePassword(validity) {
+	if (validity.valueMissing)
+		return "The password must not be empty"
+	else if (validity.typeMismatch)
+		return "The entry must be a valid password"
+	else if (validity.tooShort)
+		return "The password must be atleast 3 characters long"
+	else if (validity.tooLong)
+		return "The password must be less than 50 characters"
+	return ""
+}
+
+/**
+ * @param {ValidityState} validity
+ * @returns {string} - if invalid returns error message, else valid returns empty string
+ */
+function validateEmail(validity) {
+	if (validity.valueMissing)
+		return "The email must not be empty"
+	else if (validity.typeMismatch || validity.patternMismatch)
+		return "The entry must be a valid email"
+	return ""
+}
+
+/**
+ * @param {ValidityState} validity
+ * @returns {string} - if invalid returns error message, else valid returns empty string
+ */
+function validateAddress(validity) {
+	if (validity.valueMissing)
+		return "The address must not be empty"
+	else if (validity.typeMismatch)
+		return "The entry must be a valid address"
+	else if (validity.tooShort)
+		return "The address must be atleast 3 characters long"
+	else if (validity.tooLong)
+		return "The addresss must be less than 50 characters"
+	else if (validity.patternMismatch)
+		return "The address must only contain letters, numbers, spaces, dashes, colons, commas or underscores"
+	return ""
+}
+
+/**
+ * @param {ValidityState} validity
+ * @returns {string} - if invalid returns error message, else valid returns empty string
+ */
+function validateBankAccNo(validity) {
+	if (validity.valueMissing)
+		return "The bank account number must not be empty"
+	else if (validity.typeMismatch)
+		return "The entry must be a valid bank account number"
+	else if (validity.tooShort)
+		return "The bank account number must be atleast 3 characters long"
+	else if (validity.tooLong)
+		return "The bank account number must be less than 50 characters"
+	else if (validity.patternMismatch)
+		return "The bank account number must only contain letters, numbers or underscores"
+	return ""
+}
+
+export {
+	el, els, on, emitEvent,
+	isEmpty, sanitize, unsanitize,
+	escapeRegExp, store, style,
+	titleCaseToCababCase, validateUsername,
+	validatePassword, validateEmail,
+	validateAddress, validateBankAccNo
+}

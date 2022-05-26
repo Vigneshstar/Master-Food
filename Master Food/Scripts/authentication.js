@@ -1,4 +1,9 @@
-import { el, els, on, isEmpty, store } from "./script.js"
+import {
+	el, els, on, isEmpty, store,
+	validateUsername, validatePassword,
+	validateEmail, validateAddress,
+	validateBankAccNo
+} from "./script.js"
 
 
 const passwordToggleIcons = els`i.password-visiblity-icon`
@@ -79,6 +84,7 @@ function signupValidation(evt) {
 	const Password = signupPasswordInput.value.trim()
 	const ConfirmPassword = signupConfirmPasswordInput.value.trim()
 	const Email = signupEmailInput.value.trim()
+	const Type = "regular"
 
 	fetch("/Auth/Signup", {
 		method: "POST",
@@ -86,7 +92,7 @@ function signupValidation(evt) {
 			"Accept": "application/json",
 			"Content-type": "application/json"
 		},
-		body: JSON.stringify({ data: { Username, Password, Email } })
+		body: JSON.stringify({ data: { Username, Password, Email, Type } })
 	})
 	.then(res => res.json())
 	.then(function (data) {
@@ -103,30 +109,22 @@ function signupValidation(evt) {
 
 function validateUsernameField(field) {
 	const validity = field.validity
+	const errorMessageElmWrapper = field.parentElement.querySelector("div.error-message-wrapper")
+	const errorMessageElm = errorMessageElmWrapper.firstElementChild
 
 	if (validity.valid)
 		return
 
-	const errorMessageElmWrapper = field.parentElement.querySelector("div.error-message-wrapper")
-	const errorMessageElm = errorMessageElmWrapper.firstElementChild
+	errorMessageElm.textContent = validateUsername(validity)
 	errorMessageElmWrapper.style.display = "block"
-
-	if (validity.valueMissing)
-		errorMessageElm.textContent = "The username must not be empty"
-	else if (validity.typeMismatch)
-		errorMessageElm.textContent = "The entry must be a valid username"
-	else if (validity.tooShort)
-		errorMessageElm.textContent = "The username must be atleast 3 characters long"
-	else if (validity.tooLong)
-		errorMessageElm.textContent = "The username must be less than 50 characters"
-	else if (validity.patternMismatch)
-		errorMessageElm.textContent = "The username must begin with a letter or underscore followed by letters, numbers, spaces or underscores"
 }
 
 function validatePasswordField(field) {
 	const validity = field.validity
-
 	const isConfirmPasswordField = field.id == "signup-confirm-password"
+
+	const errorMessageElmWrapper = field.parentElement.querySelector("div.error-message-wrapper")
+	const errorMessageElm = errorMessageElmWrapper.firstElementChild
 
 	if (validity.valid && !isConfirmPasswordField)
 		return
@@ -134,37 +132,27 @@ function validatePasswordField(field) {
 	const doesPasswordsMatch = isConfirmPasswordField ?
 		el`#signup-password`.value.trim() === field.value.trim() : false
 
-	const errorMessageElmWrapper = field.parentElement.querySelector("div.error-message-wrapper")
-	const errorMessageElm = errorMessageElmWrapper.firstElementChild
+	const errorMessage = validatePassword(validity)
+	if (errorMessage !== "")
+		errorMessageElm.textContent = errorMessage
+	else if (!doesPasswordsMatch)
+		errorMessageElm.textContent = "The password and confirm-password fields don't match"
+
 	if(!doesPasswordsMatch || !validity.valid)
 		errorMessageElmWrapper.style.display = "block"
 
-	if (validity.valueMissing)
-		errorMessageElm.textContent = "The password must not be empty"
-	else if (validity.typeMismatch)
-		errorMessageElm.textContent = "The entry must be a valid password"
-	else if (validity.tooShort)
-		errorMessageElm.textContent = "The password must be atleast 3 characters long"
-	else if (validity.tooLong)
-		errorMessageElm.textContent = "The password must be less than 50 characters"
-	else if (!doesPasswordsMatch)
-		errorMessageElm.textContent = "The password and confirm-password fields don't match"
 }
 
 function validateEmailField(field) {
 	const validity = field.validity
+	const errorMessageElmWrapper = field.parentElement.querySelector("div.error-message-wrapper")
+	const errorMessageElm = errorMessageElmWrapper.firstElementChild
 
 	if (validity.valid)
 		return
 
-	const errorMessageElmWrapper = field.parentElement.querySelector("div.error-message-wrapper")
-	const errorMessageElm = errorMessageElmWrapper.firstElementChild
+	errorMessageElm.textContent = validateEmail(validity)
 	errorMessageElmWrapper.style.display = "block"
-
-	if (validity.valueMissing)
-		errorMessageElm.textContent = "The email must not be empty"
-	else if (validity.typeMismatch || validity.patternMismatch)
-		errorMessageElm.textContent = "The entry must be a valid email"
 }
 
 function hideValidationErrorMessages() {
@@ -174,7 +162,7 @@ function hideValidationErrorMessages() {
 void function handleFormValidation() {
 
 	loginForm.setAttribute("novalidate", true)
-	signupForm.setAttribute("novalidate", true);
+	signupForm.setAttribute("novalidate", true)
 
 	inputFields.forEach(field => on(field, "focus", _ => hideValidationErrorMessages()))
 

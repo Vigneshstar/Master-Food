@@ -3,7 +3,7 @@ import { el, els, on, escapeRegExp, store, isEmpty } from "./script.js"
 const authBtn = el`button.auth-btn`
 const restaurantSearchField = el`input.search-restaurents-field`
 const restaurantLinks = els`a.restaurents-list-item-link`
-const serarchRestaurantsBtn = el`button.search-restaurents-btn`
+const searchRestaurantsBtn = el`button.search-restaurents-btn`
 const discoverMenuBtn = el`button.discover-menu-btn`
 const categoryListHeadings = els`span.category-tab-listing-item`
 const categoryTabSelectorLine = el`hr.category-tab-selector-line`
@@ -13,6 +13,8 @@ const testimonialsCarouselSlide = els`.testimonials-carousel-slide`
 const carouselCircles = els`span.carousel-circle`
 const cusinesCarouselCircles = els`.cusines-carousel-circles > .carousel-circle`
 const testimonialsCarouselCircles = els`.testimonials-carousel-circles > .carousel-circle`
+const navDashboardLink = el`a.nav-dashboard-link`
+const navFeedbackLink = el`a.nav-feedback-link`
 
 const isCustomerLoggedIn = store.includes("customer")
 if (isCustomerLoggedIn)
@@ -53,7 +55,7 @@ on(restaurantSearchField, "input", function (evt) {
 	}
 })
 
-on(serarchRestaurantsBtn, "click", function (evt) {
+on(searchRestaurantsBtn, "click", function (evt) {
 
 	const searchTerm = restaurantSearchField.value.trim()
 
@@ -164,3 +166,9 @@ const observer2 = new IntersectionObserver(function (entries, observer) {
 for (let testimonialSlide of testimonialsCarouselSlide)
 	observer2.observe(testimonialSlide)
 
+for (let navlink of [navDashboardLink, navFeedbackLink])
+	on(navlink, "click", function (evt) {
+		if (!store.includes("customer"))
+			evt.preventDefault(),
+			window.location.href = "/Auth"
+	})
