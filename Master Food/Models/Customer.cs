@@ -20,8 +20,8 @@ namespace Master_Food.Models
             this.Type = "regular";
             this.FavouriteFoodItems = new HashSet<FavouriteFoodItem>();
             this.FavouriteRestaurants = new HashSet<FavouriteRestaurant>();
-            this.Feedbacks = new HashSet<Feedback>();
             this.Orders = new HashSet<Order>();
+            this.ServiceFeedbacks = new HashSet<ServiceFeedback>();
         }
     
         public int Id { get; set; }
@@ -32,14 +32,15 @@ namespace Master_Food.Models
         public string Address { get; set; }
         public string BankAccNo { get; set; }
         public string Image { get; set; }
+        public Nullable<long> ContactNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavouriteFoodItem> FavouriteFoodItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavouriteRestaurant> FavouriteRestaurants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServiceFeedback> ServiceFeedbacks { get; set; }
     }
 }

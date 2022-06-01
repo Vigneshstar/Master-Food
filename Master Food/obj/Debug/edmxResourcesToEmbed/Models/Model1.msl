@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="MasterFoodModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="BankAccNo" ColumnName="BankAccNo" />
           <ScalarProperty Name="Address" ColumnName="Address" />
@@ -35,17 +36,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Feedbacks">
-      <EntityTypeMapping TypeName="MasterFoodModel.Feedback">
-        <MappingFragment StoreEntitySet="Feedbacks">
-          <ScalarProperty Name="Rating" ColumnName="Rating" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-          <ScalarProperty Name="Comment" ColumnName="Comment" />
-          <ScalarProperty Name="UploadDateTime" ColumnName="UploadDateTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="FoodItems">
       <EntityTypeMapping TypeName="MasterFoodModel.FoodItem">
         <MappingFragment StoreEntitySet="FoodItems">
@@ -72,6 +62,8 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="MasterFoodModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+          <ScalarProperty Name="OrderedDate" ColumnName="OrderedDate" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="FoodItemId" ColumnName="FoodItemId" />
@@ -111,6 +103,28 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Rating" ColumnName="Rating" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderFeedbacks">
+      <EntityTypeMapping TypeName="MasterFoodModel.OrderFeedback">
+        <MappingFragment StoreEntitySet="OrderFeedbacks">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="UploadDateTime" ColumnName="UploadDateTime" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceFeedbacks">
+      <EntityTypeMapping TypeName="MasterFoodModel.ServiceFeedback">
+        <MappingFragment StoreEntitySet="ServiceFeedbacks">
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="UploadDateTime" ColumnName="UploadDateTime" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

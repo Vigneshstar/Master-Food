@@ -12,14 +12,8 @@ namespace Master_Food.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Feedback
+    public partial class ServiceFeedback
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Feedback()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public string Comment { get; set; }
@@ -27,7 +21,5 @@ namespace Master_Food.Models
         public byte Rating { get; set; }
     
         public virtual Customer Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

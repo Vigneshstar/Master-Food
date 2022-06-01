@@ -11,10 +11,6 @@ body {
 	scroll-behavior: smooth;
 }
 
-img {
-	pointer-events: none;
-}
-
 ul,
 ol,
 hr {

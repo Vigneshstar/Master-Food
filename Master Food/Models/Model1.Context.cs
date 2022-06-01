@@ -28,12 +28,13 @@ namespace Master_Food.Models
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<FavouriteFoodItem> FavouriteFoodItems { get; set; }
         public virtual DbSet<FavouriteRestaurant> FavouriteRestaurants { get; set; }
-        public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<FoodItem> FoodItems { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Restaurant> Restaurants { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TodaysTopCusine> TodaysTopCusines { get; set; }
+        public virtual DbSet<OrderFeedback> OrderFeedbacks { get; set; }
+        public virtual DbSet<ServiceFeedback> ServiceFeedbacks { get; set; }
     }
 }

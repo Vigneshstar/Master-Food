@@ -165,10 +165,3 @@ const observer2 = new IntersectionObserver(function (entries, observer) {
 
 for (let testimonialSlide of testimonialsCarouselSlide)
 	observer2.observe(testimonialSlide)
-
-for (let navlink of [navDashboardLink, navFeedbackLink])
-	on(navlink, "click", function (evt) {
-		if (!store.includes("customer"))
-			evt.preventDefault(),
-			window.location.href = "/Auth"
-	})

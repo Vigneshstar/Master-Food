@@ -10,12 +10,13 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="FavouriteFoodItems" Relationship="Self.FK__Favourite__Custo__300424B4" FromRole="Customers" ToRole="FavouriteFoodItems" />
     <NavigationProperty Name="FavouriteRestaurants" Relationship="Self.FK__Favourite__Custo__33D4B598" FromRole="Customers" ToRole="FavouriteRestaurants" />
-    <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedbacks__Custo__276EDEB3" FromRole="Customers" ToRole="Feedbacks" />
     <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__37A5467C" FromRole="Customers" ToRole="Orders" />
     <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" DefaultValue="regular" />
     <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="BankAccNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Image" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="ContactNumber" Type="Int64" />
+    <NavigationProperty Name="ServiceFeedbacks" Relationship="MasterFoodModel.FK__ServiceFe__Custo__46B27FE2" FromRole="Customer" ToRole="ServiceFeedback" />
   </EntityType>
   <EntityType Name="FavouriteFoodItem">
     <Key>
@@ -38,18 +39,6 @@
     <Property Name="TotalOrders" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Customer" Relationship="Self.FK__Favourite__Custo__33D4B598" FromRole="FavouriteRestaurants" ToRole="Customers" />
     <NavigationProperty Name="Restaurant" Relationship="Self.FK__Favourite__Resta__46E78A0C" FromRole="FavouriteRestaurants" ToRole="Restaurants" />
-  </EntityType>
-  <EntityType Name="Feedback">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="CustomerId" Type="Int32" Nullable="false" />
-    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="UploadDateTime" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK__Feedbacks__Custo__276EDEB3" FromRole="Feedbacks" ToRole="Customers" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Feedback__3B75D760" FromRole="Feedbacks" ToRole="Orders" />
-    <Property Name="Rating" Type="Byte" Nullable="false" />
   </EntityType>
   <EntityType Name="FoodItem">
     <Key>
@@ -86,11 +75,13 @@
     <Property Name="FoodItemId" Type="Int32" Nullable="false" />
     <Property Name="RestaurantId" Type="Int32" Nullable="false" />
     <Property Name="Status" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="FeedbackId" Type="Int32" Nullable="false" />
+    <Property Name="FeedbackId" Type="Int32" />
     <NavigationProperty Name="Customer" Relationship="Self.FK__Orders__Customer__37A5467C" FromRole="Orders" ToRole="Customers" />
-    <NavigationProperty Name="Feedback" Relationship="Self.FK__Orders__Feedback__3B75D760" FromRole="Orders" ToRole="Feedbacks" />
     <NavigationProperty Name="FoodItem" Relationship="Self.FK__Orders__FoodItem__38996AB5" FromRole="Orders" ToRole="FoodItems" />
     <NavigationProperty Name="Restaurant" Relationship="Self.FK__Orders__Restaura__398D8EEE" FromRole="Orders" ToRole="Restaurants" />
+    <NavigationProperty Name="OrderFeedbacks" Relationship="MasterFoodModel.FK__OrderFeed__Order__41EDCAC5" FromRole="Order" ToRole="OrderFeedback" />
+    <Property Name="OrderedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompletionDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Restaurant">
     <Key>
@@ -128,18 +119,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Feedbacks__Custo__276EDEB3">
-    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
-    <End Role="Feedbacks" Type="Self.Feedback" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Feedbacks">
-        <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Orders__Customer__37A5467C">
     <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
@@ -173,18 +152,6 @@
       </Principal>
       <Dependent Role="FavouriteRestaurants">
         <PropertyRef Name="RestaurantId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Orders__Feedback__3B75D760">
-    <End Role="Feedbacks" Type="Self.Feedback" Multiplicity="1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Feedbacks">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="FeedbackId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -240,7 +207,6 @@
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="FavouriteFoodItems" EntityType="Self.FavouriteFoodItem" />
     <EntitySet Name="FavouriteRestaurants" EntityType="Self.FavouriteRestaurant" />
-    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
     <EntitySet Name="FoodItems" EntityType="Self.FoodItem" />
     <EntitySet Name="Menus" EntityType="Self.Menu" />
     <EntitySet Name="Orders" EntityType="Self.Order" />
@@ -253,10 +219,6 @@
       <End Role="Customers" EntitySet="Customers" />
       <End Role="FavouriteRestaurants" EntitySet="FavouriteRestaurants" />
     </AssociationSet>
-    <AssociationSet Name="FK__Feedbacks__Custo__276EDEB3" Association="Self.FK__Feedbacks__Custo__276EDEB3">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="Feedbacks" EntitySet="Feedbacks" />
-    </AssociationSet>
     <AssociationSet Name="FK__Orders__Customer__37A5467C" Association="Self.FK__Orders__Customer__37A5467C">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Orders" EntitySet="Orders" />
@@ -268,10 +230,6 @@
     <AssociationSet Name="FK__Favourite__Resta__46E78A0C" Association="Self.FK__Favourite__Resta__46E78A0C">
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="FavouriteRestaurants" EntitySet="FavouriteRestaurants" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Orders__Feedback__3B75D760" Association="Self.FK__Orders__Feedback__3B75D760">
-      <End Role="Feedbacks" EntitySet="Feedbacks" />
-      <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK__Menu__FoodItemId__4BAC3F29" Association="Self.FK__Menu__FoodItemId__4BAC3F29">
       <End Role="FoodItems" EntitySet="FoodItems" />
@@ -291,6 +249,16 @@
     </AssociationSet>
     <EntitySet Name="sysdiagrams" EntityType="MasterFoodModel.sysdiagram" />
     <EntitySet Name="TodaysTopCusines" EntityType="MasterFoodModel.TodaysTopCusine" />
+    <EntitySet Name="OrderFeedbacks" EntityType="MasterFoodModel.OrderFeedback" />
+    <EntitySet Name="ServiceFeedbacks" EntityType="MasterFoodModel.ServiceFeedback" />
+    <AssociationSet Name="FK__ServiceFe__Custo__46B27FE2" Association="MasterFoodModel.FK__ServiceFe__Custo__46B27FE2">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="ServiceFeedback" EntitySet="ServiceFeedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderFeed__Order__41EDCAC5" Association="MasterFoodModel.FK__OrderFeed__Order__41EDCAC5">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderFeedback" EntitySet="OrderFeedbacks" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="sysdiagram">
     <Key>
@@ -319,4 +287,50 @@
     <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="OrderFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UploadDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Rating" Type="Byte" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="MasterFoodModel.FK__OrderFeed__Order__41EDCAC5" FromRole="OrderFeedback" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="ServiceFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UploadDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Rating" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="MasterFoodModel.FK__ServiceFe__Custo__46B27FE2" FromRole="ServiceFeedback" ToRole="Customer" />
+  </EntityType>
+  <Association Name="FK__ServiceFe__Custo__46B27FE2">
+    <End Type="MasterFoodModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="MasterFoodModel.ServiceFeedback" Role="ServiceFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceFeedback">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderFeed__Order__41EDCAC5">
+    <End Type="MasterFoodModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="MasterFoodModel.OrderFeedback" Role="OrderFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderFeedback">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

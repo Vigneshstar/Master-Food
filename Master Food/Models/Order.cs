@@ -14,16 +14,25 @@ namespace Master_Food.Models
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.OrderFeedbacks = new HashSet<OrderFeedback>();
+        }
+    
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public int FoodItemId { get; set; }
         public int RestaurantId { get; set; }
         public string Status { get; set; }
-        public int FeedbackId { get; set; }
+        public Nullable<int> FeedbackId { get; set; }
+        public System.DateTime OrderedDate { get; set; }
+        public Nullable<System.DateTime> CompletionDate { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual Feedback Feedback { get; set; }
         public virtual FoodItem FoodItem { get; set; }
         public virtual Restaurant Restaurant { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderFeedback> OrderFeedbacks { get; set; }
     }
 }

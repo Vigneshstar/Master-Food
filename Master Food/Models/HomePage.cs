@@ -19,9 +19,9 @@ namespace Master_Food.Models
 			get => db.TodaysTopCusines.ToList() ?? default(List<TodaysTopCusine>);
 		}
 
-		public List<Feedback> Feedbacks
+		public List<ServiceFeedback> Feedbacks
 		{
-			get => db.Feedbacks.Include(r => r.Customer).Distinct().OrderBy(r => Guid.NewGuid()).Take(4).ToList() ?? default(List<Feedback>);
+			get => db.ServiceFeedbacks.Include(r => r.Customer).Distinct().OrderBy(r => Guid.NewGuid()).Take(4).ToList() ?? default(List<ServiceFeedback>);
 		}
 	}
 }

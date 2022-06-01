@@ -48,7 +48,9 @@ namespace Master_Food.Models
                             name = customer.Name,
                             email = customer.Email,
                             type = customer.Type,
-                            image = customer.Image
+                            address = customer.Address,
+                            contactNumber = customer.ContactNumber,
+                            imagePath = customer.Image
                         }
                     };
             }
@@ -78,7 +80,9 @@ namespace Master_Food.Models
                         name = customer.Name,
                         email = customer.Email,
                         type = customer.Type,
-                        image = customer.Image
+                        address = customer.Address,
+                        contactNumber = customer.ContactNumber,
+                        imagePath = customer.Image
                     }
                 };
             

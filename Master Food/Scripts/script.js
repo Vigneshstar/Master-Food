@@ -116,6 +116,26 @@ function titleCaseToCababCase(str) {
 }
 
 /**
+ * @param {string} str
+ * @returns {string}
+*/
+
+function camelCaseToCababCase(str) {
+	return str.replace(/([A-Z])/, x => "-" + x.toLowerCase())
+}
+
+/**
+ * @param {string} str
+ * @returns {string}
+*/
+
+function cababCaseToCamelCase(str) {
+	return str
+		.replace(/\-(\w)/g, x => x.toUpperCase())
+		.replace(/\-/g, "")
+}
+
+/**
  * @param {ValidityState} validity
  * @returns {string} - if invalid returns error message, else valid returns empty string
  */
@@ -183,6 +203,22 @@ function validateAddress(validity) {
  * @param {ValidityState} validity
  * @returns {string} - if invalid returns error message, else valid returns empty string
  */
+function validateContactNumber(validity) {
+	if (validity.valueMissing)
+		return "The contact number must not be empty"
+	else if (validity.typeMismatch)
+		return "The entry must be a valid contact number"
+	else if (validity.tooShort)
+		return "The contact number must be atleast 3 characters long"
+	else if (validity.tooLong)
+		return "The contact number must be less than 50 characters"
+	return ""
+}
+
+/**
+ * @param {ValidityState} validity
+ * @returns {string} - if invalid returns error message, else valid returns empty string
+ */
 function validateBankAccNo(validity) {
 	if (validity.valueMissing)
 		return "The bank account number must not be empty"
@@ -201,7 +237,9 @@ export {
 	el, els, on, emitEvent,
 	isEmpty, sanitize, unsanitize,
 	escapeRegExp, store, style,
-	titleCaseToCababCase, validateUsername,
+	titleCaseToCababCase, camelCaseToCababCase,
+	cababCaseToCamelCase, validateUsername,
 	validatePassword, validateEmail,
-	validateAddress, validateBankAccNo
+	validateAddress, validateContactNumber,
+	validateBankAccNo
 }

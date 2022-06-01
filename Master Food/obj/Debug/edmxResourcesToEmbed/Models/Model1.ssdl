@@ -12,6 +12,7 @@
     <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="BankAccNo" Type="nvarchar(max)" />
     <Property Name="Image" Type="varchar(max)" />
+    <Property Name="ContactNumber" Type="bigint" />
   </EntityType>
   <EntityType Name="FavouriteFoodItems">
     <Key>
@@ -30,16 +31,6 @@
     <Property Name="RestaurantId" Type="int" Nullable="false" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
     <Property Name="TotalOrders" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Feedbacks">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CustomerId" Type="int" Nullable="false" />
-    <Property Name="Comment" Type="text" />
-    <Property Name="UploadDateTime" Type="datetime" Nullable="false" />
-    <Property Name="Rating" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="FoodItems">
     <Key>
@@ -62,6 +53,16 @@
     <Property Name="FoodItemId" Type="int" Nullable="false" />
     <Property Name="Stock" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="OrderFeedbacks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Comment" Type="text" />
+    <Property Name="UploadDateTime" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="tinyint" Nullable="false" />
+    <Property Name="OrderId" Type="int" />
+  </EntityType>
   <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="Id" />
@@ -71,7 +72,9 @@
     <Property Name="FoodItemId" Type="int" Nullable="false" />
     <Property Name="RestaurantId" Type="int" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="FeedbackId" Type="int" Nullable="false" />
+    <Property Name="FeedbackId" Type="int" />
+    <Property Name="OrderedDate" Type="datetime" Nullable="false" />
+    <Property Name="CompletionDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Restaurants">
     <Key>
@@ -81,6 +84,16 @@
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="IsOpen" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceFeedbacks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="text" />
+    <Property Name="UploadDateTime" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -159,18 +172,6 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Feedbacks__Custo__2BFE89A6">
-    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
-    <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Feedbacks">
-        <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Menu__FoodItemId__71D1E811">
     <End Role="FoodItems" Type="Self.FoodItems" Multiplicity="1" />
     <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
@@ -195,6 +196,18 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__OrderFeed__Order__41EDCAC5">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+    <End Role="OrderFeedbacks" Type="Self.OrderFeedbacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderFeedbacks">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Orders__Customer__787EE5A0">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -204,18 +217,6 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Orders__Feedback__2B0A656D">
-    <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="1" />
-    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Feedbacks">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="FeedbackId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -243,15 +244,28 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__ServiceFe__Custo__46B27FE2">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="ServiceFeedbacks" Type="Self.ServiceFeedbacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceFeedbacks">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MasterFoodModelStoreContainer">
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FavouriteFoodItems" EntityType="Self.FavouriteFoodItems" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FavouriteRestaurants" EntityType="Self.FavouriteRestaurants" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FoodItems" EntityType="Self.FoodItems" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderFeedbacks" EntityType="Self.OrderFeedbacks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceFeedbacks" EntityType="Self.ServiceFeedbacks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TodaysTopCusines" EntityType="Self.TodaysTopCusines" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -280,10 +294,6 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="FavouriteRestaurants" EntitySet="FavouriteRestaurants" />
     </AssociationSet>
-    <AssociationSet Name="FK__Feedbacks__Custo__2BFE89A6" Association="Self.FK__Feedbacks__Custo__2BFE89A6">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="Feedbacks" EntitySet="Feedbacks" />
-    </AssociationSet>
     <AssociationSet Name="FK__Menu__FoodItemId__71D1E811" Association="Self.FK__Menu__FoodItemId__71D1E811">
       <End Role="FoodItems" EntitySet="FoodItems" />
       <End Role="Menu" EntitySet="Menu" />
@@ -292,12 +302,12 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="Menu" EntitySet="Menu" />
     </AssociationSet>
+    <AssociationSet Name="FK__OrderFeed__Order__41EDCAC5" Association="Self.FK__OrderFeed__Order__41EDCAC5">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderFeedbacks" EntitySet="OrderFeedbacks" />
+    </AssociationSet>
     <AssociationSet Name="FK__Orders__Customer__787EE5A0" Association="Self.FK__Orders__Customer__787EE5A0">
       <End Role="Customers" EntitySet="Customers" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Orders__Feedback__2B0A656D" Association="Self.FK__Orders__Feedback__2B0A656D">
-      <End Role="Feedbacks" EntitySet="Feedbacks" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK__Orders__FoodItem__70DDC3D8" Association="Self.FK__Orders__FoodItem__70DDC3D8">
@@ -307,6 +317,10 @@ warning 6002: The table/view 'MasterFood.dbo.TodaysTopCusines' does not have a p
     <AssociationSet Name="FK__Orders__Restaura__398D8EEE" Association="Self.FK__Orders__Restaura__398D8EEE">
       <End Role="Restaurants" EntitySet="Restaurants" />
       <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ServiceFe__Custo__46B27FE2" Association="Self.FK__ServiceFe__Custo__46B27FE2">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="ServiceFeedbacks" EntitySet="ServiceFeedbacks" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

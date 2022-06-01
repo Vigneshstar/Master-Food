@@ -1,158 +1,176 @@
+@model Master_Food.Models.Dashboard
+@{ 
+    Layout = null;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>Home</title>
-	<link rel="stylesheet" href="~/Styles/style.css" />
-	<link href="~/Styles/dashboard.css" rel="stylesheet" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link rel="stylesheet" href="~/Styles/style.css" />
+    <link href="~/Styles/dashboard.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
+    <script>
+        if (!localStorage.getItem("customer")) window.location.href = "/Auth"
+    </script>
 </head>
 
 <body>
 
-	<header class="page-header">
-		<nav class="page-navigation">
-			<h1 class="page-heading">
-				<a href="/" class="home-link">
-					<img src="~/Images/Icons/site-logo.svg" alt="" width="22" height="22" />
-					Master Food
-				</a>
-			</h1>
-			<span class="toadays-date">
-				<img src="~/Images/Icons/calender-icon.svg" alt="" class="date-icon" width="18" height="18" />
-				May 17, 2022
-			</span>
-			<img src="~/Images/Icons/question-icon.svg" alt="" class="find-help" width="18" height="18" />
-		</nav>
-	</header>
+    <header class="page-header">
+        <nav class="page-navigation">
+            <h1 class="page-heading">
+                <a href="/" class="home-link">
+                    <img src="~/Images/Icons/site-logo.svg" alt="" width="22" height="22" />
+                    Master Food
+                </a>
+            </h1>
+            <span class="toadays-date">
+                <img src="~/Images/Icons/calender-icon.svg" alt="" class="date-icon" width="18" height="18" />
+                @DateTime.Now.ToString("MMMM dd, yyyy")
+            </span>
+            <img src="~/Images/Icons/question-icon.svg" alt="" class="find-help" width="18" height="18" />
+        </nav>
+    </header>
 
-	<main class="page-main">
-		<h2 class="page-main-heading">Dashboard</h2>
-		<section class="dashboard-stats-grid">
-			<div class="profile-info">
-				<h3 class="profile-stats-heading">Profile</h3>
-				<form class="profile-detail-form">
-					<div class="profile-image-wrapper">
-						<img src="~/Images/Icons/profile-icon.svg" alt="" class="profile-image" height="50"/>
-						<label class="profile-image-overlay">
+    <main class="page-main">
+        <h2 class="page-main-heading">Dashboard</h2>
+        <section class="dashboard-stats-grid">
+            <div class="profile-info">
+                <h3 class="profile-stats-heading">Profile</h3>
+                <form class="profile-detail-form">
+                    <div class="profile-image-wrapper">
+                        <img src="~/Images/Icons/profile-icon.svg" alt="" class="profile-image" height="50" />
+                        <label class="profile-image-overlay">
                             <input class="customer-image-input" type="file" accept="image/*" />
-						</label>
-					</div>
-					<div class="profile-detail-inner-wrapper">
+                        </label>
+                    </div>
+                    <div class="profile-detail-inner-wrapper">
                         <div class="customer-details">
                             <input class="customer-name" value="John Doe" type="text" placeholder="Username" minlength="3" maxlength="50" pattern="[_a-zA-Z][_ a-zA-Z0-9]+" disabled /><br />
-                            <input class="customer-email" value="johndoe@email.com" disabled />
+                            <input class="customer-email" type="email" value="johndoe@email.com" placeholder="Email" minlength="6" maxlength="50" disabled />
                             <input class="customer-password" type="password" placeholder="Password" minlength="6" maxlength="50" disabled />
                             <input class="customer-address" type="text" placeholder="Address" minlength="6" maxlength="50" pattern="[_a-zA-Z][_\sa-zA-Z0-9\-,\.]+" disabled />
+                            <input class="contact-number" type="tel" placeholder="Contact Number" minlength="8" maxlength="16" disabled />
                             <input class="customer-bank-acc-no" type="text" placeholder="Bank Acc.No" minlength="6" maxlength="50" pattern="[_a-zA-Z][_a-zA-Z0-9]+" disabled />
+                            <input class="user-id" type="number" placeholder="Inspect User Id" disabled />
                         </div>
-						<hr />
-						<div class="profile-btn-group">
-							<button class="profile-edit-btn" type="button">Edit</button>
-							<button class="profile-logout-btn" type="button">Logout</button>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div class="geographics-stats">
-				<h3 class="geographics-stats-heading">Geographics</h3>
-				<div class="geographics-detail">
-					<img src="~/Images/Icons/contact-number-icon.svg" alt="" class="geographics-detail-icon" width="70"
-						height="70" />
-					<div class="geographic-detail-wrapper">
-						<b class="geographics-detail-contact-number-heading">Contact Number</b><br/>
-						<small class="geographics-detail-contact-number">+91 789 789 8929</small>
-					</div>
-				</div>
-				<div class="geographics-detail">
-					<img src="~/Images/Icons/address-icon.svg" alt="" class="geographics-detail-icon" width="70" height="70" />
-					<div class="geographic-detail-wrapper">
-						<b class="geographics-detail-contact-number-heading">Address</b><br/>
-						<small class="geographics-detail-contact-number">123 Street, Antartica</small>
-					</div>
-				</div>
-				<div class="geographics-detail">
-					<img src="~/Images/Icons/last-order-icon.svg" alt="" class="geographics-detail-icon" width="70" height="70" />
-					<div class="geographic-detail-wrapper">
-						<b class="geographics-detail-contact-number-heading">Last Order</b><br/>
-						<small class="geographics-detail-contact-number">1 April, 2022</small>
-					</div>
-				</div>
-			</div>
-			<div class="orders-stats">
-				<h3 class="orders-heading">Orders</h3>
-				<img src="~/Images/Icons/info-icon-themed.svg" alt="" class="orders-details-icon" width="17" height="17" />
-				<div class="order-stats-details">
-					<div class="total-orders-wrapper">
-						<span class="total-order-count">50</span>
-						<span class="total-order-label">(Total)</span>
-					</div>
-					<div class="total-money-spent-wrapper">
-						<span class="total-money-spent">5000</span>
-						<span class="total-money-spent-label">(Money Spent)</span>
-					</div>
-				</div>
-			</div>
+                        <hr />
+                        <div class="profile-btn-group">
+                            <button class="profile-edit-btn" type="button">Edit</button>
+                            <button class="profile-logout-btn" type="button">Logout</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="geographics-stats">
+                <h3 class="geographics-stats-heading">Geographics</h3>
+                <div class="geographics-detail">
+                    <img src="~/Images/Icons/contact-number-icon.svg" alt="" class="geographics-detail-icon" width="70"
+                         height="70" />
+                    <div class="geographic-detail-wrapper">
+                        <b class="geographics-detail-contact-number-heading">Contact Number</b><br />
+                        <small class="geographics-detail-contact-number">+91 789 789 8929</small>
+                    </div>
+                </div>
+                <div class="geographics-detail">
+                    <img src="~/Images/Icons/address-icon.svg" alt="" class="geographics-detail-icon" width="70" height="70" />
+                    <div class="geographic-detail-wrapper">
+                        <b class="geographics-detail-address-heading">Address</b><br />
+                        <small class="geographics-detail-address">123 Street, Antartica</small>
+                    </div>
+                </div>
+                <div class="geographics-detail">
+                    <img src="~/Images/Icons/last-order-icon.svg" alt="" class="geographics-detail-icon" width="70" height="70" />
+                    <div class="geographic-detail-wrapper">
+                        <b class="geographics-detail-last-order-heading">Last Order</b><br />
+                        <small class="geographics-detail-last-order">- --- -----</small>
+                    </div>
+                </div>
+            </div>
+            <div class="orders-stats">
+                <h3 class="orders-heading">Orders</h3>
+                <img src="~/Images/Icons/info-icon-themed.svg" alt="" class="orders-details-icon" width="17" height="17" />
+                <div class="order-stats-details">
+                    <div class="total-orders-wrapper">
+                        <span class="total-order-count">--</span>
+                        <span class="total-order-label">(Total)</span>
+                    </div>
+                    <div class="total-money-spent-wrapper">
+                        <span class="total-money-spent">
+                            ----
+                        </span>
+                        <span class="total-money-spent-label">(Money Spent)</span>
+                    </div>
+                </div>
+            </div>
 
-			<div class="order-listing">
-				<nav class="order-listing-header">
-					<span class="order-category-heading all-orders-heading selected-order">
-						All Orders
-					</span>
-					<span class="order-category-heading pending-orders-heading">
-						Pending Orders
-					</span>
-					<span class="order-category-heading delivered-orders-heading">
-						Delivered Orders
-					</span>
-					<span class="order-category-heading booked-orders-heading">
-						Booked Orders
-					</span>
-					<span class="order-category-heading cancelled-orders">
-						Cancelled Orders
-					</span>
-				</nav>
-				<hr />
-				<div class="order-history">
-					<nav class="order-listing-type-headings">
-						<span class="order-listing-type-heading">
-							<img src="~/Images/Icons/order-id-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
-							Order Id
-						</span>
-						<span class="order-listing-type-heading">
-							<img src="~/Images/Icons/ordered-date-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
-							Ordered Date
-						</span>
-						<span class="order-listing-type-heading">
-							<img src="~/Images/Icons/product-name-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
-							Product Name
-						</span>
-						<span class="order-listing-type-heading">
-							<img src="~/Images/Icons/price-tag-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
-							Product Price
-						</span>
-						<span class="order-listing-type-heading">
-							<img src="~/Images/Icons/status-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
-							Status
-						</span>
-					</nav>
-					<ul class="order-list">
-						<li class="order-list-item">#123456</li>
-						<li class="order-list-item">12/10/2022</li>
-						<li class="order-list-item">Cheese Burger</li>
-						<li class="order-list-item">$15</li>
-						<li class="order-list-item">Delivered</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-	</main>
-	<script type="module" src="~/Scripts/dashboard.js"></script>
+            <div class="order-listing">
+                <nav class="order-listing-header">
+                    <span class="order-category-heading all-orders-heading selected-order">
+                        All Orders
+                    </span>
+                    <span class="order-category-heading booked-orders-heading">
+                        Completed Orders
+                    </span>
+                    <span class="order-category-heading pending-orders-heading">
+                        Pending Orders
+                    </span>
+                    <span class="order-category-heading cancelled-orders">
+                        Cancelled Orders
+                    </span>
+                </nav>
+                <div class="order-history">
+                    <table border="0" class="order-lists-table">
+                        <thead class="order-listing-type-headings">
+                            <tr>
+                                <th>
+                                    <span class="order-listing-type-heading">
+                                        <img src="~/Images/Icons/order-id-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+                                        Order Id
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="order-listing-type-heading">
+                                        <img src="~/Images/Icons/ordered-date-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+                                        Ordered Date
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="order-listing-type-heading">
+                                        <img src="~/Images/Icons/product-name-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+                                        Product Name
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="order-listing-type-heading">
+                                        <img src="~/Images/Icons/price-tag-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+                                        Product Price
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="order-listing-type-heading">
+                                        <img src="~/Images/Icons/status-icon.svg" alt="" class="order-listing-type-icon" width="20" height="20" />
+                                        Status
+                                    </span>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script type="module" src="~/Scripts/dashboard.js"></script>
 </body>
 
 </html>

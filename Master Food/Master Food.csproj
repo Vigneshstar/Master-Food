@@ -174,20 +174,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Auth.cs" />
-    <Compile Include="Models\EditProfile.cs" />
-    <Compile Include="Models\HomePage.cs" />
-    <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Signup.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dashboard.cs" />
     <Compile Include="Models\FavouriteFoodItem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FavouriteRestaurant.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Feedback.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FoodItem.cs">
@@ -196,6 +190,22 @@
     <Compile Include="Models\Menu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderFeedback.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\HomePage.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Restaurant.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceFeedback.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Signup.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,12 +220,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Order.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Restaurant.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -274,6 +278,11 @@
     <Content Include="Images\Breakfast\stuffed-omelet.bmp" />
     <Content Include="Images\Breakfast\sweet-crepes.bmp" />
     <Content Include="Images\Breakfast\toasted-english-muffin.jpg" />
+    <Content Include="Images\Customers\carol-danvers.jpg" />
+    <Content Include="Images\Customers\marc-spector.jpg" />
+    <Content Include="Images\Customers\nick-fury.jpg" />
+    <Content Include="Images\Customers\peter-parker.jpg" />
+    <Content Include="Images\Customers\yelena-belova.jpg" />
     <Content Include="Images\food-discount-image.svg" />
     <Content Include="Images\Icons\address-icon.svg" />
     <Content Include="Images\Icons\calender-icon.svg" />
@@ -459,6 +468,8 @@
     <Content Include="Scripts\feedback.js" />
     <Content Include="Scripts\findfood.js" />
     <Content Include="Scripts\home.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\services.js" />
     <Content Include="Styles\authentication.css" />

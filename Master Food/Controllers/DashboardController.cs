@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,7 +10,7 @@ namespace Master_Food.Controllers
 {
     public class DashboardController : Controller
     {
-        private MasterFoodEntities db = new MasterFoodEntities();
+        private readonly Dashboard dashboardModel = new Dashboard();
 
         [HttpGet]
         public ActionResult Index()
@@ -17,27 +18,34 @@ namespace Master_Food.Controllers
             return View();
         }
 
-        [HttpPost]
-        public JsonResult EditProfile(EditProfile data)
-        {
-            //Request.Files
-            return data.UpdateDetails();
-        }
-
         [HttpGet]
         public JsonResult GetCustomerDetails(int id)
 		{
-            var customer = db.Customers
-                .Where(_customer => _customer.Id == id)
-                .FirstOrDefault();
+            return dashboardModel.GetCustomerDetails(id);
+        }
 
-            string name = customer.Name,
-                email = customer.Email,
-                imagePath = customer.Image,
-                type = customer.Type,
-                address = customer.Address;
+        [HttpGet]
+        public JsonResult GetOrders(int id)
+		{
+            return dashboardModel.GetOrders(id);
+        }
 
-            return Json(new { Data = new { id, name, email, imagePath, type, address } }, JsonRequestBehavior.AllowGet);
+        [HttpGet]
+        public JsonResult GetFoodItems()
+        {
+            return dashboardModel.GetFoodItems();
+        }
+
+        [HttpPost]
+        public JsonResult EditProfile(Profile data)
+        {
+            return dashboardModel.EditProfile(data);
+        }
+
+        [HttpPost]
+        public JsonResult EditOrderDetails(List<OrderDetail> data)
+		{
+            return dashboardModel.EditOrderDetails(data);
 		}
     }
 }
