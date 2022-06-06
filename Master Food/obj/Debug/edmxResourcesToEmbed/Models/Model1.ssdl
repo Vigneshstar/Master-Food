@@ -75,6 +75,7 @@
     <Property Name="FeedbackId" Type="int" />
     <Property Name="OrderedDate" Type="datetime" Nullable="false" />
     <Property Name="CompletionDate" Type="datetime" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Restaurants">
     <Key>

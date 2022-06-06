@@ -33,80 +33,80 @@
 </head>
 <body>
     <header class="page-header">
-		<nav class="page-navigation">
+        <nav class="page-navigation">
             <h1 class="page-heading">
                 <a href="/" class="home-link">
                     <img src="~/Images/Icons/site-logo.svg" alt="" width="22" height="22" />
                     Master Food
                 </a>
             </h1>
-			<ul class="nav-menu">
-				<li><a href="/Dashboard" class="nav-link nav-dashboard-link">dashboard</a></li>
-				<li><a href="/Services" class="nav-link">services</a></li>
-				<li><a href="/FindFood" class="nav-link">find food</a></li>
-				<li><a href="/Feedback" class="nav-link nav-feedback-link">feedback</a></li>
-				<li><a href="/#about-us" class="nav-link">about us</a></li>
-			</ul>
-			<button class="auth-btn"> login/signup </button>
-		</nav>
-	</header>
+            <ul class="nav-menu">
+                <li><a href="/Dashboard" class="nav-link nav-dashboard-link">dashboard</a></li>
+                <li><a href="/Services" class="nav-link">services</a></li>
+                <li><a href="/FindFood" class="nav-link">find food</a></li>
+                <li><a href="/Feedback" class="nav-link nav-feedback-link">feedback</a></li>
+                <li><a href="/#about-us" class="nav-link">about us</a></li>
+            </ul>
+            <button class="auth-btn"> login/signup </button>
+        </nav>
+    </header>
 
-	<main class="page-main">
-		<section class="landing-banner">
-			<h2 class="landing-banner-caption">
+    <main class="page-main">
+        <section class="landing-banner">
+            <h2 class="landing-banner-caption">
                 You Don't Need A Silver Fork To Eat Good Food.
             </h2>
-			<div class="search-restaurents">
-				<input class="search-restaurents-field" type="search" placeholder="Find a restaurent" />
-				<ul class="restaurents-list">
-					@foreach (var restaurant in Model.Restaurants)
+            <div class="search-restaurents">
+                <input class="search-restaurents-field" type="search" placeholder="Find a restaurent" />
+                <ul class="restaurents-list">
+                    @foreach (var restaurant in Model.Restaurants)
                     {
-                    <li class="restaurents-list-item">
-                        <a class="restaurents-list-item-link" href="#">
-                            <span class="restaurant-name">
-                                @restaurant.Name
-                            </span><br />
-                            <span class="restaurant-location">
-                                @restaurant.Location
-                            </span>
-                        </a>
-                    </li>
+                        <li class="restaurents-list-item">
+                            <a class="restaurents-list-item-link" href="#">
+                                <span class="restaurant-name">
+                                    @restaurant.Name
+                                </span><br />
+                                <span class="restaurant-location">
+                                    @restaurant.Location
+                                </span>
+                            </a>
+                        </li>
                     }
-				</ul>
-				<button class="search-restaurents-btn">
-					<img loading="lazy" src="~/Images/Icons/search-icon.svg" alt="search" class="search-icon" width="17" height="17" />
-				</button>
-			</div>
-			<div class="social-media-links">
-				<a href="https://facebook.com" class="facebook-icon-link">
-					<img loading="lazy" class="facebook-icon" src="~/Images/Icons/facebook-icon.svg" width="10" height="10" />
-					<span>10k</span>
-				</a>
-				<a href="https://twitter.com" class="twitter-icon-link">
-					<img loading="lazy" class="twitter-icon" src="~/Images/Icons/twitter-icon.svg" width="10" height="10" />
-					<span>15k</span>
-				</a>
-				<a href="https://instagram.com" class="instagram-icon-link">
-					<img loading="lazy" class="instagram-icon" src="~/Images/Icons/instagram-icon.svg" width="10" height="10" />
-					<span>12k</span>
-				</a>
-			</div>
-		</section>
+                </ul>
+                <button class="search-restaurents-btn">
+                    <img loading="lazy" src="~/Images/Icons/search-icon.svg" alt="search" class="search-icon" width="17" height="17" />
+                </button>
+            </div>
+            <div class="social-media-links">
+                <a href="https://facebook.com" class="facebook-icon-link">
+                    <img loading="lazy" class="facebook-icon" src="~/Images/Icons/facebook-icon.svg" width="10" height="10" />
+                    <span>10k</span>
+                </a>
+                <a href="https://twitter.com" class="twitter-icon-link">
+                    <img loading="lazy" class="twitter-icon" src="~/Images/Icons/twitter-icon.svg" width="10" height="10" />
+                    <span>15k</span>
+                </a>
+                <a href="https://instagram.com" class="instagram-icon-link">
+                    <img loading="lazy" class="instagram-icon" src="~/Images/Icons/instagram-icon.svg" width="10" height="10" />
+                    <span>12k</span>
+                </a>
+            </div>
+        </section>
 
-		<section id="about-us" class="about-us">
-			<h2 class="about-us-heading">About us</h2>
-			<h3 class="about-us-subheading">Delight your taste buds with our exqusite cusines</h3>
-			<p class="about-us-description">
-				The fabric of Master Food was born out of love and respect for these humble deli
-				creations, met with a desire to bring quality
-				ingredients to the table. Simply put,we're
-				here to bring you a sandwich experience you
-				can feel good about.<br /><br />We emphasize appearance, flavour, texture and method of cooking from
-				restaurants near
-				you.
-			</p>
-			<button class="discover-menu-btn">Discover Menu</button>
-		</section>
+        <section id="about-us" class="about-us">
+            <h2 class="about-us-heading">About us</h2>
+            <h3 class="about-us-subheading">Delight your taste buds with our exqusite cusines</h3>
+            <p class="about-us-description">
+                The fabric of Master Food was born out of love and respect for these humble deli
+                creations, met with a desire to bring quality
+                ingredients to the table. Simply put,we're
+                here to bring you a sandwich experience you
+                can feel good about.<br /><br />We emphasize appearance, flavour, texture and method of cooking from
+                restaurants near
+                you.
+            </p>
+            <button class="discover-menu-btn">Discover Menu</button>
+        </section>
 
         <section class="todays-top-cusines">
             <div class="categories-header">
@@ -138,7 +138,7 @@
                                     "~/Images/" + toTitleCase(cusine.Type) + "/" + cusine.Image);
                                 var price = Convert.ToInt32(cusine.Price);
 
-                                <li class="cusines-list-item">
+                                <li class="cusines-list-item" data-food-id="@cusine.Id">
 
                                     <img loading="lazy" aria-describedby="@cusineCategory.Key-cusine-name-@i" class="cusine-image" src="@imagePath"
                                          width="130" height="160" alt="" />
@@ -157,7 +157,7 @@
                                             }
                                         </div>
                                         <div class="heart-icon-wrapper">
-                                            <img src="~/Images/Icons/heart-icon.svg" width="20" height="20" alt="like cusine" />
+                                            <img class="heart-icon" src="~/Images/Icons/heart-icon.svg" width="20" height="20" alt="like cusine" />
                                         </div>
                                         <button class="order-cusine-btn">Order</button>
                                     </div>
@@ -167,7 +167,7 @@
                     </div>
                 }
             </div>
-            
+
             <div class="carousel-circles cusines-carousel-circles">
                 @for (int i = 0; i < cusines.Count; i++)
                 {
@@ -219,24 +219,25 @@
             </div>
         </section>
 
-		<section class="ask-us">
-			<h2>Ask Us</h2>
-			<h3>Queries and Doubts</h3>
-			<div class="contact-details">
-				<img loading="lazy" class="phone-icon" src="~/Images/Icons/call-icon.svg" width="30" height="30" alt="" />
-				<b class="call-now"> Call Now </b>
-				<b class="contact-number">+91 883 388 8974</b>
-				<div class="contact-email">
-					<img loading="lazy" class="envelop-icon" src="~/Images/Icons/email-icon.svg" width="12" height="12" alt="" />
-					<small>admin@masterfood.com</small>
-				</div>
-			</div>
-		</section>
-	</main>
+        <section class="ask-us">
+            <h2>Ask Us</h2>
+            <h3>Queries and Doubts</h3>
+            <div class="contact-details">
+                <img loading="lazy" class="phone-icon" src="~/Images/Icons/call-icon.svg" width="30" height="30" alt="" />
+                <b class="call-now"> Call Now </b>
+                <b class="contact-number">+91 883 388 8974</b>
+                <div class="contact-email">
+                    <img loading="lazy" class="envelop-icon" src="~/Images/Icons/email-icon.svg" width="12" height="12" alt="" />
+                    <small>admin@masterfood.com</small>
+                </div>
+            </div>
+        </section>
+    </main>
 
-	<footer class="page-footer">
-		<small>Made with ❤ by our dedicated team.</small>
-	</footer>
-	<script src="~/Scripts/home.js" type="module"></script>
+    <footer class="page-footer">
+        <small>Made with ❤ by our dedicated team.</small>
+    </footer>
+    <script src="~/Scripts/navbar.js" type="module"></script>
+    <script src="~/Scripts/home.js" type="module"></script>
 </body>
 </html>

@@ -82,6 +82,7 @@
     <NavigationProperty Name="OrderFeedbacks" Relationship="MasterFoodModel.FK__OrderFeed__Order__41EDCAC5" FromRole="Order" ToRole="OrderFeedback" />
     <Property Name="OrderedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="CompletionDate" Type="DateTime" Precision="3" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Restaurant">
     <Key>

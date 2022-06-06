@@ -1,6 +1,27 @@
 import { el, els, on, store } from "./script.js"
 
-on(el`form.vendor-service-form`, "submit", function (evt) {
+const serviceOptionsSection = el`section.service-options`
+const vendorSeviceForm = el`form.vendor-service-form`
+const restaurantServiceForm = el`form.restaurant-service-form`
+const serviceFormInputs = els`input.service-form-input`
+const addFoodItemSection = el`section.add-food-item`
+const dialogBox = el`dialog.message-box`
+const learnMoreBtn = el`button.learn-more-btn`
+
+const customer = store.get("customer")
+
+if (store.includes("customer")) {
+	if (["vendor", "restaurant"].includes(customer.type)) {
+		serviceOptionsSection.style.display = "none"
+		addFoodItemSection.style.display = "flex"
+	}
+	else if (customer.type == "admin") {
+		serviceOptionsSection.style.display = "flex"
+		addFoodItemSection.style.display = "flex"
+    }
+}
+
+on(vendorSeviceForm, "submit", function (evt) {
 	evt.preventDefault()
 
 	const vendorNameField = el`input.vendor-name-input`
@@ -44,7 +65,7 @@ on(el`form.vendor-service-form`, "submit", function (evt) {
 	}
 })
 
-on(el`form.restaurant-service-form`, "submit", function (evt) {
+on(restaurantServiceForm, "submit", function (evt) {
 	evt.preventDefault()
 
 	const restaurantUsernameField = el`input.restaurant-name-input`
@@ -88,7 +109,7 @@ on(el`form.restaurant-service-form`, "submit", function (evt) {
 	}
 })
 
-for (let field of els`input.service-form-input`)
+for (let field of serviceFormInputs)
 	on(field, "focus", function (evt) {
 		const errorMessageElm = field.parentElement.querySelector("span.error-message")
 		errorMessageElm.style.display = "none"
@@ -181,3 +202,18 @@ function validateBankAccNoFields(field) {
 	else if (validity.tooLong)
 		errorMessageElm.textContent = "Please enter a valid bank account number"
 }
+
+on(learnMoreBtn, "click", _ => {
+	dialogBox.showModal()
+	dialogBox.scrollTop = 0
+})
+
+on(dialogBox, "click", evt => {
+	const rect = dialogBox.getBoundingClientRect()
+	const isInDialog = (rect.top <= evt.clientY && evt.clientY <= rect.top + rect.height
+		&& rect.left <= evt.clientX && evt.clientX <= rect.left + rect.width)
+
+	if (!isInDialog)
+		dialogBox.close()
+})
+

@@ -9,10 +9,24 @@ namespace Master_Food.Controllers
 {
     public class HomeController : Controller
     {
+        HomePage homePage = new HomePage();
+
         [HttpGet]
         public ActionResult Index()
         {
-            return View(new HomePage());
+            return View(homePage);
+        }
+
+        [HttpPost]
+        public ActionResult AddToFavFoods(HomePage.FavFoodItem data)
+		{
+            return homePage.AddToFavFoods(data);
+		}
+
+        [HttpDelete]
+        public ActionResult RemoveFromFavFoods(int id)
+        {
+            return homePage.RemoveFromFavFoods(id);
         }
     }
 }

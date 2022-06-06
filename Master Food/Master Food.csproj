@@ -184,6 +184,8 @@
     <Compile Include="Models\FavouriteRestaurant.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FeedbackPage.cs" />
+    <Compile Include="Models\FindFoodPage.cs" />
     <Compile Include="Models\FoodItem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -231,6 +233,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Images\food-image.png" />
+    <Content Include="Images\Breakfast\hash-brown-egg-waffles.bmp" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -252,6 +256,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Images\Breakfast\classic-waffles.bmp" />
     <Content Include="Images\Breakfast\avocado-toast.bmp" />
     <Content Include="Images\Breakfast\bacon-and-eggs.bmp" />
     <Content Include="Images\Breakfast\bagel-and-cheese.bmp" />
@@ -278,6 +283,7 @@
     <Content Include="Images\Breakfast\stuffed-omelet.bmp" />
     <Content Include="Images\Breakfast\sweet-crepes.bmp" />
     <Content Include="Images\Breakfast\toasted-english-muffin.jpg" />
+    <Content Include="Images\Breakfast\puff-pastry-waffles.bmp" />
     <Content Include="Images\Customers\carol-danvers.jpg" />
     <Content Include="Images\Customers\marc-spector.jpg" />
     <Content Include="Images\Customers\nick-fury.jpg" />
@@ -362,6 +368,7 @@
     <Content Include="Images\Icons\expand-icon.svg" />
     <Content Include="Images\Icons\facebook-icon.svg" />
     <Content Include="Images\Icons\filter-icon.svg" />
+    <Content Include="Images\Icons\heart-icon-filled.svg" />
     <Content Include="Images\Icons\heart-icon.svg" />
     <Content Include="Images\Icons\info-icon.svg" />
     <Content Include="Images\Icons\instagram-icon.svg" />
@@ -413,6 +420,7 @@
     <Content Include="Images\Lunch\tuna-grain-bowl.jpeg" />
     <Content Include="Images\Lunch\turkey-frittata.jpeg" />
     <Content Include="Images\Lunch\turkey-taco.bmp" />
+    <Content Include="Images\no-notifications.jpg" />
     <Content Include="Images\services-image.svg" />
     <Content Include="Images\Shake\berry-and-beet-smoothie.bmp" />
     <Content Include="Images\Shake\berry-banana-smoothie.bmp" />
@@ -470,6 +478,7 @@
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\navbar.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\services.js" />
     <Content Include="Styles\authentication.css" />

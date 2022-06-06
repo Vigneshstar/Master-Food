@@ -172,7 +172,8 @@ function createDropdownDetails(data, productOptionList) {
 }
 
 on(profileLogoutBtn, "click", function (evt) {
-	store.remove("customer")
+    store.clear()
+    store.session.clear()
 	window.location.href = "/"
 })
 

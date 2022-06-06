@@ -62,6 +62,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="MasterFoodModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
           <ScalarProperty Name="OrderedDate" ColumnName="OrderedDate" />
           <ScalarProperty Name="Id" ColumnName="Id" />

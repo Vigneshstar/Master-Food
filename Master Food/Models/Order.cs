@@ -28,6 +28,7 @@ namespace Master_Food.Models
         public Nullable<int> FeedbackId { get; set; }
         public System.DateTime OrderedDate { get; set; }
         public Nullable<System.DateTime> CompletionDate { get; set; }
+        public int Quantity { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual FoodItem FoodItem { get; set; }

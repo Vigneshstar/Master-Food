@@ -52,7 +52,7 @@ function loginValidation(evt) {
 	.then(res => res.json())
 	.then(function (data) {
 		if(data.isValidCustomer) {
-			loginForm.reset()
+			loginForm.querySelectorAll("input").forEach(elm => elm.disabled = true)
 			store.set("customer", {...data})
 			window.location.href = "/"
 		}
@@ -97,7 +97,7 @@ function signupValidation(evt) {
 	.then(res => res.json())
 	.then(function (data) {
 		if (data.isValidCustomer) {
-			signupForm.reset()
+			signupForm.querySelectorAll("input").forEach(elm => elm.disabled = true)
 			store.set("customer", {...data})
 			window.location.href = "/"
 		}

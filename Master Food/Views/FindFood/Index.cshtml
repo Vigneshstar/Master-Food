@@ -1,3 +1,14 @@
+@model Master_Food.Models.FindFoodPage
+
+@{ 
+    Layout = null;
+    var cusines = Model.GetFoodItems;
+    Func<string, string> toTitleCase = str =>
+        str[0].ToString().ToUpper() + str.Substring(1);
+
+    Func<decimal, decimal, decimal> calcDiscountPercent = (initial, discount) =>
+		(initial - discount) / initial * 100;
+}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +16,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>Home</title>
+	<title>Find Food</title>
 	<link rel="stylesheet" href="~/Styles/style.css" />
 	<link rel="stylesheet" href="~/Styles/findfood.css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,40 +33,84 @@
 					Master Food
 				</a>
 			</h1>
-			<div class="location-input-warpper">
-				<img src="~/Images/Icons/location-icon.svg" alt="" class="location-icon" width="15" height="15" />
-				<input type="search" class="location-input" placeholder="Location..." />
-			</div>
-			<div class="search-restaurents">
-				<input class="search-restaurents-field" type="search" placeholder="Find a restaurent">
-				<button class="search-restaurents-btn">
-					<img src="~/Images/Icons/search-icon.svg" alt="search" class="search-icon" width="17" height="17" />
-				</button>
-			</div>
+            <div class="search-restaurants-field-warpper">
+                <img src="~/Images/Icons/location-icon.svg" alt="" class="location-icon" width="15" height="15" />
+                <input type="search" class="search-restaurants-field" placeholder="Location..." />
+                <ul class="restaurants-list">
+                    @foreach (var restaurant in Model.Restaurants)
+                    {
+                        <li class="restaurants-list-item" data-restaurant-id="@restaurant.Id">
+                            <a class="restaurants-list-item-link" href="#">
+                                <span class="restaurant-name">
+                                    @restaurant.Name
+                                </span><br />
+                                <span class="restaurant-location">
+                                    @restaurant.Location
+                                </span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="search-food">
+                <input class="search-food-field" type="search" placeholder="Find Food">
+                <ul class="food-list">
+					@{ var foodItems = cusines.SelectMany(x => x.Value); }
+                    @foreach (var foodItem in foodItems)
+                    {
+                        <li class="food-list-item" data-food-id="@foodItem.Id">
+                            <a class="food-list-item-link" href="#">
+                                <span class="food-name">
+                                    @foodItem.Name
+                                </span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+                <button class="search-food-btn">
+                    <img src="~/Images/Icons/search-icon.svg" alt="search" class="search-icon" width="17" height="17" />
+                </button>
+            </div>
 			<img src="~/Images/Icons/notification-icon.svg" alt="" class="notification-icon" width="18" height="18" />
-			<img src="~/Images/Customers/customer-image.jpg" alt="" class="customer-image" width="30" height="30" />
+			<img src="~/Images/Icons/profile-icon.svg" alt="" class="customer-image" width="20" height="20" />
+			<dialog class="notifications">
+                <h2 class="notification-title">Notifications</h2>
+			</dialog>
 		</nav>
 	</header>
 	<main class="page-main">
 		<section class="discount-items">
 			<div class="discount-item-slides">
+				@{ int totalDiscountItems = 0; }
+				@foreach (var discountItem in Model.GetDiscountItems)
+                {
+                    totalDiscountItems++;
+                    int discountPercent = (int) calcDiscountPercent(discountItem.Price, (decimal)discountItem.Discount);
+
+                    var imagePath = Url.Content(
+                                    "~/Images/" + toTitleCase(discountItem.Type) + "/" + discountItem.Image);
+
 				<div class="discount-item-slide">
 					<div class="discount-item-slide-inner-wrapper">
-						<b class="discount-amount">50% Off</b><br />
+                        <b class="discount-amount">@discountPercent% Off</b><br />
 						<h2 class="discount-amount-heading">All Week... All Waffles...</h2>
 						<p class="discount-amount-supporting-text">
 							Don't miss out this week's offer. <br/> Hurry!..
 						</p>
-						<button class="order-now-btn">Order Now</button>
+						<button class="order-now-btn" data-food-id="@discountItem.Id" data-food-price="@Convert.ToInt32(discountItem.Price)" data-food-image="@imagePath" data-food-name="@discountItem.Name">Order Now</button>
 					</div>
-					<img src="~/Images/food-discount-image.svg" alt="" class="discount-item-image" width="35%"/>
+					<img src="@imagePath" alt="" class="discount-item-image" width="35%"/>
 				</div>
+                }
 			</div>
-			<div class="carousel-circles">
-				<span class="carousel-circle"></span>
-				<span class="carousel-circle"></span>
-				<span class="carousel-circle carousel-circle-selected"></span>
-				<span class="carousel-circle"></span>
+			<div class="discounts-carousel carousel-circles">
+				@for (int i = 0; i < totalDiscountItems; i++)
+                {
+                    string carouselSelected = i == 0 ?
+                        "carousel-circle-selected" : "";
+
+                    <span class="carousel-circle @carouselSelected"></span>
+                }
 			</div>
 		</section>
 		<section class="item-categories">
@@ -72,59 +127,70 @@
 			</div>
 			<nav class="category-tabs">
 				<div class="category-tabs-listing">
-					<span class="category-tab-listing-item-selected">Brakefast</span>
-					<span>Lunch</span>
-					<span>Dinner</span>
-					<span>Dessert</span>
-					<span>Shake</span>
+					<span class="category-tab-listing-item category-tab-listing-item-selected">Brakefast</span>
+					<span class="category-tab-listing-item">Lunch</span>
+					<span class="category-tab-listing-item">Dinner</span>
+					<span class="category-tab-listing-item">Dessert</span>
+					<span class="category-tab-listing-item">Shake</span>
 					<hr class="category-tab-selector-line" />
 				</div>
 			</nav>
-			<div class="cusines-list-wrapper">
-				<div class="cusines-slide">
-					<ul class="cusines-list">
-						<li class="cusines-list-item">
-							<img aria-describedby="cusine-name1" class="cusine-image" src="~/Images/food-image2.jpg" width="130px"
-								height="160px" alt="" />
-							<div id="cusine-name1" class="cusine-name">Strawberry Cake</div>
-						</li>
-					</ul>
-				</div>
-				<div class="carousel-circles">
-					<span class="carousel-circle"></span>
-					<span class="carousel-circle"></span>
-					<span class="carousel-circle carousel-circle-selected"></span>
-					<span class="carousel-circle"></span>
-				</div>
-			</div>
+            <div class="cusines-list-wrapper">
+                @foreach (var cusineCategory in cusines)
+                {
+                    <div class="cusines-slide">
+                        <ul class="cusines-list">
+                            @{ int i = 0; }
+                            @foreach (var cusine in cusineCategory.Value)
+                            {
+                                i++;
+                                var imagePath = Url.Content(
+                                    "~/Images/" + toTitleCase(cusine.Type) + "/" + cusine.Image);
+                                var price = Convert.ToInt32(cusine.Price);
+
+                                <li class="cusines-list-item" data-food-id="@cusine.Id">
+
+                                    <img loading="lazy" aria-describedby="@cusineCategory.Key-cusine-name-@i" class="cusine-image" src="@imagePath"
+                                         width="130" height="160" alt="" />
+                                    <div id="@cusineCategory.Key-cusine-name-@i" class="cusine-name">
+                                        @cusine.Name
+                                    </div>
+                                    <div class="cusines-list-info">
+                                        <div class="info-icon-wrapper">
+                                            <img class="info-icon" src="~/Images/Icons/info-icon.svg" width="15" height="15" alt="info icon" />
+                                        </div>
+                                        <b class="cusine-price">$@price</b>
+                                        <div class="rating">
+                                            @for (int j = 0; j < cusine.Rating; j++)
+                                            {
+                                                <img loading="lazy" src="~/Images/Icons/star-icon.svg" alt="" class="rating-star" width="9" height="9" />
+                                            }
+                                        </div>
+                                        <div class="heart-icon-wrapper">
+                                            <img class="heart-icon" src="~/Images/Icons/heart-icon.svg" width="20" height="20" alt="like cusine" />
+                                        </div>
+                                        <button class="order-cusine-btn">Order</button>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
 		</section>
 		<section class="selected-food-items">
 			<h3 class="selected-food-items-heading">My Orders</h3>
 			<div class="selected-food-items-wrapper">
-				<div class="selected-food-item">
-					<img src="~/Images/food-image1.png" alt="" class="selected-food-item-image" width="80" height="75" />
-					<div class="selected-food-item-name-quantity-wrapper">
-						<b class="selected-food-item-name">Food Item</b><br />
-						<div class="selected-food-item-quantity">
-							<button class="selected-food-item-quantity-decr">-</button>
-							<span class="selected-food-item-quantity-label">1</span>
-							<button class="selected-fod-item-quantity-inc">+</button>
-						</div>
-					</div>
-					<span class="selected-food-item-price">20</span>
-				</div>
-				<!--  -->
 			</div>
 			<div class="total-price-wrapper">
 				<div class="selected-items-prices-wrapper">
 					<img src="~/Images/Icons/expand-icon.svg" alt="" class="total-price-details-icon" width="12"
 						height="12" />
 					<ul class="selected-items-prices">
-						<!--  -->
 					</ul>
 					<div class="total-price">
 						<span class="total-price-label">Total</span>
-						<span class="total-price-amount">20</span>
+						<span class="total-price-amount">0</span>
 					</div>
 				</div>
 				<button class="checkout-btn">
